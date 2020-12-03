@@ -1,0 +1,43 @@
+{    
+    "code": "testsurvey",
+    "email": "someone@email.org",
+    "name": "John Doe",
+    "project": "Apache/Atlas",
+    "first_commit": "2019",
+    "cqs": [
+      {
+        "td_type": "Test Debt",
+        "td_issue": "\"Thread.sleep\" should not be used in tests",
+        "commit": {
+          "hash": "371f967f605ec72e1d1a4fc2030d008cbede27fa",
+          "msg": "ATLAS-3518: Added new Atlas Audit Framework with Purge Operation and Unit Test",
+          "file": "EntityV2JerseyResourceIT.java",
+          "lang": "java",
+          "diff": [" - Thread.sleep(1000);"]
+        }
+      },
+      {
+        "td_type": "Design Debt",
+        "td_issue": "Cognitive Complexity of methods should not be too high",
+        "commit": {
+          "hash": "371f967f605ec72e1d1a4fc2030d008cbede27fa",
+          "msg": "ATLAS-3518: Added new Atlas Audit Framework with Purge Operation and Unit Test",
+          "file": "DeleteHandlerV1.java",
+          "lang": "java",
+          "diff": [
+            " @@ -105,24 +88,15 @@ ",
+            " public void deleteEntities(Collection<AtlasVertex> instanceVertices) throws Atla",
+            " for (AtlasVertex instanceVertex : instanceVertices) {",
+            " final String guid  = AtlasGraphUtilsV2.getIdFromVertex(instanceVertex);",
+            " - final AtlasEntity.Status state = getState(instanceVertex);",
+            " - final boolean needToSkip;",
+            " - if (isPurgeRequested) {",
+            " - needToSkip = state == ACTIVE || requestContext.isPurgedEntity(guid);",
+            " - } else {",
+            " - needToSkip = state == DELETED || requestContext.isDeletedEntity(guid);",
+            " - }"
+          ]
+        }
+      }
+    ]
+}

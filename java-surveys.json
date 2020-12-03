@@ -5400,69 +5400,6 @@
     ]
   },
   {
-    "code": "DoGeMNysObc",
-    "email": "sanjeevrk@gmail.com",
-    "name": "Sanjeev Kulkarni",
-    "project": "Apache/Pulsar",
-    "first_commit": "2017",
-    "cqs": [
-      {
-        "td_type": "Design Debt",
-        "td_issue": "Cognitive Complexity of methods should not be too high",
-        "commit": {
-          "hash": "a7310ee7e62f9d70d41ebc21bd196cbba259eeb0",
-          "msg": "Function Serverside validation Part 2 (#2752)",
-          "file": "SourceConfigUtils.java",
-          "lang": "java",
-          "diff": [
-            " } else {",
-            " - sourceClassName = ConnectorUtils.getIOSourceClass(sourceConfig.getArchive());",
-            " - ",
-            " - try (NarClassLoader ncl = NarClassLoader.getFromArchive(new File(sourceConfig.getArchive()),",
-            " - Collections.emptySet())) {",
-            " - typeArg = getSourceType(sourceClassName, ncl).getName();",
-            " - }",
-            " + sourceClassName = ConnectorUtils.getIOSourceClass(classLoader);",
-            " + typeArg = getSourceType(sourceClassName, classLoader).getName();",
-            " }"
-          ]
-        }
-      },
-      {
-        "td_type": "Defect Debt",
-        "td_issue": "Generic exceptions should never be thrown",
-        "commit": {
-          "hash": "3db8b7392b1be22544117ea336dd46cc85c61ba0",
-          "msg": "Allow the ability to specify which artifactory to download dep from (#2824)",
-          "file": "RuntimeUtils.java",
-          "lang": "java",
-          "diff": [
-            " - Boolean installUserCodeDepdendencies) throws Exception {"
-          ]
-        }
-      },
-      {
-        "td_type": "Code Debt",
-        "td_issue": "Methods should not have too many parameters",
-        "commit": {
-          "hash": "1386e6dfdba16bb1ee0a3c7649cb7daed50a5d8c",
-          "msg": "Source/Sink Endpoint validations (#2807)",
-          "file": "FunctionsImpl.java",
-          "lang": "java",
-          "diff": [
-            " - public Response updateFunction(final String tenant, final String namespace, final String functionName,",
-            " + public Response updateFunction(final String tenant, final String namespace, final String componentName,",
-            " final InputStream uploadedInputStream, final FormDataContentDisposition fileDetail,",
-            " - final String functionPkgUrl, final String functionDetailsJson, final String functionConfigJson,",
-            " - final String sourceConfigJson, final String sinkConfigJson, final String clientRole) {",
-            " + final String functionPkgUrl, final String functionDetailsJson, final String componentConfigJson,",
-            " + final String componentType, final String clientRole) {"
-          ]
-        }
-      }
-    ]
-  },
-  {
     "code": "sTPqsxY8WvI",
     "email": "zhaijia@apache.org",
     "name": "Jia Zhai",

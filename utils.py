@@ -31,7 +31,7 @@ def merge_surveys(path):
   return surveys
 
 
-def upload_test(remote=True):
+def upload_surveys(jsonfile, token="the-very-secretive-phrase", remote=True):
   if remote:
     app_url = "https://sftd.danielfeitosa.cc"
   else:
@@ -40,11 +40,10 @@ def upload_test(remote=True):
     ssl._create_default_https_context = ssl._create_unverified_context
 
   # load survey
-  with open("test-survey.json") as f:
+  with open(jsonfile) as f:
     test_survey = json.load(f)
-
-  token = "the-very-secretive-phrase"
-  restore_data = {"force":"y", "surveys":test_survey}
+  
+  restore_data = {"force":"y", "surveys":json.dumps(test_survey)}
   url = f"{app_url}/restore"
   headers={"Authorization": f"Bearer {token}", 'User-Agent': 'Mozilla/5.0'}
   data = parse.urlencode(restore_data).encode('utf-8')
@@ -101,7 +100,7 @@ if __name__ == "__main__":
     fire.Fire()
 
 # pipenv run python utils.py merge_surveys Java_json.zip
-# pipenv run python utils.py upload_test
+# pipenv run python utils.py upload_surveys test-survey.json
 # pipenv run python utils.py collect_answers
 # pipenv run python utils.py generate_codes python-surveys.json
 # pipenv run python utils.py generate_contacts python-surveys.json

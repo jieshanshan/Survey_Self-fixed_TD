@@ -1,8 +1,9 @@
+import csv
 import json
-import zipfile
 import os
 import ssl
 import secrets
+import zipfile
 from urllib import request, parse
 
 import fire
@@ -80,9 +81,27 @@ def generate_codes(jsonfile):
     json.dump(surveys, f, indent=4)
 
 
+def generate_contacts(jsonfile, url_base="https://sftd.danielfeitosa.cc"):
+  with open(jsonfile) as f:
+    surveys = json.load(f)
+
+  with open(jsonfile.replace(".json", ".csv"), "w") as csvfile:
+    writer = csv.DictWriter(csvfile, ["email", "name", "link"])
+    writer.writeheader()  
+    
+    for s in surveys:
+      writer.writerow({
+        "email": s["email"],
+        "name": s["name"].split(" ")[0],
+        "link": f"{url_base}/survey?code={s['code']}"
+      })
+
+
 if __name__ == "__main__":
     fire.Fire()
 
 # pipenv run python utils.py merge_surveys Java_json.zip
 # pipenv run python utils.py upload_test
 # pipenv run python utils.py collect_answers
+# pipenv run python utils.py generate_codes python-surveys.json
+# pipenv run python utils.py generate_contacts python-surveys.json

@@ -51,11 +51,23 @@ def generate_codes(jsonfile):
   with open(jsonfile) as f:
     surveys = json.load(f)
   
-  for s in surveys:
-    s["code"] = "".join(secrets.token_urlsafe(8))
+  while(True):
+    for s in surveys:
+      s["code"] = "".join(secrets.token_urlsafe(8))
+    if validate_codes(surveys):
+      break
   
   with open(jsonfile, "w") as f:
     json.dump(surveys, f, indent=4)
+
+
+def validate_codes(surveys):
+  if not isinstance(surveys, dict):
+    with open(surveys) as f:
+      surveys = json.load(f)
+  
+  codes = [s["code"] for s in surveys]
+  return len(codes) == len(set(codes))
 
 
 def generate_contacts(jsonfile, url_base="https://sftd.danielfeitosa.cc"):
@@ -79,5 +91,6 @@ if __name__ == "__main__":
 
 # pipenv run python utils.py upload_surveys test-survey.json
 # pipenv run python utils.py collect_answers
-# pipenv run python utils.py generate_codes python-surveys.json
-# pipenv run python utils.py generate_contacts python-surveys.json
+# pipenv run python utils.py generate_codes surveys.json
+# pipenv run python utils.py validate_codes surveys.json
+# pipenv run python utils.py generate_contacts surveys.json

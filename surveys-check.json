@@ -7,7 +7,6 @@
     "first_commit": "2016",
     "cqs": [
         {   
-            "IF_Changed": true,
             "td_type": "Design Debt",
             "td_issue": "Cognitive Complexity of methods should not be too high",
             "commit": {
@@ -37,7 +36,7 @@
     "first_commit": "2015",
     "cqs": [
       {
-        "IF_Changed": true,
+        "TO_CHANGE": true,
         "td_type": "Code Debt",
         "td_issue": "Unused assignments should be removed",
         "commit": {
@@ -53,7 +52,6 @@
         }
       },
       {
-        "EXAMPLE_IS_GOOD": true,
         "td_type": "Documentation Debt",
         "td_issue": "Deprecated elements should have both the annotation and the Javadoc tag",
         "commit": {
@@ -78,6 +76,7 @@
     "first_commit": "2014",
     "cqs": [
       {
+        "TO_CHANGE": true,
         "td_type": "Design Debt",
         "td_issue": "Cognitive Complexity of methods should not be too high",
         "commit": {
@@ -86,24 +85,24 @@
           "file": "BlockBuilder.java",
           "lang": "java",
           "diff": [
-            " + private static final Visitor OPTIMIZE_VISITOR = new OptimizeVisitor();",
-            " for (int i = 0; i < 10; i++) {",
-            " - if (!optimize()) {",
-            " + if (!optimize(createOptimizeVisitor(), true)) {",
-            " break;",
-            " }",
-            " }",
-            " + optimize(createFinishingOptimizeVisitor(), false);",
-            " }",
-            " return Expressions.block(statements);",
-            " }",
-            " -  private boolean optimize() {",
+            " +     private static final Visitor OPTIMIZE_VISITOR = new OptimizeVisitor();",
+            "       for (int i = 0; i < 10; i++) {",
+            " -       if (!optimize()) {",
+            " +       if (!optimize(createOptimizeVisitor(), true)) {",
+            "           break;",
+            "         }",
+            "       }",
+            " +     optimize(createFinishingOptimizeVisitor(), false);",
+            "     }",
+            "     return Expressions.block(statements);",
+            "   }",
+            " - private boolean optimize() {",
             " + private boolean optimize(Visitor optimizer, boolean performInline) {",
-            " boolean optimized = false;",
-            " final UseCounter useCounter = new UseCounter();",
-            " for (Statement statement : statements) {",
-            " - if (statement instanceof DeclarationStatement) {",
-            " + if (statement instanceof DeclarationStatement && performInline) {"
+            "     boolean optimized = false;",
+            "     final UseCounter useCounter = new UseCounter();",
+            "     for (Statement statement : statements) {",
+            " -     if (statement instanceof DeclarationStatement) {",
+            " +     if (statement instanceof DeclarationStatement && performInline) {"
           ]
         }
       }
@@ -117,6 +116,7 @@
     "first_commit": "2013",
     "cqs": [
       {
+        "TO_CHANGE": true,
         "td_type": "Design Debt",
         "td_issue": "Collapsible \"if\" statements should be merged",
         "commit": {
@@ -130,25 +130,25 @@
             " - */",
             " - @Override",
             " - public int read() throws IOException {",
-            " - if (eofSeen) {",
-            " - return eofGame();",
-            " - } else if (injectSlashN) {",
-            " - injectSlashN = false;",
-            " - return '\n';",
-            " - } else {",
-            " - boolean prevWasSlashR = slashRSeen;",
-            " - int target = readWithUpdate();",
-            " - if (eofSeen) {",
-            " - return eofGame();",
-            " - }",
-            " - if (target == '\n') {",
-            " - if (!prevWasSlashR) {",
-            " - injectSlashN = true;",
-            " - return '\r';",
-            " - }",
-            " - }",
-            " - return target;",
-            " - }",
+            " -   if (eofSeen) {",
+            " -     return eofGame();",
+            " -   } else if (injectSlashN) {",
+            " -     injectSlashN = false;",
+            " -     return '\n';",
+            " -   } else {",
+            " -     boolean prevWasSlashR = slashRSeen;",
+            " -     int target = readWithUpdate();",
+            " -     if (eofSeen) {",
+            " -       return eofGame();",
+            " -     }",
+            " -     if (target == '\n') {",
+            " -       if (!prevWasSlashR) {",
+            " -         injectSlashN = true;",
+            " -         return '\r';",
+            " -       }",
+            " -     }",
+            " -     return target;",
+            " -   }",
             " - }"
           ]
         }
@@ -163,7 +163,6 @@
     "first_commit": "2012",
     "cqs": [
       {
-        "EXAMPLE_IS_GOOD": true,
         "td_type": "Code Debt",
         "td_issue": "Preconditions and logging arguments should not require evaluation",
         "commit": {
@@ -172,23 +171,24 @@
           "file": "FileChannel.java",
           "lang": "java",
           "diff": [
-            " @@ -307,7 +310,15 @@ public String toString() {",
-            " @Override",
-            " protected BasicTransactionSemantics createTransaction() {",
-            " - Preconditions.checkState(open, \"Channel closed \" + channelNameDescriptor);",
-            " + if(!open) {",
-            " + String msg = \"Channel closed \" + channelNameDescriptor;",
-            " + if(startupError != null) {",
-            " + msg += \". Due to \" + startupError.getClass().getName() + \": \" +",
-            " + startupError.getMessage();",
-            " + throw new IllegalStateException(msg, startupError);",
-            " + }",
-            " + throw new IllegalStateException(msg);",
-            " + }"
+            "   public String toString() {",
+            "     @Override",
+            "     protected BasicTransactionSemantics createTransaction() {",
+            " -     Preconditions.checkState(open, \"Channel closed \" + channelNameDescriptor);",
+            " +     if(!open) {",
+            " +       String msg = \"Channel closed \" + channelNameDescriptor;",
+            " +       if(startupError != null) {",
+            " +         msg += \". Due to \" + startupError.getClass().getName() + \": \" +",
+            " +         startupError.getMessage();",
+            " +         throw new IllegalStateException(msg, startupError);",
+            " +       }",
+            " +       throw new IllegalStateException(msg);",
+            " +     }"
           ]
         }
       },
       {
+        "TO_CHANGE": true,
         "td_type": "Documentation Debt",
         "td_issue": "Deprecated elements should have both the annotation and the Javadoc tag",
         "commit": {
@@ -209,6 +209,7 @@
     "first_commit": "2019",
     "cqs": [
       {
+        "TO_CHANGE": true,
         "td_type": "Code Debt",
         "td_issue": "Standard outputs should not be used directly to log anything",
         "commit": {
@@ -217,21 +218,21 @@
           "file": "JDBCKnoxShellTableBuilder.java",
           "lang": "java",
           "diff": [
-            " @@ -53,13 +54,13 @@ public class JDBCKnoxShellTableBuilder extends KnoxShellTableBuilder {",
-            " try {",
-            " Class.forName(driver).newInstance();",
-            " } catch (ClassNotFoundException e) {",
-            " - System.out.println(String.format(\"Unable to load the JDBC driver %s. Check your CLASSPATH.\", driver));",
-            " +System.out.println(String.format(Locale.US, \"Unable to load the JDBC driver %s. Check your CLASSPATH.\", driver));",
-            " throw e;",
-            " } catch (InstantiationException e) {",
-            " - System.out.println(String.format(\"Unable to instantiate the JDBC driver %s\", driver));",
-            " + System.out.println(String.format(Locale.US, \"Unable to instantiate the JDBC driver %s\", driver));"
+            "   public class JDBCKnoxShellTableBuilder extends KnoxShellTableBuilder {",
+            "     try {",
+            "       Class.forName(driver).newInstance();",
+            "     } catch (ClassNotFoundException e) {",
+            " -     System.out.println(String.format(\"Unable to load the JDBC driver %s. Check your CLASSPATH.\", driver));",
+            " +     System.out.println(String.format(Locale.US, \"Unable to load the JDBC driver %s. Check your CLASSPATH.\", driver));",
+            "       throw e;",
+            "     } catch (InstantiationException e) {",
+            " -     System.out.println(String.format(\"Unable to instantiate the JDBC driver %s\", driver));",
+            " +     System.out.println(String.format(Locale.US, \"Unable to instantiate the JDBC driver %s\", driver));"
           ]
         }
       },
       {
-        "IF_Changed": true,
+        "TO_CHANGE": true,
         "td_type": "Defect Debt",
         "td_issue": "Boolean expressions should not be gratuitous",
         "commit": {
@@ -241,12 +242,12 @@
           "lang": "java",
           "diff": [
             " - KnoxShellTable table = null;",
-            " conn = conn == null ? DriverManager.getConnection(connectionUrl) : conn;",
-            " if (conn != null) {",
-            " try (Statement statement = conn.createStatement(); ResultSet resultSet = statement.executeQuery(sql);) {",
-            " - table = new KnoxShellTable();",
-            " - processResultSet(table, resultSet);",
-            " + processResultSet(resultSet);"
+            "   conn = conn == null ? DriverManager.getConnection(connectionUrl) : conn;",
+            "   if (conn != null) {",
+            "     try (Statement statement = conn.createStatement(); ResultSet resultSet = statement.executeQuery(sql);) {",
+            " -   table = new KnoxShellTable();",
+            " -   processResultSet(table, resultSet);",
+            " +   processResultSet(resultSet);"
           ]
         }
       },
@@ -260,16 +261,16 @@
           "lang": "java",
           "diff": [
             " - private synchronized void activateHomeApp() {",
-            " - try {",
-            " - // UI",
-            " - activateHomepageContext(\"/\", \"homepage/%2Fhome\");",
+            " -   try {",
+            " -     // UI",
+            " -     activateHomepageContext(\"/\", \"homepage/%2Fhome\");",
             " -",
-            " - // API",
-            " - activateHomepageContext(\"/homepage\", \"homepage/%2F\");",
-            " - } catch (Throwable e) {",
-            " - auditor.audit(Action.DEPLOY, \"home\", ResourceType.URI, ActionOutcome.FAILURE);",
-            " - log.failedToDeployTopology(\"home\", e);",
-            " - }",
+            " -     // API",
+            " -     activateHomepageContext(\"/homepage\", \"homepage/%2F\");",
+            " -   } catch (Throwable e) {",
+            " -     auditor.audit(Action.DEPLOY, \"home\", ResourceType.URI, ActionOutcome.FAILURE);",
+            " -     log.failedToDeployTopology(\"home\", e);",
+            " -   }",
             " - }"
           ]
         }
@@ -284,7 +285,6 @@
     "first_commit": "2017",
     "cqs": [
       {
-        "EXAMPLE_IS_GOOD": true,
         "td_type": "Design Debt",
         "td_issue": "String literals should not be duplicated",
         "commit": {
@@ -295,19 +295,18 @@
           "diff": [
             " - FunctionMetaDataManager functionMetaDataManager = worker().getFunctionMetaDataManager();",
             " - if (!functionMetaDataManager.containsFunction(tenant, namespace, componentName)) {",
-            " - log.error(\"{} in get {} Status does not exist @ /{}/{}/{}\", componentType, componentType, tenant, namespace, componentName);",
-            " - throw new RestException(Status.NOT_FOUND, String.format(\"%s %s doesn't exist\", componentType, componentName));",
+            " -   log.error(\"{} in get {} Status does not exist @ /{}/{}/{}\", componentType, componentType, tenant, namespace, componentName);",
+            " -   throw new RestException(Status.NOT_FOUND, String.format(\"%s %s doesn't exist\", componentType, componentName));",
             " - }",
             " - FunctionMetaData functionMetaData = functionMetaDataManager.getFunctionMetaData(tenant, namespace, componentName);",
             " - if (!calculateSubjectType(functionMetaData).equals(componentType)) {",
-            " - log.error(\"{}/{}/{} is not a {}\", tenant, namespace, componentName, componentType);",
-            " - throw new RestException(Status.NOT_FOUND, String.format(\"%s %s doesn't exist\", componentType, componentName));",
+            " -   log.error(\"{}/{}/{} is not a {}\", tenant, namespace, componentName, componentType);",
+            " -   throw new RestException(Status.NOT_FOUND, String.format(\"%s %s doesn't exist\", componentType, componentName));",
             " - }"
           ]
         }
       },
       {
-        "EXAMPLE_IS_GOOD": true,
         "td_type": "Defect Debt",
         "td_issue": "Generic exceptions should never be thrown",
         "commit": {
@@ -316,10 +315,10 @@
           "file": "ValidatorImpls.java",
           "lang": "java",
           "diff": [
-            " } catch (ClassNotFoundException e) {",
-            " - throw new RuntimeException(e);",
-            " + throw new IllegalArgumentException(\"Cannot find/load class \" + className);",
-            " }"
+            "   } catch (ClassNotFoundException e) {",
+            " -   throw new RuntimeException(e);",
+            " +   throw new IllegalArgumentException(\"Cannot find/load class \" + className);",
+            "   }"
           ]
         }
       }
@@ -333,7 +332,6 @@
     "first_commit": "2017",
     "cqs": [
       {
-        "EXAMPLE_IS_GOOD": true,
         "td_type": "Design Debt",
         "td_issue": "Cognitive Complexity of methods should not be too high",
         "commit": {
@@ -342,21 +340,20 @@
           "file": "SourceConfigUtils.java",
           "lang": "java",
           "diff": [
-            " } else {",
-            " - sourceClassName = ConnectorUtils.getIOSourceClass(sourceConfig.getArchive());",
+            "   } else {",
+            " -   sourceClassName = ConnectorUtils.getIOSourceClass(sourceConfig.getArchive());",
             " - ",
-            " - try (NarClassLoader ncl = NarClassLoader.getFromArchive(new File(sourceConfig.getArchive()),",
-            " - Collections.emptySet())) {",
-            " - typeArg = getSourceType(sourceClassName, ncl).getName();",
-            " - }",
-            " + sourceClassName = ConnectorUtils.getIOSourceClass(classLoader);",
-            " + typeArg = getSourceType(sourceClassName, classLoader).getName();",
-            " }"
+            " -   try (NarClassLoader ncl = NarClassLoader.getFromArchive(new File(sourceConfig.getArchive()),",
+            " -          Collections.emptySet())) {",
+            " -     typeArg = getSourceType(sourceClassName, ncl).getName();",
+            " -   }",
+            " +   sourceClassName = ConnectorUtils.getIOSourceClass(classLoader);",
+            " +   typeArg = getSourceType(sourceClassName, classLoader).getName();",
+            "   }"
           ]
         }
       },
       {
-        "EXAMPLE_IS_GOOD": true,
         "td_type": "Defect Debt",
         "td_issue": "Generic exceptions should never be thrown",
         "commit": {
@@ -379,6 +376,7 @@
     "first_commit": "2015",
     "cqs": [
       {
+        "TO_CHANGE": true,
         "td_type": "Defect Debt",
         "td_issue": "Missing parentheses in call to 'print'. Did you mean print(print subdir)?",
         "commit": {
@@ -402,7 +400,7 @@
     "first_commit": "2015",
     "cqs": [
       {
-        "IF_Changed": true,
+        "TO_CHANGE": true,
         "td_type": "Defect Debt",
         "td_issue": "invalid syntax",
         "commit": {
@@ -416,7 +414,7 @@
         }
       },
       {
-        "EXAMPLE_IS_GOOD": true,
+        "TO_CHANGE": true,
         "td_type": "Documentation Debt",
         "td_issue": "Add a docstring to this function.",
         "commit": {
@@ -425,7 +423,7 @@
           "file": "utils.py",
           "lang": "python",
           "diff": [
-            " def wrapper(*args, **kwargs):",
+            "   def wrapper(*args, **kwargs):",
             " + \"\"\""
           ]
         }
@@ -440,6 +438,7 @@
     "first_commit": "2014",
     "cqs": [
       {
+        "TO_CHANGE": true,
         "td_type": "Defect Debt",
         "td_issue": "Replace print statement by built-in function.",
         "commit": {
@@ -453,7 +452,7 @@
         }
       },
       {
-        "EXAMPLE_IS_GOOD": true,
+        "TO_CHANGE": true,
         "td_type": "Code Debt",
         "td_issue": "Lines should not be too long",
         "commit": {
@@ -476,7 +475,6 @@
         }
       },
       {
-        "IF_Changed": true,
         "td_type": "Documentation Debt",
         "td_issue": "Docstrings should be defined",
         "commit": {
@@ -485,12 +483,12 @@
           "file": "hooks.py",
           "lang": "python",
           "diff": [
-        " + #  Unless required by applicable law or agreed to in writing,",
-        " + #  software distributed under the License is distributed on an",
-        " + #  \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY",
-        " + #  KIND, either express or implied.  See the License for the",
-        " + #  specific language governing permissions and limitations",
-        " + #  under the License."
+            " + #  Unless required by applicable law or agreed to in writing,",
+            " + #  software distributed under the License is distributed on an",
+            " + #  \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY",
+            " + #  KIND, either express or implied.  See the License for the",
+            " + #  specific language governing permissions and limitations",
+            " + #  under the License."
           ]
         }
       }
@@ -504,6 +502,7 @@
     "first_commit": "2012",
     "cqs": [
       {
+        "TO_CHANGE": true,
         "td_type": "Defect Debt",
         "td_issue": "invalid syntax",
         "commit": {
@@ -517,7 +516,7 @@
         }
       },
       {
-        "IF_Changed": true,
+        "TO_CHANGE": true,
         "td_type": "Documentation Debt",
         "td_issue": "Source files should have a sufficient density of comment lines",
         "commit": {
@@ -541,7 +540,6 @@
     "first_commit": "2013",
     "cqs": [
       {
-        "IF_Changed": true,
         "td_type": "Defect Debt",
         "td_issue": "The \"print\" statement should not be used",
         "commit": {
@@ -565,7 +563,6 @@
     "first_commit": "2015",
     "cqs": [
       {
-        "EXAMPLE_IS_GOOD": true,
         "td_type": "Documentation Debt",
         "td_issue": "Docstrings should be defined",
         "commit": {
@@ -583,6 +580,7 @@
         }
       },
       {
+        "TO_CHANGE": true,
         "td_type": "Defect Debt",
         "td_issue": "The \"print\" statement should not be used",
         "commit": {
@@ -605,7 +603,6 @@
     "first_commit": "2010",
     "cqs": [
       {
-        "EXAMPLE_IS_GOOD": true,
         "td_type": "Documentation Debt",
         "td_issue": "Source files should have a sufficient density of comment lines",
         "commit": {
@@ -623,6 +620,7 @@
         }
       },
       {
+        "TO_CHANGE": true,
         "td_type": "Defect Debt",
         "td_issue": "The \"print\" statement should not be used",
         "commit": {
@@ -645,7 +643,6 @@
     "first_commit": "2016",
     "cqs": [
       {
-        "EXAMPLE_IS_GOOD": true,
         "td_type": "Code Debt",
         "td_issue": "Lines should not be too long",
         "commit": {
@@ -655,7 +652,7 @@
           "lang": "python",
           "diff": [
             " - logging.error('[{}] Error polling! Shutting down consumer: {}'.format(self.trigger, message.error()))",
-            " +       logging.error('[{}] Error polling: {}'.format(self.trigger, message.error()))"
+            " + logging.error('[{}] Error polling: {}'.format(self.trigger, message.error()))"
           ]
         }
       },

@@ -16,10 +16,10 @@
         "lang": "python",
         "diff": [
         	" - def __init__(self, username, email, first_name, last_name):",
-        	" - self.username = username",
-        	" - self.email = email",
-        	" - self.first_name = first_name",
-        	" - self.last_name = last_name"
+        	" -    self.username = username",
+        	" -    self.email = email",
+        	" -    self.first_name = first_name",
+        	" -    self.last_name = last_name"
         ]
       }
     },
@@ -33,7 +33,7 @@
         "lang": "python",
         "diff": [
         	" - class IAMAdminServiceThriftClient(MultiplexThriftClientMixin,",
-                " -                   CustomThriftClient):"
+          " -                       CustomThriftClient):"
         ]
       }
     },
@@ -47,7 +47,7 @@
         "lang": "python",
         "diff": [
         	" - def __init__(self, client_id, client_secret, verify_ssl=False, authorization_code_url=None, state=None, redirect_uri=None, username=None, password=None, refresh_token=None):",
-    	" + def __init__(self, client_id, client_secret):"
+    	    " + def __init__(self, client_id, client_secret):"
         ]
       }
     }
@@ -69,9 +69,9 @@
         "file": "S3_hook.py",
         "lang": "python",
         "diff": [
-        	" - except KeyError as e: ",
-            	" - raise AirflowException(\"S3 connection definition needs to include\"",
-                " - \" {p} in extra\".format(p=e.message))"
+          " - except KeyError as e: ",
+          " -     raise AirflowException(\"S3 connection definition needs to include\"",
+          " -         \" {p} in extra\".format(p=e.message))"
         ]
       }
     },
@@ -120,7 +120,7 @@
         "file": "ssh_hook.py",
         "lang": "python",
         "diff": [
-        	"     def check_output(self, cmd):",
+        	"   def check_output(self, cmd):",
         	" + \"\"\"",
         	" + Executes a remote command and returns the stdout a remote process.",
         	" + Simplified version of Popen when you only want the output as a string and detect any errors.",
@@ -164,7 +164,7 @@
         "lang": "python",
         "diff": [
         	" - #self.db = conn.schema",
-       	" - #self.port = conn.port"
+       	  " - #self.port = conn.port"
         ]
       }
     }
@@ -187,7 +187,7 @@
         "lang": "python",
         "diff": [
         	" - def pull_fn(t_ids):",
-            	" - return XCom.get("
+          " -    return XCom.get("
         ]
       }
     },
@@ -200,20 +200,21 @@
         "file": "models.py",
         "lang": "python",
         "diff": [
-        	" - def __cmp__(self, other):",
-        	" - blacklist = {'_sa_instance_state', 'end_date', 'last_pickled', 'tasks'}",
-        	" - for k in set(self.__dict__) - blacklist:",
-            	" - if self.__dict__[k] != other.__dict__[k]:",
-                " - return -1",
-	" - if len(self.tasks) != len(other.tasks):",
-            	" - return -1",
-        	" - i = 0",
-        	" - for task in self.tasks:",
-            	" - if task != other.tasks[i]:",
-                " - return -1",
-            	" - i += 1",
-        	" - logging.info(\"Same as before\")",
-        	" - return 0"
+          " - def __cmp__(self, other):",
+          " -     blacklist = {'_sa_instance_state', 'end_date', 'last_pickled', 'tasks'}",
+          " -     for k in set(self.__dict__) - blacklist:",
+          " -         if self.__dict__[k] != other.__dict__[k]:",
+          " -             return -1",
+          " -",
+          " -     if len(self.tasks) != len(other.tasks):",
+          " -         return -1",
+          " -     i = 0",
+          " -     for task in self.tasks:",
+          " -         if task != other.tasks[i]:",
+          " -             return -1",
+          " -         i += 1 ",
+          " -     logging.info(\"Same as before\")",
+          " -     return 0"
         ]
       }
     }
@@ -236,7 +237,7 @@
         "lang": "python",
         "diff": [
         	" - transform_script_process = subprocess.Popen([self.transform_executor, self.transform_script, f_source.name, f_dest.name], stdout=subprocess.PIPE, stderr=subprocess.PIPE)",
-            	" + transform_script_process = subprocess.Popen([self.transform_script, f_source.name, f_dest.name], stdout=subprocess.PIPE, stderr=subprocess.PIPE)"
+          " + transform_script_process = subprocess.Popen([self.transform_script, f_source.name, f_dest.name], stdout=subprocess.PIPE, stderr=subprocess.PIPE)"
         ]
       }
     }
@@ -282,7 +283,7 @@
         "lang": "python",
         "diff": [
         	" - from airflow.models import DatabaseConnection",
-	" + from airflow.models import Connection"
+        	" + from airflow.models import Connection"
         ]
       }
     },
@@ -295,24 +296,24 @@
         "file": "jobs.py",
         "lang": "python",
         "diff": [
-	" class MasterJob(BaseJob):",
-    	" \"\"\"",
-    	" + This MasterJob runs indifinetly and constantly schedules the job that",
-    	" + are ready to run. It figures out the latest runs for each task",
-    	" + and see if the dependencies for the next schedules are met. If",
-    	" + so it triggers the task instance. It does this for each",
-    	" + task in each DAG and repeats.",
-    	" + :param dag_id: to run the scheduler for a single specific DAG",
-    	" + :type dag_id: string",
-    	" + :param subdir: to search for DAG under a certain folder only",
-    	" + :type subdir: string",
-    	" + :param test_mode: used for unit testing this class only, runs a single",
-        	" + schedule run",
-   	" + :type test_mode: bool",
-   	" + :param refresh_dags_every: force refresh the DAG definition every N",
-       	" + runs, as specified here",
-    	" + :type refresh_dags_every: int",
-    	" + \"\"\""
+            "   class MasterJob(BaseJob):",
+            "   \"\"\"",
+            " + This MasterJob runs indifinetly and constantly schedules the job that",
+            " + are ready to run. It figures out the latest runs for each task",
+            " + and see if the dependencies for the next schedules are met. If",
+            " + so it triggers the task instance. It does this for each",
+            " + task in each DAG and repeats.",
+            " + :param dag_id: to run the scheduler for a single specific DAG",
+            " + :type dag_id: string",
+            " + :param subdir: to search for DAG under a certain folder only",
+            " + :type subdir: string",
+            " + :param test_mode: used for unit testing this class only, runs a single",
+            " + schedule run",
+            " + :type test_mode: bool",
+            " + :param refresh_dags_every: force refresh the DAG definition every N",
+            " + runs, as specified here",
+            " + :type refresh_dags_every: int",
+            " + \"\"\""
         ]
       }
     },
@@ -325,18 +326,18 @@
         "file": "settings.py",
         "lang": "python",
         "diff": [
-	" HEADER = \"\"\" ",
-       	" - .__         _____.__",
-	" - _____  |__|_______/ ____\\  |   ______  _  __",
-	" - \\__  \\ |  \\_  __ \\   __\\|  |  /  _ \\ \/ \/ /",
- 	" - / __ \\|  ||  | \/|  |  |  |_(  <_> )     /",
-	" - (____  /__||__|   |__|  |____/\\____/ \/\\_/",
-     	" - \/\"\"\"",
-  	" + ____________       _____________",
- 	" + ____    |__( )_________  __/__  /________      __",
-	" + ____  /| |_  /__  ___/_  /_ __  /_  __ \\_ | /| / /",
-	" +  __  ___ |  / _  /   _  __/ _  / / /_/ /_ |/ |/ /",
- 	" + _/_/  |_/_/  /_/    /_/    /_/  \\____/____/|__/\"\"\""
+          "   HEADER = \"\"\" ",
+          " - .__         _____.__",
+          " - _____  |__|_______/ ____\\  |   ______  _  __",
+          " - \\__  \\ |  \\_  __ \\   __\\|  |  /  _ \\ \/ \/ /",
+          " - / __ \\|  ||  | \/|  |  |  |_(  <_> )     /",
+          " - (____  /__||__|   |__|  |____/\\____/ \/\\_/",
+          " - \/\"\"\"",
+          " + ____________       _____________",
+          " + ____    |__( )_________  __/__  /________      __",
+          " + ____  /| |_  /__  ___/_  /_ __  /_  __ \\_ | /| / /",
+          " +  __  ___ |  / _  /   _  __/ _  / / /_/ /_ |/ |/ /",
+          " + _/_/  |_/_/  /_/    /_/    /_/  \\____/____/|__/\"\"\""
         ]
       }
     }
@@ -359,7 +360,7 @@
         "lang": "python",
         "diff": [
         	" - def setAutocommit(autocommit):",
-    	" + def setAutocommit(self, autocommit):"
+        	" + def setAutocommit(self, autocommit):"
         ]
       }
     },
@@ -372,8 +373,8 @@
         "file": "postgres_hook.py ",
         "lang": "python",
         "diff": [
-    	" - def setAutocommit(self, autocommit):",
-        	" - self.autocommit = autocommit "
+    	    " - def setAutocommit(self, autocommit):",
+        	" -    self.autocommit = autocommit "
         ]
       }
     }
@@ -417,17 +418,17 @@
         "file": "hive_hooks.py",
         "lang": "python",
         "diff": [
-        	" if sp.returncode:",
-                " - if not test:",
-                " - raise AirflowException(all_err)",
-                " - else:",
-                " - return (False, stdout)",
-                " + raise AirflowException(stdout)",
-                " + return stdout",
-                " - if not test:",
-                " - return stdout",
-                " - else:",
-                " - return (True, stdout)"
+          "   if sp.returncode:",
+          " -    if not test:",
+          " -       raise AirflowException(all_err)",
+          " -    else:",
+          " -       return (False, stdout)",
+          " +    raise AirflowException(stdout)",
+          " + return stdout",
+          " - if not test:",
+          " -    return stdout",
+          " - else:",
+          " -    return (True, stdout)"
         ]
       }
     }
@@ -463,8 +464,8 @@
         "lang": "python",
         "diff": [
         	" - @password.setter",
-    	" - def password(self, val):",
-        	" - self._password = val"
+    	    " - def password(self, val):",
+        	" -    self._password = val"
         ]
       }
     }
@@ -487,7 +488,7 @@
         "lang": "python",
         "diff": [
         	" - def log_to_stdout():",
-	" - root_logger = logging.getLogger()"
+	        " -    root_logger = logging.getLogger()"
         ]
       }
     },
@@ -523,16 +524,16 @@
         "lang": "python",
         "diff": [
         	" + HELLO_SERVER_CMD = \"\"\"",
-	" + import socket, sys",
-	" + listener = socket.socket()",
-	" + listener.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)",
-	" + listener.bind(('localhost', 2134))",
-	" + listener.listen(1)",
-	" +sys.stdout.write('ready')",
- 	" + sys.stdout.flush()",
-	" + conn = listener.accept()[0]",
-	" + conn.sendall(b'hello')",
-	" + \"\"\""
+          " + import socket, sys",
+          " + listener = socket.socket()",
+          " + listener.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)",
+          " + listener.bind(('localhost', 2134))",
+          " + listener.listen(1)",
+          " + sys.stdout.write('ready')",
+          " + sys.stdout.flush()",
+          " + conn = listener.accept()[0]",
+          " + conn.sendall(b'hello')",
+          " + \"\"\""
         ]
       }
     }
@@ -567,9 +568,9 @@
         "file": "oracle_hook.py",
         "lang": "python",
         "diff": [
-        	" def get_conn(self):",
-        	" \"\"\"",
-        	" Returns a oracle connection object",
+        	"   def get_conn(self):",
+        	"   \"\"\"",
+        	"   Returns a oracle connection object",
         	" + Optional parameters for using a custom DSN connection (instead of using a server alias from tnsnames.ora)",
         	" + The dsn (data source name) is the TNS entry (from the Oracle names server or tnsnames.ora file) ",
         	" + or is a string like the one returned from makedsn().",
@@ -577,7 +578,7 @@
         	" + :param service_name: the db_unique_name of the database that you are connecting to (CONNECT_DATA part of TNS)",
         	" + You can set these parameters in the extra fields of your connection ",
         	" + as in ``{ \"dsn\":\"some.host.address\" , \"service_name\":\"some.service.name\" }``",
-        	" \"\"\""
+        	"   \"\"\""
         ]
       }
     }
@@ -622,8 +623,8 @@
         "lang": "python",
         "diff": [
         	" - class TestWhenSearchingWithCustomFields(TestRootController):",
-    	" - def setUp(self):",
-        	" - super(TestRootController, self).setUp()"
+    	    " -    def setUp(self):",
+        	" -       super(TestRootController, self).setUp()"
         ]
       }
     }
@@ -646,7 +647,7 @@
         "lang": "python",
         "diff": [
         	" - if cf.type != 'boolean' or 'custom_fields.'+cf.name in post_data:",
-           	" + if 'custom_fields.'+cf.name in post_data:"
+          " + if 'custom_fields.'+cf.name in post_data:"
         ]
       }
     },
@@ -659,13 +660,13 @@
         "file": "admin_main.py",
         "lang": "python",
         "diff": [
-        	" - if image.size[0] < image.size[1]:",
-                " - h_offset = (image.size[1]-image.size[0])/2",
-                " - image = image.crop((0, h_offset, image.size[0], image.size[0]+h_offset))",
-            	" - elif image.size[0] > image.size[1]:",
-               	" - w_offset = (image.size[0]-image.size[1])/2",
-                " - image = image.crop((w_offset, 0, image.size[1]+w_offset, image.size[1]))",
-            	" + image = square_image(image)"
+          " - if image.size[0] < image.size[1]:",
+          " -    h_offset = (image.size[1]-image.size[0])/2",
+          " -    image = image.crop((0, h_offset, image.size[0], image.size[0]+h_offset))",
+          " - elif image.size[0] > image.size[1]:",
+          " -    w_offset = (image.size[0]-image.size[1])/2",
+          " -    image = image.crop((w_offset, 0, image.size[1]+w_offset, image.size[1]))",
+          " + image = square_image(image)"
         ]
       }
     }
@@ -688,7 +689,7 @@
         "lang": "python",
         "diff": [
         	" - def __init__(self):",
-        	" - self.awards = AdminAwardsController(c.project)"
+        	" -    self.awards = AdminAwardsController(c.project)"
         ]
       }
     }
@@ -710,8 +711,8 @@
         "file": "wiki.py",
         "lang": "python",
         "diff": [
-        	" class Comment(Message):",
-    	" + \"\"\"Comment class, threaded, persisted in mongo on a per-page basis\"\"\""
+        	"   class Comment(Message):",
+        	" + \"\"\"Comment class, threaded, persisted in mongo on a per-page basis\"\"\""
         ]
       }
     },
@@ -770,9 +771,9 @@
         "file": "graph.py",
         "lang": "python",
         "diff": [
-        	" -  def transitions(self, state_index):",
-    	" + def transitions(self):",
-       	" + '''Returns all node->node transitions made possible by this migratestep'''"
+           " - def transitions(self, state_index):",
+           " + def transitions(self):",
+           " + '''Returns all node->node transitions made possible by this migratestep'''"
         ]
       }
     },
@@ -786,7 +787,7 @@
         "lang": "python",
         "diff": [
         	" - def iter_commits(self, *args, **kwargs):",
-    	" + def log(self, *args, **kwargs):"
+        	" + def log(self, *args, **kwargs):"
         ]
       }
     },
@@ -800,8 +801,8 @@
         "lang": "python",
         "diff": [
         	" - permissions = [ 'configure', 'read', 'create', 'edit', 'delete', 'comment', 'edit_page_permissions' ]",
-    	" + permissions = [ 'configure', 'read', 'create', 'edit', 'delete', 'edit_page_permissions',",
-                " + 'unmoderated_post', 'post', 'moderate', 'admin']"
+        	" + permissions = [ 'configure', 'read', 'create', 'edit', 'delete', 'edit_page_permissions',",
+          " +       'unmoderated_post', 'post', 'moderate', 'admin']"
         ]
       }
     }
@@ -823,12 +824,12 @@
         "file": "gravatar.py",
         "lang": "python",
         "diff": [
-        	" def id(email):",
-    	" + \"\"\"Turn an email address into a Gravatar id as per <http://gravatar.com/site/implement/url>",
-    	" + The supplied email address must be of the form 'Wolf@example.com',",
-    	" + or else 'Wolf <wolf@example.com>'",
-    	" + The result may be saved for use in later calls to gravatar.url().",
-    	" + \"\"\""
+        	"   def id(email):",
+          " + \"\"\"Turn an email address into a Gravatar id as per <http://gravatar.com/site/implement/url>",
+          " + The supplied email address must be of the form 'Wolf@example.com',",
+          " + or else 'Wolf <wolf@example.com>'",
+          " + The result may be saved for use in later calls to gravatar.url().",
+          " + \"\"\""
         ]
       }
     },
@@ -867,11 +868,11 @@
         "file": "env.py",
         "lang": "python",
         "diff": [
-        	" - def ConnectionPool_get_cnx(self, timeout=None):",
-    	" - if not hasattr(self, '_backend'):",
-       	" - self._backend = ConnectionPoolBackend(1)",
-    	" - return self._backend.get_cnx(self._connector, self._kwargs, timeout)",
-	" - ConnectionPool.get_cnx = ConnectionPool_get_cnx"
+          " - def ConnectionPool_get_cnx(self, timeout=None):",
+          " -    if not hasattr(self, '_backend'):",
+          " -       self._backend = ConnectionPoolBackend(1)",
+          " -       return self._backend.get_cnx(self._connector, self._kwargs, timeout)",
+          " -    ConnectionPool.get_cnx = ConnectionPool_get_cnx"
         ]
       }
     },
@@ -885,10 +886,10 @@
         "lang": "python",
         "diff": [
         	" - def ConnectionPool_get_cnx(self, timeout=None):",
-    	" - if not hasattr(self, '_backend'):",
-       	" - self._backend = ConnectionPoolBackend(1)",
-    	" - return self._backend.get_cnx(self._connector, self._kwargs, timeout)",
-	" - ConnectionPool.get_cnx = ConnectionPool_get_cnx"
+          " -    if not hasattr(self, '_backend'):",
+          " -       self._backend = ConnectionPoolBackend(1)",
+          " -       return self._backend.get_cnx(self._connector, self._kwargs, timeout)",
+          " -    ConnectionPool.get_cnx = ConnectionPool_get_cnx"
         ]
       }
     }
@@ -927,10 +928,10 @@
         "lang": "python",
         "diff": [
         	" - def ConnectionPool_get_cnx(self, timeout=None):",
-    	" - if not hasattr(self, '_backend'):",
-       	" - self._backend = ConnectionPoolBackend(1)",
-    	" - return self._backend.get_cnx(self._connector, self._kwargs, timeout)",
-	" - ConnectionPool.get_cnx = ConnectionPool_get_cnx"
+          " -    if not hasattr(self, '_backend'):",
+          " -       self._backend = ConnectionPoolBackend(1)",
+          " -       return self._backend.get_cnx(self._connector, self._kwargs, timeout)",
+          " -    ConnectionPool.get_cnx = ConnectionPool_get_cnx"
         ]
       }
     }
@@ -953,8 +954,8 @@
         "lang": "python",
         "diff": [
         	" + DB_VERSION = 1",
-	" + DB_SYSTEM_KEY = 'bloodhound_multi_product_version'",
-	" + PLUGIN_NAME = 'Bloodhound multi product'"
+          " + DB_SYSTEM_KEY = 'bloodhound_multi_product_version'",
+          " + PLUGIN_NAME = 'Bloodhound multi product'"
         ]
       }
     },
@@ -968,14 +969,14 @@
         "lang": "python",
         "diff": [
         	" - def _get_hashed_filename(self, filename):",
-    	" + @classmethod",
-    	" + def _get_hashed_filename(cls, filename):",
+          " + @classmethod",
+          " + def _get_hashed_filename(cls, filename):",
         	" + \"\"\"Get the hashed filename corresponding to the given filename.",
-	" +",
-	" + WARNING: This method is used by db28.py for moving attachments from",
+          " +",
+          " + WARNING: This method is used by db28.py for moving attachments from",
         	" + the old \"attachments\" directory to the \"files\" directory. Please check",
         	" + all changes so that they don't break the upgrade.",
-        	" \"\"\""
+        	" + \"\"\""
         ]
       }
     },
@@ -988,17 +989,17 @@
         "file": "notification.py",
         "lang": "python",
         "diff": [
-        	" - if not notify_updater:",
-                " - filter_out = True",
-                " - if notify_reporter and (updater == self.reporter):",
-                " - filter_out = False",
-                " - if notify_owner and (updater == self.owner):",
-                " - filter_out = False",
-                " - if filter_out:",
-                " - torecipients = [r for r in torecipients", 
-                " - if r and r != updater]",
-            	" - elif updater:",
-                " - torecipients.append(updater)"
+          " - if not notify_updater:",
+          " -    filter_out = True",
+          " -    if notify_reporter and (updater == self.reporter):",
+          " -       filter_out = False",
+          " -    if notify_owner and (updater == self.owner):",
+          " -       filter_out = False",
+          " -    if filter_out:",
+          " -       torecipients = [r for r in torecipients", 
+          " -          if r and r != updater]",
+          " - elif updater:",
+          " -    torecipients.append(updater)"
         ]
       }
     }
@@ -1034,7 +1035,7 @@
         "lang": "python",
         "diff": [
         	" + @since('2.2')",
-    	" + def test_user_type_isolation(self):",
+        	" + def test_user_type_isolation(self):",
         	" + \"\"\"",
         	" + Ensure UDT cannot be used from another keyspace",
         	" + @jira_ticket CASSANDRA-9409",
@@ -1052,11 +1053,11 @@
         "file": "user_types_test.py",
         "lang": "python",
         "diff": [
-        	" + assert_invalid(",
-            	" + session,",
-            	" + \"create aggregate suma (frozen<ks.udt>) sfunc plus stype int finalfunc stri initcond 10\",",
-            	" + \"Statement on keyspace user_ks cannot refer to a user type in keyspace ks\"",
-       	" + )"
+        	    " + assert_invalid(",
+            	" +   session,",
+            	" +   \"create aggregate suma (frozen<ks.udt>) sfunc plus stype int finalfunc stri initcond 10\",",
+            	" +   \"Statement on keyspace user_ks cannot refer to a user type in keyspace ks\"",
+            	" + )"
         ]
       }
     }
@@ -1104,8 +1105,8 @@
         	" + def handle_sigterm(signum, frame):",
         	" + # need to close queue gracefully if possible, or the data_checker process",
         	" + # can't seem to empty the queue and test failures result.",
-        	" + verification_done_queue.close()",
-        	" + exit(0)"
+        	" +     verification_done_queue.close()",
+        	" +     exit(0)"
         ]
       }
     },
@@ -1118,12 +1119,12 @@
         "file": "upgrade_through_versions_test.py",
         "lang": "python",
         "diff": [
-        	" - for tag in self.test_versions[1:]:",
-            	" - if mixed_version:",
-                " - for num, node in enumerate(self.cluster.nodelist()):",
-                " - # do a write and check for each new node as upgraded",
-                " - self._write_values()",
-                " - self._increment_counters()"
+          " - for tag in self.test_versions[1:]:",
+          " -     if mixed_version:",
+          " -         for num, node in enumerate(self.cluster.nodelist()):",
+          " -         # do a write and check for each new node as upgraded",
+          " -             self._write_values()",
+          " -             self._increment_counters()"
         ]
       }
     },
@@ -1137,10 +1138,10 @@
         "lang": "python",
         "diff": [
         	" - \"\"\"Takes a tuple like (1,2) and formats that version specifier as something like 'cassandra-1.2' to match the branch naming convention\"\"\"",
-    	" + \"\"\"",
-    	" + Takes a tuple like (1,2) and formats that version specifier as something",
-    	" + like 'cassandra-1.2' to match the branch naming convention",
-    	" + \"\"\""
+          " + \"\"\"",
+          " + Takes a tuple like (1,2) and formats that version specifier as something",
+          " + like 'cassandra-1.2' to match the branch naming convention",
+          " + \"\"\""
         ]
       }
     }
@@ -1163,7 +1164,7 @@
         "lang": "python",
         "diff": [
         	" - from dtest import Tester",
-	" + from dtest import Tester, debug"
+        	" + from dtest import Tester, debug"
         ]
       }
     },
@@ -1184,7 +1185,7 @@
         	" + Ok, so now that I think about it, you can't reproduce that with CQL currently.",
         	" + You'll have to use the thrift get_paged_slice call as it's the only way to",
         	" + trigger this.",
-	" ... "
+	        "   ... "
         ]
       }
     },
@@ -1220,8 +1221,8 @@
         "lang": "python",
         "diff": [
         	" - def create_cf(self, session, name, key_type=\"varchar\", speculative_retry=None, read_repair=None, compression=None, gc_grace=None, columns=None, validation=\"UTF8Type\"):",
-    	" + def create_cf(self, session, name, key_type=\"varchar\", speculative_retry=None, read_repair=None, compression=None,",
-                " + gc_grace=None, columns=None, validation=\"UTF8Type\", compact_storage=False):"
+        	" + def create_cf(self, session, name, key_type=\"varchar\", speculative_retry=None, read_repair=None, compression=None,",
+          " +     gc_grace=None, columns=None, validation=\"UTF8Type\", compact_storage=False):"
         ]
       }
     },
@@ -1235,7 +1236,7 @@
         "lang": "python",
         "diff": [
         	" + @require(9119)",
-    	" + def simple_rebuild_test(self):",
+        	" + def simple_rebuild_test(self):",
         	" + \"\"\"",
         	" + @jira_ticket 9119"
         ]
@@ -1449,11 +1450,11 @@
         "file": "token_generator.py",
         "lang": "python",
         "diff": [
-        	" - if randomPart:",
-        	" + if randomPart is not None:",
-            	" if randomPart:",
-                " - args.insert(1, \"--random\")",
-                " + args.append(\"--random\")"
+          " - if randomPart:",
+          " + if randomPart is not None:",
+          "       if randomPart:",
+          " -         args.insert(1, \"--random\")",
+          " +         args.append(\"--random\")"
         ]
       }
     }
@@ -1489,10 +1490,10 @@
         "lang": "python",
         "diff": [
         	" - def latest_tag_matching(ver_tuple):",
-    	" \"\"\"",
-   	" - Returns the latest tag matching match_string*",
-    	" + Returns the latest tag matching a version tuple, such as (1, 2) to represent version 1.2",
-    	" \"\"\""
+          "   \"\"\"",
+          " - Returns the latest tag matching match_string*",
+          " + Returns the latest tag matching a version tuple, such as (1, 2) to represent version 1.2",
+          "   \"\"\""
         ]
       }
     },
@@ -1519,10 +1520,10 @@
         "file": "upgrade_through_versions_test.py",
         "lang": "python",
         "diff": [
-        	" - release_groups = OrderedDict()",
-    	" - for w in wrappers:",
-        	" - if release_groups.get(w.maj_min) is None:",
-            	" - release_groups[w.maj_min] = []"
+          " -     release_groups = OrderedDict()",
+          " - for w in wrappers:",
+          " -     if release_groups.get(w.maj_min) is None:",
+          " -         release_groups[w.maj_min] = []"
         ]
       }
     }
@@ -1558,7 +1559,7 @@
         "lang": "python",
         "diff": [
         	" - def __init__(self, *args, **kwargs):",
-        	" - Tester.__init__(self, *args, **kwargs)"
+        	" -     Tester.__init__(self, *args, **kwargs)"
         ]
       }
     },
@@ -1572,8 +1573,8 @@
         "lang": "python",
         "diff": [
         	" - def __init__(self, *args, **kwargs):",
-        	" - kwargs['cluster_options'] = {'partitioner': 'org.apache.cassandra.dht.ByteOrderedPartitioner'}",
-        	" - Tester.__init__(self, *args, **kwargs)"
+        	" -     kwargs['cluster_options'] = {'partitioner': 'org.apache.cassandra.dht.ByteOrderedPartitioner'}",
+        	" -     Tester.__init__(self, *args, **kwargs)"
         ]
       }
     }
@@ -1621,7 +1622,7 @@
         "lang": "python",
         "diff": [
         	" -   def replace_stopped_node_test(self):",
-    	" + def __init__(self, *args, **kwargs):"
+          " + def __init__(self, *args, **kwargs):"
         ]
       }
     },
@@ -1673,9 +1674,9 @@
         "lang": "python",
         "diff": [
         	" - def invalid_custom_timestamp_test(self):",
-    	" + def table_test(self):",
+        	" + def table_test(self):",
         	" + \"\"\"",
-       	" + CREATE TABLE, ALTER TABLE, TRUNCATE TABLE, DROP TABLE statements",
+        	" + CREATE TABLE, ALTER TABLE, TRUNCATE TABLE, DROP TABLE statements",
         	" + \"\"\""
         ]
       }
@@ -1690,7 +1691,7 @@
         "lang": "python",
         "diff": [
         	" -  errors.append(mbeans[attr_counter] + \" has a before value of \" + str(b_value) + \" and after value of \" + str(a_value) + \" and did not increment\" + \"\n\")",
-                " + errors.append(mbean + \" has a before value of \" + str(b_value) + \" and after value of \" + str(a_value) + \" and did not increment\" + \"\n\")"
+          " + errors.append(mbean + \" has a before value of \" + str(b_value) + \" and after value of \" + str(a_value) + \" and did not increment\" + \"\n\")"
         ]
       }
     }
@@ -1713,9 +1714,9 @@
         "lang": "python",
         "diff": [
         	" - insert_c1c2(cursor, n, \"QUORUM\")",
-            	" - query_c1c2(cursor, n, \"QUORUM\")",
-            	" + tools.insert_c1c2(cursor, n, \"QUORUM\")",
-            	" + tools.query_c1c2(cursor, n, \"QUORUM\")"
+          " - query_c1c2(cursor, n, \"QUORUM\")",
+          " + tools.insert_c1c2(cursor, n, \"QUORUM\")",
+          " + tools.query_c1c2(cursor, n, \"QUORUM\")"
         ]
       }
     },   
@@ -1729,7 +1730,7 @@
         "lang": "python",
         "diff": [
         	" - def create_cf(self, cursor, name, key_type=\"varchar\", comparator=\"UTF8Type\", validation=\"UTF8Type\", read_repair=None, compression=None, gc_grace=None, columns=None):",
-    	" + def create_cf(self, cursor, name, key_type=\"varchar\", read_repair=None, compression=None, gc_grace=None, columns=None):"
+    	    " + def create_cf(self, cursor, name, key_type=\"varchar\", read_repair=None, compression=None, gc_grace=None, columns=None):"
         ]
       }
     },
@@ -1743,7 +1744,7 @@
         "lang": "python",
         "diff": [
         	" + @require('https://issues.apache.org/jira/browse/CASSANDRA-7013')",
-    	" def sstableloader_compression_none_to_snappy_test(self):"
+        	"   def sstableloader_compression_none_to_snappy_test(self):"
         ]
       }
     }
@@ -1779,7 +1780,7 @@
         "lang": "python",
         "diff": [
         	" - def is_win():",
-    	" - return True if sys.platform == \"cygwin\" or sys.platform == \"win32\" else False"
+        	" - return True if sys.platform == \"cygwin\" or sys.platform == \"win32\" else False"
         ]
       }
     },
@@ -1792,18 +1793,18 @@
         "file": "paging_test.py",
         "lang": "python",
         "diff": [
-        	" + for page_size in (2, 3, 4, 5, 15, 16, 17, 100):",
-            	" + cursor.default_fetch_size = page_size",
-           	" + for selector in selectors:",
-                " + results = list(cursor.execute(\"SELECT %s FROM test\" % selector))",
-                " + self.assertEqual(16, len(results))",
-                " + self.assertEqual([0] * 4 + [1] * 4 + [2] * 4 + [3] * 4, sorted([r.a for r in results]))",
-                " + self.assertEqual([0, 1, 2, 3] * 4, [r.b for r in results])",
-                " +self.assertEqual([0, 1, 2, 3] * 4, [r.c for r in results])",
-                " + if \"s1\" in selector:",
-                " + self.assertEqual([17] * 16, [r.s1 for r in results])",
-                " + if \"s2\" in selector:",
-                " + self.assertEqual([42] * 16, [r.s2 for r in results])"
+          " + for page_size in (2, 3, 4, 5, 15, 16, 17, 100):",
+          " +    cursor.default_fetch_size = page_size",
+          " +    for selector in selectors:",
+          " +        results = list(cursor.execute(\"SELECT %s FROM test\" % selector))",
+          " +        self.assertEqual(16, len(results))",
+          " +        self.assertEqual([0] * 4 + [1] * 4 + [2] * 4 + [3] * 4, sorted([r.a for r in results]))",
+          " +        self.assertEqual([0, 1, 2, 3] * 4, [r.b for r in results])",
+          " +        self.assertEqual([0, 1, 2, 3] * 4, [r.c for r in results])",
+          " +        if \"s1\" in selector:",
+          " +            self.assertEqual([17] * 16, [r.s1 for r in results])",
+          " +        if \"s2\" in selector:",
+          " +            self.assertEqual([42] * 16, [r.s2 for r in results])"
         ]
       }
     }
@@ -1826,8 +1827,8 @@
         "lang": "python",
         "diff": [
         	" - val = cf.get('row_0', ['col_0'], super_column='subcol_%d'%i, read_consistency_level=consistency_level)['col_0']",
-            	" + column_path = ColumnPath(column_family='cf', column='col_0', ",
-                " + super_column='subcol_%d'%i)"
+          " + column_path = ColumnPath(column_family='cf', column='col_0', ",
+          " + super_column='subcol_%d'%i)"
         ]
       }
     },
@@ -1841,7 +1842,7 @@
         "lang": "python",
         "diff": [
         	" - super(TestUpgrade, self).__init__(*argv, **kwargs)",
-       	" + super(TestRollingUpgrade, self).__init__(*argv, **kwargs)"
+        	" + super(TestRollingUpgrade, self).__init__(*argv, **kwargs)"
         ]
       }
     },
@@ -1855,7 +1856,7 @@
         "lang": "python",
         "diff": [
         	" - def is_win():",
-    	" - return True if sys.platform == \"cygwin\" or sys.platform == \"win32\" else False"
+        	" -     return True if sys.platform == \"cygwin\" or sys.platform == \"win32\" else False"
         ]
       }
     }
@@ -1878,7 +1879,7 @@
         "lang": "python",
         "diff": [
         	" - from exceptions import CmisException, RuntimeException, \\",
-	" + from cmislib.exceptions import CmisException, RuntimeException, \\"
+	        " + from cmislib.exceptions import CmisException, RuntimeException, \\"
         ]
       }
     },
@@ -1905,10 +1906,10 @@
         "file": "model.py",
         "lang": "python",
         "diff": [
-        	" def hasObject(self, objectId):",
-	" + ''' ",
+        	"   def hasObject(self, objectId):",
+        	" + ''' ",
         	" + Returns True if the specified objectId is found in the list of results,",
-       	" + otherwise returns False.",
+       	  " + otherwise returns False.",
         	" + ''' "
         ]
       }
@@ -1922,24 +1923,24 @@
         "file": "model.py",
         "lang": "python",
         "diff": [
-        	" - if (propType == CmisId):",
-                " - propElementName = 'cmis:propertyId'",
-                " - if isList:",
-                " - propValueStrList = []",
-                " - for val in propValue:",
-                " - propValueStrList.append(val)",
-                " - else:",
-                " - propValueStrList = [propValue]",
-            	" - elif (propType == str):",
-                " - propElementName = 'cmis:propertyString'",
-                " - if isList:",
-                " - propValueStrList = []",
-                " - for val in propValue:",
-                " - propValueStrList.append(val)",
-                " - else:",
-                " - propValueStrList = [propValue]",
-            	" - elif (propType == datetime.datetime):",
-                " - propElementName = 'cmis:propertyDateTime'"
+          " - if (propType == CmisId):",
+          " -    propElementName = 'cmis:propertyId'",
+          " -    if isList:",
+          " -       propValueStrList = []",
+          " -       for val in propValue:",
+          " -          propValueStrList.append(val)",
+          " -    else:",
+          " -       propValueStrList = [propValue]",
+          " - elif (propType == str):",
+          " -    propElementName = 'cmis:propertyString'",
+          " -    if isList:",
+          " -       propValueStrList = []",
+          " -       for val in propValue:",
+          " -          propValueStrList.append(val)",
+          " -    else:",
+          " -       propValueStrList = [propValue]",
+          " - elif (propType == datetime.datetime):",
+          " -    propElementName = 'cmis:propertyDateTime'"
         ]
       }
     }
@@ -1961,10 +1962,10 @@
         "file": "configure.py",
         "lang": "python",
         "diff": [
-        	" def _modify_config_profile(config_file, profile):",
-    	" + \"\"\"",
-    	" + Modify configuration profile",
-   	" + \"\"\""
+        	"   def _modify_config_profile(config_file, profile):",
+          " + \"\"\"",
+          " + Modify configuration profile",
+          " + \"\"\""
         ]
       }
     },
@@ -1978,7 +1979,7 @@
         "lang": "python",
         "diff": [
         	" - response = requester.make_request(args)",
-    	" + cloudstack_response = requester.make_request(args)"
+    	    " + cloudstack_response = requester.make_request(args)"
         ]
       }
     },
@@ -1991,21 +1992,21 @@
         "file": "instances_tests.py",
         "lang": "python",
         "diff": [
-        	" + with mock.patch('requests.get', get):",
-            	" + with mock.patch(",
-                " + 'ec2stack.providers.cloudstack.service_offerings.get_service_offering',",
-                " + get_service_offering",
-            	" + ):",
-                " + with mock.patch(",
-                " + 'ec2stack.providers.cloudstack.zones.get_zone',",
-                " + get_zone",
-                " + ):",
-                " + response = self.post(",
-                " + '/',",
-                " + data=data",
-                " +)",
-	" + self.assert_ok(response)",
-        	" + assert 'RunInstancesResponse' in response.data"
+          " + with mock.patch('requests.get', get):",
+          " + with mock.patch(",
+          " +   'ec2stack.providers.cloudstack.service_offerings.get_service_offering',",
+          " +   get_service_offering",
+          " + ):",
+          " +   with mock.patch(",
+          " +     'ec2stack.providers.cloudstack.zones.get_zone',",
+          " +     get_zone",
+          " +   ):",
+          " +     response = self.post(",
+          " +       '/',",
+          " +       data=data",
+          " +     )",
+          " + self.assert_ok(response)",
+          " + assert 'RunInstancesResponse' in response.data"
         ]
       }
     }
@@ -2028,7 +2029,7 @@
         "lang": "python",
         "diff": [
         	" + \"\"\" This module creates the flask application.",
-	" + \"\"\""
+	        " + \"\"\""
         ]
       }
     },
@@ -2065,12 +2066,12 @@
         "lang": "python",
         "diff": [
         	" + #  Licensed to the Apache Software Foundation (ASF) under one",
-	" + #  or more contributor license agreements.  See the NOTICE file",
-	" + #  distributed with this work for additional information",
-	" + #  regarding copyright ownership.  The ASF licenses this file",
-	" + #  to you under the Apache License, Version 2.0 (the",
-	" + #  \"License\"); you may not use this file except in compliance",
-	" + #  with the License.  You may obtain a copy of the License at"
+          " + #  or more contributor license agreements.  See the NOTICE file",
+          " + #  distributed with this work for additional information",
+          " + #  regarding copyright ownership.  The ASF licenses this file",
+          " + #  to you under the Apache License, Version 2.0 (the",
+          " + #  \"License\"); you may not use this file except in compliance",
+          " + #  with the License.  You may obtain a copy of the License at"
         ]
       }
     }
@@ -2128,24 +2129,24 @@
         "file": "OAuth2.py",
         "lang": "python",
         "diff": [
-        	" - @app.route('/oauth2/auth', methods=['GET'])",
-	" - def authorization_code():",
-	" - provider = CloudstackAuthorizationProvider()",
-     	" - response = provider.get_authorization_code_from_uri(request.url)",
-    	" - res = flask.make_response(response.text, response.status_code)",
-    	" - for k, v in response.headers.iteritems():",
-       	" - res.headers[k] = v",
-    	" - return res",
-	" - ",
-	" - @app.route('/oauth2/token', methods=['POST'])",
-	" - def token():",
-    	" - provider = CloudstackAuthorizationProvider()",
-    	" - data = {k: request.form[k] for k in request.form.iterkeys()}",
-    	" - response = provider.get_token_from_post_data(data)",
-   	" - res = flask.make_response(response.text, response.status_code)",
-    	" - for k, v in response.headers.iteritems():",
-        	" - res.headers[k] = v",
-    	" - return res"
+          " - @app.route('/oauth2/auth', methods=['GET'])",
+          " - def authorization_code():",
+          " -     provider = CloudstackAuthorizationProvider()",
+          " -     response = provider.get_authorization_code_from_uri(request.url)",
+          " -     res = flask.make_response(response.text, response.status_code)",
+          " -     for k, v in response.headers.iteritems():",
+          " -        res.headers[k] = v",
+          " -     return res",
+          " - ",
+          " - @app.route('/oauth2/token', methods=['POST'])",
+          " - def token():",
+          " -     provider = CloudstackAuthorizationProvider()",
+          " -     data = {k: request.form[k] for k in request.form.iterkeys()}",
+          " -     response = provider.get_token_from_post_data(data)",
+          " -     res = flask.make_response(response.text, response.status_code)",
+          " -     for k, v in response.headers.iteritems():",
+          " -         res.headers[k] = v",
+          " -     return res"
         ]
       }
     }
@@ -2181,10 +2182,10 @@
         "file": "test_config.py",
         "lang": "python",
         "diff": [
-	" - assert c.get_hosts() == {'leader2': ('10.0.0.1', None), 'leader1': ('10.0.0.0', '23.0.0.0'), 'worker1': ('10.0.0.2', None), 'worker3': ('10.0.0.4', None), 'worker2': ('10.0.0.3', None), 'worker4': ('10.0.0.5', None)}",
-    	" + assert c.get_hosts() == {'leader2': ('10.0.0.1', None), 'leader1': ('10.0.0.0', '23.0.0.0'),",
-                " +            'worker1': ('10.0.0.2', None), 'worker3': ('10.0.0.4', None),",
-                " +            'worker2': ('10.0.0.3', None), 'worker4': ('10.0.0.5', None)}"
+            " - assert c.get_hosts() == {'leader2': ('10.0.0.1', None), 'leader1': ('10.0.0.0', '23.0.0.0'), 'worker1': ('10.0.0.2', None), 'worker3': ('10.0.0.4', None), 'worker2': ('10.0.0.3', None), 'worker4': ('10.0.0.5', None)}",
+            " + assert c.get_hosts() == {'leader2': ('10.0.0.1', None), 'leader1': ('10.0.0.0', '23.0.0.0'),",
+            " +                          'worker1': ('10.0.0.2', None), 'worker3': ('10.0.0.4', None),",
+            " +                          'worker2': ('10.0.0.3', None), 'worker4': ('10.0.0.5', None)}"
         ]
       }
     },
@@ -2197,13 +2198,13 @@
         "file": "main.py",
         "lang": "python",
         "diff": [
-	" - for section in (\"general\", \"ansible-vars\", config.get('performance', 'profile')):",
-            	" - for (name, value) in config.items(section):",
-                " - if name not in ('proxy_hostname', 'proxy_socks_port'):",
-                " - if name in host_vars:",
-                " - host_vars[name] = value",
-                " - if name in play_vars:",
-                " - play_vars[name] = value"
+	          " - for section in (\"general\", \"ansible-vars\", config.get('performance', 'profile')):",
+            " -   for (name, value) in config.items(section):",
+            " -     if name not in ('proxy_hostname', 'proxy_socks_port'):",
+            " -       if name in host_vars:",
+            " -         host_vars[name] = value",
+            " -       if name in play_vars:",
+            " -         play_vars[name] = value"
         ]
       }
     }
@@ -2226,14 +2227,14 @@
         "lang": "python",
         "diff": [
         	" + ########################################################",
-	" + # OPENAPI-URI: /api/code/committers",
-	" + ########################################################",
-	" + # get:",
-	" + #   responses:",
-	" + #     '200':",
-	" + #       content:",
-	" + #         application/json:",
-	" + #           schema:"
+          " + # OPENAPI-URI: /api/code/committers",
+          " + ########################################################",
+          " + # get:",
+          " + #   responses:",
+          " + #     '200':",
+          " + #       content:",
+          " + #         application/json:",
+          " + #           schema:"
         ]
       }
     },
@@ -2246,11 +2247,11 @@
         "file": "trends.py",
         "lang": "python",
         "diff": [
-	" if indata.get('view'):",
-        	" - if session.DB.ES.exists(index=session.DB.dbname, doc_type=\"view\", id = indata['view']):",
-            	" - view = session.DB.ES.get(index=session.DB.dbname, doc_type=\"view\", id = indata['view'])",
-            	" - viewList = view['_source']['sourceList']",
-        	" + viewList = session.getView(indata.get('view'))"
+	    " if indata.get('view'):",
+      " -    if session.DB.ES.exists(index=session.DB.dbname, doc_type=\"view\", id = indata['view']):",
+      " -        view = session.DB.ES.get(index=session.DB.dbname, doc_type=\"view\", id = indata['view'])",
+      " -        viewList = view['_source']['sourceList']",
+      " +    viewList = session.getView(indata.get('view'))"
         ]
       }
     },
@@ -2263,8 +2264,8 @@
         "file": "mood.py",
         "lang": "python",
         "diff": [
-	" - bads = (mood_compiled.get('anger', 0)*1.25 + mood_compiled.get('fear', 0)*1.25 + mood_compiled.get('sadness', 0) + mood_compiled.get('disgust', 0)*1.5) / 4",
-    	" + bads = (mood_compiled.get('anger', 0) + mood_compiled.get('fear', 0) + mood_compiled.get('sadness', 0) + mood_compiled.get('disgust', 0)) / 4"
+	        " - bads = (mood_compiled.get('anger', 0)*1.25 + mood_compiled.get('fear', 0)*1.25 + mood_compiled.get('sadness', 0) + mood_compiled.get('disgust', 0)*1.5) / 4",
+    	    " + bads = (mood_compiled.get('anger', 0) + mood_compiled.get('fear', 0) + mood_compiled.get('sadness', 0) + mood_compiled.get('disgust', 0)) / 4"
         ]
       }
     }
@@ -2287,7 +2288,7 @@
         "lang": "python",
         "diff": [
         	" - def finalize_options(self):",
-    	" - pass"
+        	" -     pass"
         ]
       }
     }
@@ -2309,11 +2310,11 @@
         "file": "opennebula.py",
         "lang": "python",
         "diff": [
-        	" class ACTION(object):",
-   	" + \"\"\"",
-   	" + All actions, except RESUME, only apply when the VM is in the \"Running\"",
-   	" + state.",
-   	" + \"\"\""
+        	"   class ACTION(object):",
+          " + \"\"\"",
+          " + All actions, except RESUME, only apply when the VM is in the \"Running\"",
+          " + state.",
+          " + \"\"\""
         ]
       }
     }
@@ -2336,8 +2337,8 @@
         "lang": "python",
         "diff": [
         	" + \"\"\"",
-	" + libcloud provides a unified interface to the cloud computing resources.",
-	" + \"\"\""
+          " + libcloud provides a unified interface to the cloud computing resources.",
+          " + \"\"\""
         ]
       }
     },
@@ -2373,10 +2374,10 @@
         "lang": "python",
         "diff": [
         	" - except ssl.SSLError, e:",
-            	" - raise ssl.SSLError(str(e))",
+          " -    raise ssl.SSLError(str(e))",
         	" + #except ssl.SSLError, e:",
         	" + except ssl.SSLError:",
-            	" + raise ssl.SSLError()"
+          " +    raise ssl.SSLError()"
         ]
       }
     },
@@ -2389,10 +2390,10 @@
         "file": "joyent.py",
         "lang": "python",
         "diff": [
-        	" class JoyentResponse(JsonResponse):",
-   	" + \"\"\"",
-    	" + Joyent response class.",
-    	" + \"\"\""
+        	"   class JoyentResponse(JsonResponse):",
+          " + \"\"\"",
+          " + Joyent response class.",
+          " + \"\"\""
         ]
       }
     },
@@ -2406,8 +2407,8 @@
         "lang": "python",
         "diff": [
         	" - from libcloud.compute.base import NodeDriver, Node, NodeImage, NodeSize, NodeLocation, NodeAuthSSHKey",
-	" + from libcloud.compute.base import NodeDriver, Node, NodeImage, \\",
-    	" + NodeSize, NodeLocation, NodeAuthSSHKey"
+          " + from libcloud.compute.base import NodeDriver, Node, NodeImage, \\",
+          " +     NodeSize, NodeLocation, NodeAuthSSHKey"
         ]
       }
     }
@@ -2429,8 +2430,8 @@
         "file": "test_composer.py",
         "lang": "python",
         "diff": [
-        	" def check(combinator, n, name=None):",
-    	" + # Check combinator type"
+        	"   def check(combinator, n, name=None):",
+        	" + # Check combinator type"
         ]
       }
     },
@@ -2444,10 +2445,10 @@
         "lang": "python",
         "diff": [
         	" - # entry_points={",
-    	" - #     'console_scripts': [",
-    	" - #         'composer = composer.cli:main',",
-    	" - #     ]",
-    	" - # },"
+          " - #     'console_scripts': [",
+          " - #         'composer = composer.cli:main',",
+          " - #     ]",
+          " - # },"
         ]
       }
     }
@@ -2471,7 +2472,7 @@
         "diff": [
         	" - logging.info(\"[{}] Repsonse status code from trigger authorization {}\".format(triggerFQN, trigger_get_status_code))",
         	" + logging.info(\"[{}] Repsonse status code from trigger authorization {}\".format(triggerFQN,",
-                " +                                                                      trigger_get_status_code))"
+          " +                                                                            trigger_get_status_code))"
         ]
       }
     }
@@ -2494,7 +2495,7 @@
         "lang": "python",
         "diff": [
         	" - # import deprecated libraries.",
-	" - from predictionio.obsolete import Client, InvalidArgumentError"
+	        " - from predictionio.obsolete import Client, InvalidArgumentError"
         ]
       }
     }
@@ -2518,7 +2519,7 @@
         "diff": [
         	" - super(DataClient, self).__init__(",
         	" - data_url, threads, apiversion, qsize, timeout)",
-    	" + super(EventClient, self).__init__(url, threads, apiversion, qsize, timeout)"
+    	    " + super(EventClient, self).__init__(url, threads, apiversion, qsize, timeout)"
         ]
       }
     },
@@ -2532,10 +2533,10 @@
         "lang": "python",
         "diff": [
         	" - def now_if_none(t):",
-  	" - return datetime.now(pytz.utc) if t is None else t",
-	" + def event_time_validation(t):",
-  	" + \"\"\" Validate event_time according to EventAPI Specification.",
-  	" + \"\"\""
+          " -     return datetime.now(pytz.utc) if t is None else t",
+          " + def event_time_validation(t):",
+          " + \"\"\" Validate event_time according to EventAPI Specification.",
+          " + \"\"\""
         ]
       }
     },
@@ -2549,10 +2550,10 @@
         "lang": "python",
         "diff": [
         	" - #client.identify(v.uid)",
-    	" - #client.arecord_user_action_on_item(\"rate\",",
-    	" - #  v.uid,",
-    	" - #  v.iid,",
-    	" - #   { \"pio_rating\": v.rating },)"
+          " - #client.arecord_user_action_on_item(\"rate\",",
+          " - #  v.uid,",
+          " - #  v.iid,",
+          " - #   { \"pio_rating\": v.rating },)"
         ]
       }
     }
@@ -2574,7 +2575,7 @@
         "file": "__init__.py",
         "lang": "python",
         "diff": [
-        	" -  result = self._user_action_item(action=CONVERSION_API, uid=uid, iid=iid, **params)",
+        	" - result = self._user_action_item(action=CONVERSION_API, uid=uid, iid=iid, **params)",
         	" + request = self.auser_conversion_item(uid, iid, **params)",
         	" + result = self.aresp(request)"
         ]
@@ -2589,8 +2590,8 @@
         "file": "__init__.py",
         "lang": "python",
         "diff": [
-        	" def __init__(self, appkey, threads=1, apiurl=\"http://localhost:8000\", apiversion = \"\", qsize=0):",
-        	" \"\"\"Constructor of Client object.",
+        	"   def __init__(self, appkey, threads=1, apiurl=\"http://localhost:8000\", apiversion = \"\", qsize=0):",
+        	"   \"\"\"Constructor of Client object.",
         	" - :param appkey: the appkey",
         	" - :param threads: number of threads for handling requests",
         	" - :param apiurl: the PredictionIO API URL path.",
@@ -2618,8 +2619,8 @@
         "lang": "python",
         "diff": [
         	" - if remaining <= 0: return None",
-   	" + if remaining <= 0:",
-        	" + return None"
+          " + if remaining <= 0:",
+          " +     return None"
         ]
       }
     },
@@ -2632,8 +2633,8 @@
         "file": "schema.py",
         "lang": "python",
         "diff": [
-        	" class IncludeType(AttributeTypeHolder):",
-	" + \"\"\"An include type defines a set of attributes that can be re-used by multiple EntityTypes\"\"\""
+        	"   class IncludeType(AttributeTypeHolder):",
+	        " + \"\"\"An include type defines a set of attributes that can be re-used by multiple EntityTypes\"\"\""
         ]
       }
     },
@@ -2647,7 +2648,7 @@
         "lang": "python",
         "diff": [
         	" - def create(self, type, name, attributes=None):",
-    	" + def create(self, attributes=None, type=None, name=None):"
+    	    " + def create(self, attributes=None, type=None, name=None):"
         ]
       }
     }
@@ -2683,11 +2684,11 @@
         "lang": "python",
         "diff": [
         	" - for cipname, cip in policy_out[PolicyKeys.KW_INGRESS_POLICIES].iteritems():",
-            	" - for co in cip:",
-                " - if not co in policy_out[PolicyKeys.KW_INGRESS_HOST_GROUPS]:",
-                " - errors.append(\"Application '%s' connection ingress policy '%s' references ingress host group '%s' but that group does not exist\"",
-                " -                 (name, cipname, co))",
-                " - return False"
+          " -     for co in cip:",
+          " -         if not co in policy_out[PolicyKeys.KW_INGRESS_HOST_GROUPS]:",
+          " -         errors.append(\"Application '%s' connection ingress policy '%s' references ingress host group '%s' but that group does not exist\"",
+          " -                         (name, cipname, co))",
+          " -         return False"
         ]
       }
     }
@@ -2710,9 +2711,9 @@
         "lang": "python",
         "diff": [
         	" - elif key.endswith('Count') or key in ignore or opts[key] is None or opts[key] == Schema.default(self.type, key):",
-            	" + elif key.endswith('Count') or key in ignore or opts[key] is None:",
-                " + del opts[key]",
-           	" + elif opts[key] == Schema.default(self.type, key) and key not in forced:"
+          " + elif key.endswith('Count') or key in ignore or opts[key] is None:",
+          " +     del opts[key]",
+          " + elif opts[key] == Schema.default(self.type, key) and key not in forced:"
         ]
       }
     }
@@ -2735,7 +2736,7 @@
         "lang": "python",
         "diff": [
         	" -  ['qdstat', '--bus', str(address or self.router.addresses[0]), '--timeout', str(system_test.TIMEOUT) ] + args,",
-            	" + ['qdstat', '--bus', str(address or self.router.addresses[0]), '--timeout', str(TIMEOUT) ] + args,"
+          " +  ['qdstat', '--bus', str(address or self.router.addresses[0]), '--timeout', str(TIMEOUT) ] + args,"
         ]
       }
     },
@@ -2749,17 +2750,17 @@
         "lang": "python",
         "diff": [
         	" - for annotation in self.schema.annotations.itervalues():",
-                " - if \"addrPort\" in annotation.name or \"connectionRole\" in annotation.name:",
-                " - self.connectionRoleAddrPortAnnotations[annotation.short_name] = annotation",
-                " - continue",
-                " - used_by = [e.short_name for e in self.schema.entity_types.itervalues()",
-                " - if annotation in e.annotations]",
-                " - with self.section(annotation.short_name):",
-                " - if annotation.description:",
-                " - self.para(annotation.description)",
-                " - if used_by:",
-                " - self.para('Used by: **%s**.'%('**, **'.join(used_by)))",
-                " - if \"sslProfile\" in annotation.name:"
+          " -     if \"addrPort\" in annotation.name or \"connectionRole\" in annotation.name:",
+          " -     self.connectionRoleAddrPortAnnotations[annotation.short_name] = annotation",
+          " -     continue",
+          " -     used_by = [e.short_name for e in self.schema.entity_types.itervalues()",
+          " -     if annotation in e.annotations]",
+          " -     with self.section(annotation.short_name):",
+          " -     if annotation.description:",
+          " -     self.para(annotation.description)",
+          " -     if used_by:",
+          " -     self.para('Used by: **%s**.'%('**, **'.join(used_by)))",
+          " -     if \"sslProfile\" in annotation.name:"
         ]
       }
     }
@@ -2796,7 +2797,7 @@
         "lang": "python",
         "diff": [
         	" - print(\"ERROR: %s\" % error)",
-            	" + print(\"ERROR: %s\" % self.error)"
+          " + print(\"ERROR: %s\" % self.error)"
         ]
       }
     }
@@ -2841,7 +2842,7 @@
         "lang": "python",
         "diff": [
         	" - elif abs(self.count_3 - self.expected_3) > self.slop:",
-                " - self.bail ( \"count_3 %d is more than %d different from expectation %d\" % (self.count_3, self.slop, self.expected_3) )"
+          " -       self.bail ( \"count_3 %d is more than %d different from expectation %d\" % (self.count_3, self.slop, self.expected_3) )"
         ]
       }
     },
@@ -2854,14 +2855,14 @@
         "file": "system_tests_topology_disposition.py",
         "lang": "python",
         "diff": [
-        	" class TopologyDispositionTests ( TestCase ):",
-    	" + \"\"\"",
-    	" + The disposition guarantee is that the sender should shortly know",
-    	" + how its messages have been disposed: whether they have been",
-    	" + accepted, released, or modified.",
-    	" + These tests ensure that the disposition guarantee survives",
-    	" + disruptions in router network topology.",
-    	" + \"\"\""
+        	"   class TopologyDispositionTests ( TestCase ):",
+          " + \"\"\"",
+          " + The disposition guarantee is that the sender should shortly know",
+          " + how its messages have been disposed: whether they have been",
+          " + accepted, released, or modified.",
+          " + These tests ensure that the disposition guarantee survives",
+          " + disruptions in router network topology.",
+          " + \"\"\""
         ]
       }
     }
@@ -2884,7 +2885,7 @@
         "lang": "python",
         "diff": [
         	" - def __init__(self, sender_host, receiver_host, sender_address, receiver_address, lookup_host, lookup_address, anonymous=False):",
-    	" + def __init__(self, sender_host, receiver_host, sender_address, receiver_address, lookup_host, lookup_address):"
+    	    " + def __init__(self, sender_host, receiver_host, sender_address, receiver_address, lookup_host, lookup_address):"
         ]
       }
     },
@@ -2898,9 +2899,9 @@
         "lang": "python",
         "diff": [
         	" - def on_drained(self, event):",
-        	" - if sender.credit == 0:",
-    	" + def on_link_flow(self, event):",
-       	" + if self.receiver.credit == 0:"
+        	" -   if sender.credit == 0:",
+          " + def on_link_flow(self, event):",
+          " +   if self.receiver.credit == 0:"
         ]
       }
     },
@@ -2913,12 +2914,12 @@
         "file": "system_tests_link_routes.py",
         "lang": "python",
         "diff": [
-        	" class CloseWithUnsettledTest(MessagingHandler):",
-    	" + \"\"\"",
-    	" + This test sends a message across an attach-routed link.  While the message",
-    	" + is unsettled, the client link is closed.  The test is ensuring that the",
-    	" + router does not crash during the closing of the links.",
-    	" \"\"\""
+        	"   class CloseWithUnsettledTest(MessagingHandler):",
+          " + \"\"\"",
+          " + This test sends a message across an attach-routed link.  While the message",
+          " + is unsettled, the client link is closed.  The test is ensuring that the",
+          " + router does not crash during the closing of the links.",
+          "   \"\"\""
         ]
       }
     }
@@ -2941,9 +2942,9 @@
         "lang": "python",
         "diff": [
         	" - print sys.argv[3]",
-    	" - print dumps(RECEIVER.get_received_value_list())",
-    	" + print(sys.argv[3])",
-    	" + print(dumps(RECEIVER.get_received_value_list()))"
+          " - print dumps(RECEIVER.get_received_value_list())",
+          " + print(sys.argv[3])",
+          " + print(dumps(RECEIVER.get_received_value_list()))"
         ]
       }
     },
@@ -2957,9 +2958,9 @@
         "lang": "python",
         "diff": [
         	" - raise InteropTestError('JmsMessagesTestSender._create_jms_message: Unknown or unsupported subtype \"%s\"' %",
-                " -                   test_value_type)",
-            	" + raise InteropTestError('JmsMessagesTestSender._create_jms_message: ' \\",
-                " +                   'Unknown or unsupported subtype \"%s\"' % test_value_type)"
+          " -                         test_value_type)",
+          " + raise InteropTestError('JmsMessagesTestSender._create_jms_message: ' \\",
+          " +                        'Unknown or unsupported subtype \"%s\"' % test_value_type)"
         ]
       }
     }

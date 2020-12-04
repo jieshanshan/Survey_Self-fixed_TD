@@ -3,32 +3,10 @@ import json
 import os
 import ssl
 import secrets
-import zipfile
+
 from urllib import request, parse
 
 import fire
-
-
-def merge_surveys(path):
-  surveys = []
-  
-  if path.endswith(".zip"):
-    with zipfile.ZipFile(path) as file:
-      for name in file.namelist():
-        if name.endswith(".json"):
-          # print(name)
-          with file.open(name=name, mode='r') as jsonfile:
-            surveys.append(json.load(jsonfile))
-  
-  elif os.path.isdir(path):
-    for dirpath, _, files in os.walk(path):
-      for name in files:
-          if name.lower().endswith(".json"):
-            # print(os.path.join(dirpath, name))
-            with open(os.path.join(dirpath, name)) as jsonfile:
-              surveys.append(json.load(jsonfile))
-
-  return surveys
 
 
 def upload_surveys(jsonfile, token="the-very-secretive-phrase", remote=True):
@@ -99,7 +77,6 @@ def generate_contacts(jsonfile, url_base="https://sftd.danielfeitosa.cc"):
 if __name__ == "__main__":
     fire.Fire()
 
-# pipenv run python utils.py merge_surveys Java_json.zip
 # pipenv run python utils.py upload_surveys test-survey.json
 # pipenv run python utils.py collect_answers
 # pipenv run python utils.py generate_codes python-surveys.json

@@ -15,10 +15,10 @@
           "file": "TitanGraphService.java",
           "lang": "java",
           "diff": [
-            " @Inject",
-            " TitanGraphService(GraphProvider<TitanGraph> graph) throws ConfigurationException {",
+            "   @Inject",
+            "   TitanGraphService(GraphProvider<TitanGraph> graph) throws ConfigurationException {",
             " + // TODO reimplement to save the Provider and initialize the graph inside the start() method",
-            " this.titanGraph = graph.get();",
+            "   this.titanGraph = graph.get();",
             " - // TODO decouple from Service class and run start() here",
             " - // can use a shutdown hook to run the stop() method",
             " - // this.start();",
@@ -59,16 +59,15 @@
           "file": "Hook.java",
           "lang": "java",
           "diff": [
-            " @@ -49,12 +49,6 @@",
-            " public class Hook implements ExecuteWithHookContext {",
-            " private static final Log LOG = LogFactory.getLog(Hook.class.getName());",
+            "   public class Hook implements ExecuteWithHookContext {",
+            "   private static final Log LOG = LogFactory.getLog(Hook.class.getName());",
             " - //private static TimelineClient timelineClient;",
             " - private enum EntityTypes { HIVE_QUERY_ID };",
             " - private enum EventTypes { QUERY_SUBMITTED, QUERY_COMPLETED };",
             " - private enum OtherInfoTypes { QUERY, STATUS, TEZ, MAPRED };",
             " - private enum PrimaryFilterTypes { user };",
             " - private static final int WAIT_TIME = 3;",
-            " private HiveLineageBean hlb;"
+            "   private HiveLineageBean hlb;"
           ]
         }
       }
@@ -90,8 +89,8 @@
           "file": "StructType.java",
           "lang": "java",
           "diff": [
-            " @Override",
-            " public void output(IStruct s, Appendable buf, String prefix) throws MetadataException {",
+            "   @Override",
+            "   public void output(IStruct s, Appendable buf, String prefix) throws MetadataException {",
             " - TypeUtils.outputVal(\"{\", buf, prefix);",
             " - if ( s == null ) {",
             " - TypeUtils.outputVal(\"<null>\n\", buf, \"\");",
@@ -107,7 +106,7 @@
             " - }",
             " - TypeUtils.outputVal(\"\n}\n\", buf, \"\");",
             " + handler.output(s, buf, prefix);",
-            " }"
+            "   }"
           ]
         }
       }
@@ -129,15 +128,14 @@
           "file": "SearchContext.java",
           "lang": "java",
           "diff": [
-            " @@ -285,7 +282,7 @@",
-            " private void validateAttributes(final AtlasStructType structType, final String..",
-            " }",
-            " }",
+            "   private void validateAttributes(final AtlasStructType structType, final String..",
+            "   }",
+            "   }",
             " - private boolean hasAttributeFilter(FilterCriteria filterCriteria) {",
             " + public boolean hasAttributeFilter(FilterCriteria filterCriteria) {",
-            " return filterCriteria != null &&",
-            " (CollectionUtils.isNotEmpty(filterCriteria.getCriterion()) || StringUtils.isNotEmpty(filterCriteria.getAttributeName()));",
-            " }"
+            "   return filterCriteria != null &&",
+            "   (CollectionUtils.isNotEmpty(filterCriteria.getCriterion()) || StringUtils.isNotEmpty(filterCriteria.getAttributeName()));",
+            "   }"
           ]
         }
       }
@@ -194,15 +192,15 @@
           "file": "IncrementalExportEntityProvider.java",
           "lang": "java",
           "diff": [
-            " @@ -67,7 +71,10 @@ public void fullFetch(AtlasEntity entity, ExportService.ExportContext context) {",
-            " @Override",
-            " public void connectedFetch(AtlasEntity entity, ExportService.ExportContext context) {",
+            "   public void fullFetch(AtlasEntity entity, ExportService.ExportContext context) {",
+            "   @Override",
+            "   public void connectedFetch(AtlasEntity entity, ExportService.ExportContext context) {",
             " -",
             " + //starting entity is hive_table",
             " + context.guidsToProcess.addAll(fetchGuids(entity.getGuid(), QUERY_TABLE_DB, context.changeMarker));",
             " + context.guidsToProcess.addAll(fetchGuids(entity.getGuid(), QUERY_TABLE_SD, context.changeMarker));",
             " + context.guidsToProcess.addAll(fetchGuids(entity.getGuid(), QUERY_TABLE_COLUMNS, context.changeMarker));",
-            " }"
+            "   }"
           ]
         }
       }
@@ -224,13 +222,13 @@
           "file": "GraphHelper.java",
           "lang": "java",
           "diff": [
-            " @@ -1060,7 +1060,7 @@ public static Boolean isProxy(AtlasElement element) {",
-            " public static Boolean isEntityIncomplete(AtlasElement element) {",
-            " Integer value = element.getProperty(Constants.IS_INCOMPLETE_PROPERTY_KEY, Integer.class);",
+            "   public static Boolean isProxy(AtlasElement element) {",
+            "   public static Boolean isEntityIncomplete(AtlasElement element) {",
+            "   Integer value = element.getProperty(Constants.IS_INCOMPLETE_PROPERTY_KEY, Integer.class);",
             " - Boolean ret = (value != null && value == INCOMPLETE_ENTITY_VALUE) ? Boolean.TRUE : Boolean.FALSE;",
             " + Boolean ret = value != null && value.equals(INCOMPLETE_ENTITY_VALUE) ? Boolean.TRUE : Boolean.FALSE;",
-            " return ret;",
-            " }"
+            "   return ret;",
+            "   }"
           ]
         }
       }
@@ -263,9 +261,9 @@
           "file": "DeleteHandlerV1.java",
           "lang": "java",
           "diff": [
-            " @@ -105,24 +88,15 @@ public void deleteEntities(Collection<AtlasVertex> instanceVertices) throws Atla",
-            " for (AtlasVertex instanceVertex : instanceVertices) {",
-            " final String guid  = AtlasGraphUtilsV2.getIdFromVertex(instanceVertex);",
+            "   public void deleteEntities(Collection<AtlasVertex> instanceVertices) throws Atla",
+            "   for (AtlasVertex instanceVertex : instanceVertices) {",
+            "   final String guid  = AtlasGraphUtilsV2.getIdFromVertex(instanceVertex);",
             " - final AtlasEntity.Status state = getState(instanceVertex);",
             " - final boolean needToSkip;",
             " - if (isPurgeRequested) {",
@@ -324,12 +322,12 @@
           "file": "FlinkBatchTransformTranslators.java",
           "lang": "java",
           "diff": [
-            " private static class Concatenate<T> extends Combine.CombineFn<T, List<T>, List<T>> {",
-            " @Override",
-            " public List<T> createAccumulator() {",
+            "   private static class Concatenate<T> extends Combine.CombineFn<T, List<T>, List<T>> {",
+            "   @Override",
+            "   public List<T> createAccumulator() {",
             " - return new ArrayList<T>();",
             " + return new ArrayList<>();",
-            " }"
+            "   }"
           ]
         }
       },
@@ -394,15 +392,15 @@
           "file": "SparkMetricsContainer.java",
           "lang": "java",
           "diff": [
-            " if (metricsContainers == null) {",
-            " synchronized (this) {",
-            " if (metricsContainers == null) {",
+            "   if (metricsContainers == null) {",
+            "   synchronized (this) {",
+            "   if (metricsContainers == null) {",
             " - metricsContainers = CacheBuilder.<String, SparkMetricsContainer>newBuilder()",
             " - .build(new MetricsContainerCacheLoader());",
             " + initializeMetricsContainers();",
-            " }",
-            " }",
-            " }"
+            "   }",
+            "   }",
+            "   }"
           ]
         }
       }
@@ -444,8 +442,8 @@
             " - AbstractWindowSet.Factory<String, VI, VO, W> windowSetFactory) throws Exception {",
             " + public static <W extends BoundedWindow> TriggerTester<Integer, Iterable<Integer>, W> buffering(",
             " + WindowFn<?, W> windowFn, Trigger<W> trigger) throws Exception {",
-            " @SuppressWarnings(\"unchecked\")",
-            " WindowFn<Object, W> objectWindowFn = (WindowFn<Object, W>) windowFn;",
+            "   @SuppressWarnings(\"unchecked\")",
+            "   WindowFn<Object, W> objectWindowFn = (WindowFn<Object, W>) windowFn;",
             " ",
             " - return new TriggerTester<VI, VO, W>(objectWindowFn, trigger, windowSetFactory);",
             " + AbstractWindowSet.Factory<String, Integer, Iterable<Integer>, W> windowSetFactory =",
@@ -453,7 +451,7 @@
             " +",
             " + return new TriggerTester<Integer, Iterable<Integer>, W>(",
             " + objectWindowFn, trigger, windowSetFactory);",
-            " }"
+            "   }"
           ]
         }
       }
@@ -482,7 +480,7 @@
             " + import static org.junit.Assert.assertNotNull;",
             " + import static org.junit.Assert.assertThat;",
             " + import static org.junit.Assert.assertTrue;",
-            " ... ",
+            "   ... ",
             " + assertTrue(reader.start());",
             " + assertEquals(DATA, reader.getCurrent());",
             " + assertFalse(reader.advance());"
@@ -560,7 +558,7 @@
           "diff": [
             " - result = triggerRunner.onMerge(mergeResultContext);",
             " + triggerRunner.onMerge(mergeResultContext);",
-            " } catch (Exception e) {"
+            "   } catch (Exception e) {"
           ]
         }
       },
@@ -645,17 +643,17 @@
           "file": "FlinkStreamingTransformTranslators.java",
           "lang": "java",
           "diff": [
-            " interface DoFnOperatorFactory<InputT, OutputT> {",
+            "   interface DoFnOperatorFactory<InputT, OutputT> {",
             " - DoFnOperator<InputT, OutputT, OutputT> createDoFnOperator(",
             " + DoFnOperator<InputT, OutputT> createDoFnOperator(",
-            " DoFn<InputT, OutputT> doFn,",
-            " String stepName,",
-            " List<PCollectionView<?>> sideInputs,",
+            "   DoFn<InputT, OutputT> doFn,",
+            "   String stepName,",
+            "   List<PCollectionView<?>> sideInputs,",
             " ",
-            " if (sideInputs.isEmpty()) {",
+            "   if (sideInputs.isEmpty()) {",
             " - DoFnOperator<InputT, OutputT, OutputT> doFnOperator =",
             " + DoFnOperator<InputT, OutputT> doFnOperator =",
-            " doFnOperatorFactory.createDoFnOperator("
+            "   doFnOperatorFactory.createDoFnOperator("
           ]
         }
       },
@@ -668,7 +666,7 @@
           "file": "DoFnOperator.java",
           "lang": "java",
           "diff": [
-            " public void fireTimer(InternalTimer<?, TimerData> timer) {",
+            "   public void fireTimer(InternalTimer<?, TimerData> timer) {",
             " - throw new RuntimeException(\"The fireTimer should not be invoke in DoFnOperator.\");",
             " + TimerInternals.TimerData timerData = timer.getNamespace();",
             " + StateNamespace namespace = timerData.getNamespace();",
@@ -677,7 +675,7 @@
             " + BoundedWindow window = ((WindowNamespace) namespace).getWindow();",
             " + pushbackDoFnRunner.onTimer(timerData.getTimerId(), window,",
             " + timerData.getTimestamp(), timerData.getDomain());",
-            " }"
+            "   }"
           ]
         }
       }
@@ -699,18 +697,18 @@
           "file": "StreamingDataflowWorker.java",
           "lang": "java",
           "diff": [
-            " try {",
-            " statusServer.start();",
+            "   try {",
+            "   statusServer.start();",
             " - LOG.info(\"Status server started on port \" + statusPort);",
             " + LOG.info(\"Status server started on port {}\", statusPort);",
-            " statusServer.join();",
-            " } catch (Exception e) {",
+            "   statusServer.join();",
+            "   } catch (Exception e) {",
             " - LOG.warning(\"Status server failed to start: \" + e);",
             " + LOG.warn(\"Status server failed to start: \", e);",
-            " }",
-            " private void addComputation(MapTask mapTask) {",
-            " String computation = mapTask.getSystemName();",
-            " if (!instructionMap.containsKey(computation)) {",
+            "   }",
+            "   private void addComputation(MapTask mapTask) {",
+            "   String computation = mapTask.getSystemName();",
+            "   if (!instructionMap.containsKey(computation)) {",
             " - LOG.info(\"Adding config for \" + computation + \": \" + mapTask);",
             "+ LOG.info(\"Adding config for {}: {}\", computation, mapTask);"
           ]
@@ -731,10 +729,10 @@
             " + if (computationRequestBuilder.getRequestsCount() > 0) {",
             " + computationRequestBuilder.setComputationId(entry.getKey());",
             " + commitRequestBuilder.addRequests(computationRequestBuilder);",
-            " }",
+            "   }",
             " - remainingCommitBytes -= request.getSerializedSize();",
             " - computationRequestBuilder.addRequests(request);",
-            " }",
+            "   }",
             " - if (computationRequestBuilder.getRequestsCount() > 0) {",
             " -          computationRequestBuilder.setComputationId(entry.getKey());",
             " -          commitRequestBuilder.addRequests(computationRequestBuilder);",
@@ -744,8 +742,8 @@
             " + commitWork(commitRequest);",
             " +} else {",
             " + break;",
-            " }",
-            " }",
+            "   }",
+            "   }",
             " - if (commitRequestBuilder.getRequestsCount() > 0) {",
             " - Windmill.CommitWorkRequest commitRequest = commitRequestBuilder.build();",
             " - LOG.trace(\"Commit: {}\", commitRequest);",
@@ -754,8 +752,8 @@
             " - if (remainingCommitBytes > 0) {",
             " - sleep(100);",
             " - }",
-            " }",
-            " }"
+            "   }",
+            "   }"
           ]
         }
       }
@@ -887,9 +885,9 @@
           "file": "WriteFiles.java",
           "lang": "java",
           "diff": [
-            " @@ -497,86 +578,110 @@ public void processElement(ProcessContext context) {",
-            " if (computeNumShards == null && numShardsProvider == null) {",
-            " numShardsView = null;",
+            "   public void processElement(ProcessContext context) {",
+            "   if (computeNumShards == null && numShardsProvider == null) {",
+            "   numShardsView = null;",
             " - if (windowedWrites) {",
             " - TupleTag<FileResult> writtenRecordsTag = new TupleTag<>(\"writtenRecordsTag\");",
             " - TupleTag<KV<Integer, T>> unwrittedRecordsTag = new TupleTag<>(\"unwrittenRecordsTag\");",
@@ -1007,18 +1005,18 @@
           "file": "PaneInfo.java",
           "lang": "java",
           "diff": [
-            " public boolean isLast() {",
+            "   public boolean isLast() {",
             " - if (timing == Timing.UNKNOWN) {",
             " - throw new UnsupportedOperationException(\"Undefined for non-trigger-firing pane.\");",
             " - }",
-            " return isLast;",
-            " }",
-            " public long getIndex() {",
+            "   return isLast;",
+            "   }",
+            "   public long getIndex() {",
             " - if (timing == Timing.UNKNOWN) {",
             " - throw new UnsupportedOperationException(\"Undefined for non-trigger-firing pane.\");",
             " - }",
-            " return index;",
-            " }"
+            "   return index;",
+            "   }"
           ]
         }
       }
@@ -1040,14 +1038,14 @@
           "file": "DisplayData.java",
           "lang": "java",
           "diff": [
-            " try {",
-            " subComponent.populateDisplayData(this);",
+            "   try {",
+            "   subComponent.populateDisplayData(this);",
             " + } catch (PopulateDisplayDataException e) {",
             " + // Don't re-wrap exceptions recursively.",
             " + throw e;",
-            " } catch (Throwable e) {",
-            " String msg = String.format(\"Error while populating display data for component: %s\",",
-            " namespace);",
+            "   } catch (Throwable e) {",
+            "   String msg = String.format(\"Error while populating display data for component: %s\",",
+            "   namespace);",
             " - throw new RuntimeException(msg, e);",
             " + throw new PopulateDisplayDataException(msg, e);"
           ]
@@ -1092,14 +1090,14 @@
           "file": "BoundedDataset.java",
           "lang": "java",
           "diff": [
-            " public void cache(String storageLevel) {",
+            "   public void cache(String storageLevel) {",
             " - System.out.printf(",
             " - \"Persisting Dataset %s for RDD %s (id %s) at level %s. %s times before%n\",",
             " - this, getRDD(), getRDD().toDebugString(), storageLevel, timesCached++);",
             " - System.out.println(Joiner.on(\"\n\t\").join(new Throwable().getStackTrace()));",
-            " // populate the rdd if needed",
-            " getRDD().persist(StorageLevel.fromString(storageLevel));",
-            " }"
+            "   // populate the rdd if needed",
+            "   getRDD().persist(StorageLevel.fromString(storageLevel));",
+            "   }"
           ]
         }
       },
@@ -1128,39 +1126,39 @@
             " - return;",
             " - }",
             " + private void visit(PipelineVisitor visitor, Set<PValue> visitedValues) {",
-            " if (!finishedSpecifying) {",
-            " finishSpecifying();",
-            " }",
-            " if (!isRootNode()) {",
-            " // Visit inputs.",
-            " for (PValue inputValue : inputs.values()) {",
+            "   if (!finishedSpecifying) {",
+            "   finishSpecifying();",
+            "   }",
+            "   if (!isRootNode()) {",
+            "   // Visit inputs.",
+            "   for (PValue inputValue : inputs.values()) {",
             " - Node valueProducer = getProducer(inputValue);",
             " - if (!visitedNodes.contains(valueProducer)) {",
             " - valueProducer.visit(visitor, visitedValues, visitedNodes, passedComposites);",
             " - }",
-            " if (visitedValues.add(inputValue)) {",
+            "   if (visitedValues.add(inputValue)) {",
             " - LOG.debug(\"Visiting input value {}\", inputValue);",
             " - visitor.visitValue(inputValue, valueProducer);",
             " + visitor.visitValue(inputValue, getProducer(inputValue));",
-            " }",
-            " }",
-            " }",
-            " if (isCompositeNode()) {",
+            "   }",
+            "   }",
+            "   }",
+            "   if (isCompositeNode()) {",
             " - LOG.debug(\"Visiting composite node {}\", this);",
-            " PipelineVisitor.CompositeBehavior recurse = visitor.enterCompositeTransform(this);",
-            " if (recurse.equals(CompositeBehavior.ENTER_TRANSFORM)) {",
-            " for (Node child : parts) {",
+            "   PipelineVisitor.CompositeBehavior recurse = visitor.enterCompositeTransform(this);",
+            "   if (recurse.equals(CompositeBehavior.ENTER_TRANSFORM)) {",
+            "   for (Node child : parts) {",
             " - child.visit(visitor, visitedValues, visitedNodes, passedComposites);",
             " + child.visit(visitor, visitedValues);",
-            " }",
+            "   }",
             " - } else {",
             " - passedComposites.add(this);",
-            " }",
-            " visitor.leaveCompositeTransform(this);",
-            " } else {",
+            "   }",
+            "   visitor.leaveCompositeTransform(this);",
+            "   } else {",
             " - LOG.debug(\"Visiting primitive node {}\", this);",
-            " visitor.visitPrimitiveTransform(this);",
-            " }"
+            "   visitor.visitPrimitiveTransform(this);",
+            "   }"
           ]
         }
       }
@@ -1257,16 +1255,16 @@
           "file": "PersistentObjectList.java",
           "lang": "java",
           "diff": [
-            " @@ -298,10 +298,7 @@ public class PersistentObjectList extends RelationshipFault implements List, Val",
-            " // now that we obtained the lock, check",
-            " // if another thread just resolved the list",
-            " if (isFault()) {",
+            "   public class PersistentObjectList extends RelationshipFault implements List, Val",
+            "   // now that we obtained the lock, check",
+            "   // if another thread just resolved the list",
+            "   if (isFault()) {",
             " - List localList = resolveFromDB();",
             " -",
             " - mergeLocalChanges(localList);",
             " - this.objectList = localList;",
             " +this.objectList = resolveFromDB();",
-            " }"
+            "   }"
           ]
         }
       },
@@ -1279,21 +1277,21 @@
           "file": "DbMerger.java",
           "lang": "java",
           "diff": [
-            "@@ -405,52 +424,16 @@ public class DbMerger {",
-            " /**",
-            " /* Return true if the two unordered {@link Collection}s of {@link DbJoin}s are",
-            " /* equal. Entity and Attribute names are compared case insensitively.",
-            " /+*",
+            "public class DbMerger {",
+            "   /**",
+            "   /* Return true if the two unordered {@link Collection}s of {@link DbJoin}s are",
+            "   /* equal. Entity and Attribute names are compared case insensitively.",
+            "   /+*",
             " +* TODO complexity n^2; sort both collection and go through them to compare = 2*n*log(n) + n",
             "  */",
             " - private static boolean equalDbJoinCollections(",
             " - Collection<DbJoin> j1s,",
             " - Collection<DbJoin> j2s) {",
             " + private static boolean equalDbJoinCollections(Collection<DbJoin> j1s, Collection<DbJoin> j2s) {",
-            " if (j1s.size() != j2s.size()) {",
-            " return false;",
-            " }",
-            " for (DbJoin j1 : j1s) {",
+            "   if (j1s.size() != j2s.size()) {",
+            "   return false;",
+            "   }",
+            "   for (DbJoin j1 : j1s) {",
             "- boolean foundPair = false;",
             "- for (DbJoin j2 : j2s) {",
             "- if ((j1.getSource() == null) || (j1.getSource().getEntity() == null)) {",
@@ -1329,12 +1327,12 @@
             " - }",
             " - if (!foundPair) {",
             " + if (!havePair(j2s, j1)) {",
-            " return false;",
-            " }",
-            " }",
-            " @@ -458,23 +441,22 @@ public class DbMerger {",
-            " return true;",
-            " }",
+            "   return false;",
+            "   }",
+            "   }",
+            "   public class DbMerger {",
+            "   return true;",
+            "   }",
             " - private static final class LoaderDelegate implements DbLoaderDelegate {",
             " - public void dbEntityAdded(DbEntity ent) {",
             " - }",
@@ -1356,13 +1354,13 @@
             " - return false;",
             " + return true;",
             " + }",
-            " }",
+            "   }",
             " + return false;",
             " + }",
             " + private static boolean isNull(DbAttribute attribute) {",
             " + return attribute == null || attribute.getEntity() == null;",
-            " }",
-            " }"
+            "   }",
+            "   }"
           ]
         }
       },
@@ -1375,20 +1373,20 @@
           "file": "DBCPDataSourceFactory.java",
           "lang": "java",
           "diff": [
-            "@@ -71,14 +71,9 @@ public class DBCPDataSourceFactory implements DataSourceFactory {",
-            " private Properties getProperties(Resource dbcp2Configuration) throws IOException {",
-            " Properties properties = new Properties();",
+            "   public class DBCPDataSourceFactory implements DataSourceFactory {",
+            "   private Properties getProperties(Resource dbcp2Configuration) throws IOException {",
+            "   Properties properties = new Properties();",
             " - InputStream in = dbcp2Configuration.getURL().openStream();",
             " - try {",
             " + try (InputStream in = dbcp2Configuration.getURL().openStream();) {",
-            " properties.load(in);",
+            "   properties.load(in);",
             " - } finally {",
             " - try {",
             " - in.close();",
             " - } catch (IOException e) {",
             " - }",
-            " }",
-            " return properties;"
+            "   }",
+            "   return properties;"
           ]
         }
       },
@@ -1401,18 +1399,17 @@
           "file": "QueryLoggerTest.java",
           "lang": "java",
           "diff": [
-            " @@ -19,12 +19,13 @@",
-            " package org.apache.cayenne.access;",
+            "   package org.apache.cayenne.access;",
             " - import org.apache.cayenne.unit.CayenneCase;",
             " + import junit.framework.TestCase;",
             " +",
-            " import org.apache.cayenne.util.IDUtil;",
+            "   import org.apache.cayenne.util.IDUtil;",
             " - public class QueryLoggerTest extends CayenneCase {",
             " + @Deprecated",
             " + public class QueryLoggerTest extends TestCase {",
             " +",
-            " public void testSqlLiteralForObject() throws Exception {",
-            " StringBuffer buf = new StringBuffer();"
+            "   public void testSqlLiteralForObject() throws Exception {",
+            "   StringBuffer buf = new StringBuffer();"
           ]
         }
       }
@@ -1434,7 +1431,6 @@
           "file": "GeneratorController.java",
           "lang": "java",
           "diff": [
-            " @@ -1,561 +0,0 @@",
             " - ///**",
             " - // * A mode-specific part of the code generation dialog.",
             " - // */",
@@ -1463,8 +1459,7 @@
           "file": "CustomModePanel.java",
           "lang": "java",
           "diff": [
-            "@@ -29,18 +29,23 @@",
-            " public class CustomModePanel extends GeneratorControllerPanel {",
+            "   public class CustomModePanel extends GeneratorControllerPanel {",
             " - private ComboBoxAdapter generationMode;",
             " - private ComboBoxAdapter subclassTemplate;",
             " - private ComboBoxAdapter superclassTemplate;",
@@ -1500,7 +1495,7 @@
           "file": "QueryType.java",
           "lang": "java",
           "diff": [
-            " @@-164,38 +140,30 @@ public void createQuery() {",
+            "   public void createQuery() {",
             " - public Query getSelectedQuery() {",
             " - return selectedQuery;",
             " - }",
@@ -1508,11 +1503,11 @@
             " - this.selectedQuery = selectedQuery;",
             " + public String getSelectedQuery() {",
             " + return type;",
-            " }",
-            " public void setObjectSelectQuery() {",
+            "   }",
+            "   public void setObjectSelectQuery() {",
             " - selectedQuery = objectSelectQuery;",
             " + this.type = QueryDescriptor.SELECT_QUERY;",
-            " }"
+            "   }"
           ]
         }
       },
@@ -1525,9 +1520,9 @@
           "file": "RawQueryPropertiesPanel.java",
           "lang": "java",
           "diff": [
-            " @@ -126,9 +123,7 @@ protected void initView() {",
-            " public void initFromModel(QueryDescriptor query) {",
-            " super.initFromModel(query);",
+            "   protected void initView() {",
+            "   public void initFromModel(QueryDescriptor query) {",
+            "   super.initFromModel(query);",
             " - // EntityResolver entRes = new EntityResolver(((DataChannelDescriptor) mediator",
             " - // .getProject()",
             " - // .getRootNode()).getDataMaps());"
@@ -1543,10 +1538,10 @@
           "file": "DataMapNamespaceTest.java",
           "lang": "java",
           "diff": [
-            " @@ -111,17 +110,19 @@ public class DataMapNamespaceTest {",
-            " public void testGetQuery() throws Exception {",
-            " MockMappingNamespace namespace = new MockMappingNamespace();",
-            " map.setNamespace(namespace);",
+            "   public class DataMapNamespaceTest {",
+            "   public void testGetQuery() throws Exception {",
+            "   MockMappingNamespace namespace = new MockMappingNamespace();",
+            "   map.setNamespace(namespace);",
             " + QueryDescriptor q1 = QueryDescriptor.selectQueryDescriptor();",
             " + q1.setName(\"query\");",
             " + QueryDescriptor q2 = QueryDescriptor.selectQueryDescriptor();",
@@ -1557,8 +1552,8 @@
             " + assertSame(q2, map.getQueryDescriptor(\"query\"));",
             " + map.removeQueryDescriptor(\"query\");",
             " + assertSame(q1, map.getQueryDescriptor(\"query\"));",
-            " }",
-            " }"
+            "   }",
+            "   }"
           ]
         }
       }
@@ -1603,10 +1598,10 @@
           "file": "CellRenderers.java",
           "lang": "java",
           "diff": [
-            " @@ -121,18 +120,6 @@ else if (object instanceof Attribute) {",
-            " else if (object instanceof Embeddable) {",
-            " return embeddableIcon;",
-            " }",
+            "   else if (object instanceof Attribute) {",
+            "   else if (object instanceof Embeddable) {",
+            "   return embeddableIcon;",
+            "   }",
             " - else if (object instanceof DbColumn) {",
             " - return attributeIcon;",
             " - }",
@@ -1618,9 +1613,9 @@
             " - }",
             " - else if (object instanceof DbCatalog) {",
             " - return catalogIcon;",
-            " }",
-            " return null;",
-            " }"
+            "   }",
+            "   return null;",
+            "   }"
           ]
         }
       },
@@ -1633,7 +1628,6 @@
           "file": "ReverseEngineeringScrollPane.java",
           "lang": "java",
           "diff": [
-            " @@ -1,34 +0,0 @@",
             " - import javax.swing.JScrollPane;",
             " - public class ReverseEngineeringScrollPane extends JScrollPane {",
             " - private ReverseEngineeringView reverseEngineeringView;",
@@ -1654,7 +1648,6 @@
           "file": "ReverseEngineeringController.java",
           "lang": "java",
           "diff": [
-            " @@ -1,243 +0,0 @@",
             " - private void buildDBProperties() throws Exception {",
             " - ClassLoadingService classLoader = getApplication().getClassLoadingService();",
             " - this.dataSource = connectionInfo.makeDataSource(classLoader);",
@@ -1681,10 +1674,10 @@
           "file": "DefaultSelectTranslator.java",
           "lang": "java",
           "diff": [
-            " @@ -402,16 +402,12 @@ public class DefaultSelectTranslator extends QueryAssembler implements SelectTra ",
-            " QualifierTranslator qualifierTranslator = adapter.getQualifierTranslator(this);",
-            " AccumulatingBindingListener bindingListener = new AccumulatingBindingListener();",
-            " final String[] joinTableAliasForProperty = {null};",
+            "   public class DefaultSelectTranslator extends QueryAssembler implements SelectTra ",
+            "   QualifierTranslator qualifierTranslator = adapter.getQualifierTranslator(this);",
+            "   AccumulatingBindingListener bindingListener = new AccumulatingBindingListener();",
+            "   final String[] joinTableAliasForProperty = {null};",
             " - joinListener = new AddJoinListener() {",
             " - @Override",
             " - public void joinAdded() {",
@@ -1694,7 +1687,7 @@
             " - };",
             " + // capture last alias for joined table, will use it to resolve object columns",
             " + joinListener = () -> joinTableAliasForProperty[0] = getCurrentAlias();",
-            " setAddBindingListener(bindingListener);"
+            "   setAddBindingListener(bindingListener);"
           ]
         }
       },
@@ -1707,13 +1700,13 @@
           "file": "SQLTemplatePrefetchTab.java",
           "lang": "java",
           "diff": [
-            " @@ -433,6 +428,7 @@ public Object getValueAt(int row, int column) {",
-            " }",
-            " }",
+            "   public Object getValueAt(int row, int column) {",
+            "   }",
+            "   }",
             " + @Override",
-            " public Class getColumnClass(int column) {",
-            " switch (column) {",
-            " case 0:"
+            "   public Class getColumnClass(int column) {",
+            "   switch (column) {",
+            "   case 0:"
           ]
         }
       },
@@ -1726,9 +1719,9 @@
           "file": "GeneratorController.java",
           "lang": "java",
           "diff": [
-            " @@ -160,12 +160,7 @@ public abstract class GeneratorController extends CayenneController {",
-            " // remove generic entities...",
-            " Collection<ObjEntity> selectedEntities = new ArrayList<>(getParentController().getSelectedEntities());",
+            "   public abstract class GeneratorController extends CayenneController {",
+            "   // remove generic entities...",
+            "   Collection<ObjEntity> selectedEntities = new ArrayList<>(getParentController().getSelectedEntities());",
             " - Iterator<ObjEntity> it = selectedEntities.iterator();",
             " - while (it.hasNext()) {",
             " - if (it.next().isGeneric()) {",
@@ -1748,7 +1741,7 @@
           "file": "SQLTemplateParserTokenManager.java",
           "lang": "java",
           "diff": [
-            " @@ -228,22 +235,14 @@ private int jjMoveStringLiteralDfa4_0(long old0, long active0)",
+            "   private int jjMoveStringLiteralDfa4_0(long old0, long active0)",
             " - private int jjStartNfaWithStates_0(int pos, int kind, int state)",
             " - {",
             " - jjmatchedKind = kind;",
@@ -1778,7 +1771,7 @@
           "file": "PathCountsTest.java",
           "lang": "java",
           "diff": [
-            " public class PathCountsTest {",
+            "   public class PathCountsTest {",
             " + @Test",
             " + public void testCtor() {",
             " + final PathCounts pathCounts = new PathCounts();",
@@ -1787,12 +1780,12 @@
             " + Assertions.assertEquals(pathCounts.getFileCount(), 0);",
             " + }",
             " ",
-            " @Test",
-            " public void testToString() {",
-            " // Does not blow up",
-            " new PathCounts().toString();",
-            " }",
-            " }"
+            "   @Test",
+            "   public void testToString() {",
+            "   // Does not blow up",
+            "   new PathCounts().toString();",
+            "   }",
+            "   }"
           ]
         }
       },
@@ -1805,10 +1798,10 @@
           "file": "MagicNumberFileFilter.java",
           "lang": "java",
           "diff": [
-            " public boolean accept(final File file) {",
-            " if (file != null && file.isFile() && file.canRead()) {",
+            "   public boolean accept(final File file) {",
+            "   if (file != null && file.isFile() && file.canRead()) {",
             " - RandomAccessFile randomAccessFile = null;",
-            " try {",
+            "   try {",
             " - final byte[] fileBytes = new byte[this.magicNumbers.length];",
             " - randomAccessFile = new RandomAccessFile(file, \"r\");",
             " - randomAccessFile.seek(byteOffset);",
@@ -1823,7 +1816,7 @@
             " + return false;",
             " + }",
             " + return Arrays.equals(this.magicNumbers, fileBytes);",
-            " }",
+            "   }",
             " - return Arrays.equals(this.magicNumbers, fileBytes);",
             " - } catch (final IOException ioe) {"
           ]
@@ -1838,9 +1831,9 @@
           "file": "DeletingPathVisitor.java",
           "lang": "java",
           "diff": [
-            " if (PathUtils.isEmptyDirectory(dir)) {",
-            " Files.deleteIfExists(dir);",
-            " }",
+            "   if (PathUtils.isEmptyDirectory(dir)) {",
+            "   Files.deleteIfExists(dir);",
+            "   }",
             " - super.postVisitDirectory(dir, exc);",
             " - return FileVisitResult.CONTINUE;",
             " + return super.postVisitDirectory(dir, exc);"
@@ -1865,7 +1858,7 @@
           "file": "FileCleaningTracker.java",
           "lang": "java",
           "diff": [
-            " //",
+            "   //",
             " - /**",
             " - * This method is called when an instance is deserialized.",
             " - * It replaces the deserialized instance with a new, fresh",
@@ -1907,7 +1900,7 @@
             " - }",
             " + public boolean isCauseOf(Throwable exception) {",
             " + return TaggedIOException.isTaggedWith(exception, tag);",
-            " }"
+            "   }"
           ]
         }
       }
@@ -1929,7 +1922,7 @@
           "file": "TailerTest.java",
           "lang": "java",
           "diff": [
-            " final long testDelayMillis = delay * 10;",
+            "   final long testDelayMillis = delay * 10;",
             " - Thread.sleep(testDelayMillis);",
             " + TestUtils.sleep(testDelayMillis);"
           ]
@@ -1944,7 +1937,7 @@
           "file": "Java7Support.java",
           "lang": "java",
           "diff": [
-            " return result.booleanValue();",
+            "   return result.booleanValue();",
             " - } catch (IllegalAccessException e) {",
             " - throw new RuntimeException(e);",
             " - } catch (InvocationTargetException e) {",
@@ -1970,13 +1963,13 @@
           "file": "FileDeleteStrategy.java",
           "lang": "java",
           "diff": [
-            " *",
-            " * @return a string describing the delete strategy",
-            " */",
+            "   *",
+            "   * @return a string describing the delete strategy",
+            "   */",
             " + @Override",
-            " public String toString() {",
-            " return \"FileDeleteStrategy[\" + name + \"]\";",
-            " }"
+            "   public String toString() {",
+            "   return \"FileDeleteStrategy[\" + name + \"]\";",
+            "   }"
           ]
         }
       },
@@ -1989,7 +1982,7 @@
           "file": "FileSystemUtils.java",
           "lang": "java",
           "diff": [
-            " // perform the command, asking for up to 3 lines (header, interesting, overflow)",
+            "   // perform the command, asking for up to 3 lines (header, interesting, overflow)",
             " - List lines = performCommand(cmdAttribs, 3);",
             " + List<String> lines = performCommand(cmdAttribs, 3);"
           ]
@@ -2004,7 +1997,7 @@
           "file": "PrefixFileFilter.java",
           "lang": "java",
           "diff": [
-            " public String toString() {",
+            "   public String toString() {",
             " - StringBuffer buffer = new StringBuffer();",
             " +StringBuilder buffer = new StringBuilder();"
           ]
@@ -2210,13 +2203,13 @@
           "file": "IOUtils.java",
           "lang": "java",
           "diff": [
-            " public static int read(InputStream input, byte[] buffer, int offset, int length) throws IOException {",
+            "   public static int read(InputStream input, byte[] buffer, int offset, int length) throws IOException {",
             "if (length < 0) {",
-            " throw new IllegalArgumentException(\"Length must not be negative: \" + length);",
-            " }",
-            " int remaining = length;",
-            " while (remaining > 0) {",
-            " int location = length - remaining;",
+            "   throw new IllegalArgumentException(\"Length must not be negative: \" + length);",
+            "   }",
+            "   int remaining = length;",
+            "   while (remaining > 0) {",
+            "   int location = length - remaining;",
             " - int count = input.read(buffer, location, remaining);",
             " + int count = input.read(buffer, offset + location, remaining);"
           ]
@@ -2231,12 +2224,12 @@
           "file": "CharSequenceInputStream.java",
           "lang": "java",
           "diff": [
-            " @Override",
+            "   @Override",
             " - public void reset() throws IOException {",
             " + public synchronized void reset() throws IOException {",
-            " if (this.mark != -1) {",
-            " this.cbuf.position(this.mark);",
-            " this.mark = -1;"
+            "   if (this.mark != -1) {",
+            "   this.cbuf.position(this.mark);",
+            "   this.mark = -1;"
           ]
         }
       },
@@ -2249,14 +2242,14 @@
           "file": "CharSequenceInputStreamTest.java",
           "lang": "java",
           "diff": [
-            " public void testBufferedRead_AvailableCharset() throws IOException {",
-            " for (final String csName : Charset.availableCharsets().keySet()) {",
-            " // prevent java.lang.UnsupportedOperationException at sun.nio.cs.ext.ISO2022_CN.newEncoder.",
+            "   public void testBufferedRead_AvailableCharset() throws IOException {",
+            "   for (final String csName : Charset.availableCharsets().keySet()) {",
+            "   // prevent java.lang.UnsupportedOperationException at sun.nio.cs.ext.ISO2022_CN.newEncoder.",
             " - if (Charset.forName(csName).canEncode()) {",
             " + if (Charset.forName(csName).canEncode() && ! \"COMPOUND_TEXT\".equalsIgnoreCase(csName)) {",
-            " testBufferedRead(TEST_STRING, csName);",
-            " }",
-            " }"
+            "   testBufferedRead(TEST_STRING, csName);",
+            "   }",
+            "   }"
           ]
         }
       }
@@ -2416,15 +2409,15 @@
           "diff": [
             " - Cipher cipher = Cipher.getInstance(\"AES\");",
             " + Cipher cipher = Cipher.getInstance(CIPHER_ALGORITHM);",
-            " cipher.init(Cipher.DECRYPT_MODE, secretKeySpec);",
-            " return new String(cipher.doFinal(encryptedValue), UTF_8);",
-            " }",
-            " catch (Exception e)",
-            " {",
+            "   cipher.init(Cipher.DECRYPT_MODE, secretKeySpec);",
+            "   return new String(cipher.doFinal(encryptedValue), UTF_8);",
+            "   }",
+            "   catch (Exception e)",
+            "   {",
             " - throw ExceptionUtils.throwAsRuntimeException(e);",
             " + throw new RuntimeException(e);",
-            " }",
-            " }"
+            "   }",
+            "   }"
           ]
         }
       }
@@ -2446,18 +2439,18 @@
           "file": "QueryBuilderFactory.java",
           "lang": "java",
           "diff": [
-            " switch (repositoryMethodType)",
-            " {",
-            " case ANNOTATED:",
-            " return annotatedQueryBuilder;",
-            " case PARSE:",
-            " return methodQueryBuilder;",
-            " case DELEGATE:",
-            " return delegateQueryBuilder;",
+            "   switch (repositoryMethodType)",
+            "   {",
+            "   case ANNOTATED:",
+            "   return annotatedQueryBuilder;",
+            "   case PARSE:",
+            "   return methodQueryBuilder;",
+            "   case DELEGATE:",
+            "   return delegateQueryBuilder;",
             " + default:",
             " +throw new RuntimeException(",
             " + \"No \" + QueryBuilder.class.getName() + \" avialable for type: \" + repositoryMethodType);",
-            " }"
+            "   }"
           ]
         }
       },
@@ -2492,10 +2485,10 @@
           "file": "WebServer.java",
           "lang": "java",
           "diff": [
-            " @@ -274,18 +273,6 @@ public class WebServer implements AutoCloseable {",
-            " @Override",
-            " public void logout(UserIdentity user) {",
-            " }",
+            "   public class WebServer implements AutoCloseable {",
+            "   @Override",
+            "   public void logout(UserIdentity user) {",
+            "   }",
             " - // @Override",
             " - // protected UserIdentity loadUser(String username) {",
             " - // // TODO Auto-generated method stub",
@@ -2506,7 +2499,7 @@
             " - // protected void loadUsers() throws IOException {",
             " - // putUser( \"fred\", new Password( \"wilma\" ), new String[] { ADMIN_ROLE } );",
             " - // }",
-            " }"
+            "   }"
           ]
         }
       },
@@ -2531,8 +2524,8 @@
             " + return (SchemaPath) logicalExpression;",
             " + } else {",
             " + throw new IllegalStateException(String.format(\"Schema path is not a valid format: %s.\", logicalExpression));",
-            " }",
-            " }"
+            "   }",
+            "   }"
           ]
         }
       }
@@ -2554,14 +2547,14 @@
           "file": "SequenceFileRecordReader.java",
           "lang": "java",
           "diff": [
-            " @@ -172,7 +172,7 @@ public String toString() {",
-            " position = reader.getPos();",
-            " }",
-            " } catch (IOException e) {",
+            "   public String toString() {",
+            "   position = reader.getPos();",
+            "   }",
+            "   } catch (IOException e) {",
             " - logger.trace(\"Unable to obtain reader position: \" + e.getMessage());",
             " + logger.trace(\"Unable to obtain reader position.\", e);",
-            " }",
-            " return \"SequenceFileRecordReader[File=\" + split.getPath()",
+            "   }",
+            "   return \"SequenceFileRecordReader[File=\" + split.getPath()",
             " + \", Position=\" + position"
           ]
         }
@@ -2584,12 +2577,12 @@
           "file": "ExcelBatchReader.java",
           "lang": "java",
           "diff": [
-            " @@ -481,7 +486,6 @@ public void load(Cell cell) {",
-            " }",
-            " public void load(Cell cell) {",
+            "   public void load(Cell cell) {",
+            "   }",
+            "   public void load(Cell cell) {",
             " - CellValue cellValue = evaluator.evaluate(cell);",
-            " String fieldValue = String.valueOf(cell.getNumericCellValue());",
-            " if (fieldValue == null) {"
+            "   String fieldValue = String.valueOf(cell.getNumericCellValue());",
+            "   if (fieldValue == null) {"
           ]
         }
       }
@@ -2611,10 +2604,10 @@
           "file": "DrillStatsTable.java",
           "lang": "java",
           "diff": [
-            " @@ -223,8 +223,11 @@ public void materialize(final DrillTable table, final QueryContext context) thro",
-            " materialized = true;",
-            " }",
-            " } catch (IOException ex) {",
+            "   public void materialize(final DrillTable table, final QueryContext context) thro",
+            "   materialized = true;",
+            "   }",
+            "   } catch (IOException ex) {",
             " - logger.warn(\"Failed to read the stats file.\", ex);",
             " - throw ex;",
             " + if (ex instanceof FileNotFoundException) {",
@@ -2622,8 +2615,8 @@
             " + } else {",
             " + logger.debug(String.format(\"Error trying to read statistics table %s\", tablePath.toString()), ex);",
             " + }",
-            " }",
-            " }"
+            "   }",
+            "   }"
           ]
         }
       }
@@ -2671,14 +2664,14 @@
           "file": "BatchValidator.java",
           "lang": "java",
           "diff": [
-            " @@ -153,13 +154,13 @@ public BatchValidator(ErrorReporter errorReporter) {",
-            " private static Map<Class<? extends RecordBatch>, CheckMode> buildRules() {",
+            "   public BatchValidator(ErrorReporter errorReporter) {",
+            "   private static Map<Class<? extends RecordBatch>, CheckMode> buildRules() {",
             " - final Map<Class<? extends RecordBatch>, CheckMode> rules = new IdentityHashMap<>();",
             " - //rules.put(OperatorRecordBatch.class, CheckMode.ALL);",
             " + Map<Class<? extends RecordBatch>, CheckMode> rules = new IdentityHashMap<>();",
             " + rules.put(OperatorRecordBatch.class, CheckMode.ALL);",
-            " return rules;",
-            " }"
+            "   return rules;",
+            "   }"
           ]
         }
       },
@@ -2691,9 +2684,9 @@
           "file": "ProjectionMaterializer.java",
           "lang": "java",
           "diff": [
-            " @@ -335,11 +325,7 @@ private void setupImplicitColumnRef(NamedExpression namedExpression)",
-            " LogicalExpression expr = ExpressionTreeMaterializer.materialize(",
-            " originalPath, incomingBatch, collector, functionLookupContext);",
+            "   private void setupImplicitColumnRef(NamedExpression namedExpression)",
+            "   LogicalExpression expr = ExpressionTreeMaterializer.materialize(",
+            "   originalPath, incomingBatch, collector, functionLookupContext);",
             " - if (collector.hasErrors()) {",
             " - throw new SchemaChangeException(String.format(",
             " - \"Failure while trying to materialize incomingBatch schema.  Errors:\n %s.\",",
@@ -2723,8 +2716,8 @@
           "diff": [
             " - protected abstract RowGroupScanFilterer getFilterer();",
             " + protected abstract RowGroupScanFilterer<? extends RowGroupScanFilterer> getFilterer();",
-            " protected Multimap<Path, RowGroupMetadata> pruneRowGroupsForFiles(Map<Path, FileMetadata> filteredFileMetadata) {",
-            " Multimap<Path, RowGroupMetadata> prunedRowGroups = LinkedListMultimap.create();"
+            "   protected Multimap<Path, RowGroupMetadata> pruneRowGroupsForFiles(Map<Path, FileMetadata> filteredFileMetadata) {",
+            "   Multimap<Path, RowGroupMetadata> prunedRowGroups = LinkedListMultimap.create();"
           ]
         }
       },
@@ -2737,13 +2730,13 @@
           "file": "MetastoreAnalyzeTableHandler.java",
           "lang": "java",
           "diff": [
-            " private DrillRel getSegmentAggRelNode(List<NamedExpression> segmentExpressions, DrillRel convertedRelNode,",
-            " boolean createNewAggregations, List<SchemaPath> statisticsColumns, SchemaPath locationField,",
+            "   private DrillRel getSegmentAggRelNode(List<NamedExpression> segmentExpressions, DrillRel convertedRelNode,",
+            "   boolean createNewAggregations, List<SchemaPath> statisticsColumns, SchemaPath locationField,",
             " - AnalyzeInfoProvider analyzeInfoProvider, int segmentLevel, MetadataHandlerContext handlerContext) {",
             " - SchemaPath lastModifiedTimeField =",
             " + int segmentLevel, MetadataHandlerContext handlerContext) {",
             " + SchemaPath lastModifiedTimeField =",
-            " SchemaPath.getSimplePath(config.getContext().getOptions().getString(ExecConstants.IMPLICIT_LAST_MODIFIED_TIME_COLUMN_LABEL));"
+            "   SchemaPath.getSimplePath(config.getContext().getOptions().getString(ExecConstants.IMPLICIT_LAST_MODIFIED_TIME_COLUMN_LABEL));"
           ]
         }
       },
@@ -2756,13 +2749,13 @@
           "file": "MetastoreAnalyzeTableHandler.java",
           "lang": "java",
           "diff": [
-            " private DrillRel getSegmentAggRelNode(List<NamedExpression> segmentExpressions, DrillRel convertedRelNode,",
-            " boolean createNewAggregations, List<SchemaPath> statisticsColumns, SchemaPath locationField,",
+            "   private DrillRel getSegmentAggRelNode(List<NamedExpression> segmentExpressions, DrillRel convertedRelNode,",
+            "   boolean createNewAggregations, List<SchemaPath> statisticsColumns, SchemaPath locationField,",
             " - AnalyzeInfoProvider analyzeInfoProvider, int segmentLevel, MetadataHandlerContext handlerContext) {",
             " - SchemaPath lastModifiedTimeField =",
             " + int segmentLevel, MetadataHandlerContext handlerContext) {",
             " + SchemaPath lastModifiedTimeField =",
-            " SchemaPath.getSimplePath(config.getContext().getOptions().getString(ExecConstants.IMPLICIT_LAST_MODIFIED_TIME_COLUMN_LABEL));"
+            "   SchemaPath.getSimplePath(config.getContext().getOptions().getString(ExecConstants.IMPLICIT_LAST_MODIFIED_TIME_COLUMN_LABEL));"
           ]
         }
       }
@@ -2818,8 +2811,8 @@
           "file": "SequenceIDBuffer.java",
           "lang": "java",
           "diff": [
-            " public void close() {",
-            " try {",
+            "   public void close() {",
+            "   try {",
             " - Preconditions.checkArgument(backingBuffer.isDirect(),",
             " - \"buffer isn't direct!\");",
             " - Method cleanerMethod = backingBuffer.getClass().getMethod(\"cleaner\");",
@@ -2829,14 +2822,14 @@
             " - cleanMethod.setAccessible(true);",
             " - cleanMethod.invoke(cleaner);",
             " + DirectMemoryUtils.clean(backingBuffer);",
-            " } catch (Exception e) {",
+            "   } catch (Exception e) {",
             " - Throwables.propagate(e);",
             " + LOG.warn(\"Error cleaning up buffer\", e);",
             " + if (LOG.isDebugEnabled()) {",
             " + Throwables.propagate(e);",
             " + }",
-            " }",
-            " }"
+            "   }",
+            "   }"
           ]
         }
       }
@@ -2858,7 +2851,7 @@
           "file": "TestFileChannel.java",
           "lang": "java",
           "diff": [
-            " public void run() {",
+            "   public void run() {",
             " - FileChannel channel = createFileChannel();",
             " - channel.start();",
             " - Transaction tx = channel.getTransaction();",
@@ -2869,7 +2862,7 @@
             " - e = channel.take();",
             " - Assert.assertNotNull(e);",
             " - Assert.assertTrue(set.remove(new String(e.getBody())));",
-            " ... "
+            "   ... "
           ]
         }
       },
@@ -2909,7 +2902,7 @@
           "diff": [
             " + } finally {",
             " + transaction.close();",
-            " }",
+            "   }",
             " - /* FIXME: Add finally { transaction.close() } */"
           ]
         }
@@ -2923,12 +2916,12 @@
           "file": "TestJsonFileConfigurationProvider.java",
           "lang": "java",
           "diff": [
-            " @@ -54,8 +54,6 @@ public void testLifecycle() throws InterruptedException {",
-            " provider.setFile(testFile);",
-            " provider.start();",
+            "   public void testLifecycle() throws InterruptedException {",
+            "   provider.setFile(testFile);",
+            "   provider.start();",
             " - ",
             " - Thread.sleep(1000);",
-            " provider.stop();"
+            "   provider.stop();"
           ]
         }
       },
@@ -2978,12 +2971,12 @@
           "file": "HDFSCompressedDataStream.java",
           "lang": "java",
           "diff": [
-            " @@ -90,7 +90,6 @@ public void open(String filePath, CompressionCodec codec,",
-            " } else {",
-            " fsOut = hdfs.create(dstPath);",
-            " }",
+            "   public void open(String filePath, CompressionCodec codec,",
+            "   } else {",
+            "   fsOut = hdfs.create(dstPath);",
+            "   }",
             " - System.out.println(\"fsOut \" + fsOut);",
-            " cmpOut = codec.createOutputStream(fsOut);"
+            "   cmpOut = codec.createOutputStream(fsOut);"
           ]
         }
       }
@@ -3040,10 +3033,10 @@
           "file": "GangliaServer.java",
           "lang": "java",
           "diff": [
-            " @@ -332,47 +331,24 @@ public void configure(Context context) {",
-            " @Override",
-            " public void run() {",
-            " try {",
+            "   public void configure(Context context) {",
+            "   @Override",
+            "   public void run() {",
+            "   try {",
             " - Set<ObjectInstance> queryMBeans = null;",
             " - try {",
             " - queryMBeans = mbeanServer.queryMBeans(",
@@ -3096,13 +3089,13 @@
             " - } catch (Exception ex) {",
             " - logger.error(\"Error getting mbean attributes\", ex);",
             " + server.sendToGangliaNodes();",
-            " }",
-            " }",
+            "   }",
+            "   }",
             " - } catch(Throwable t) {",
             " + } catch (Throwable t) {",
-            " logger.error(\"Unexpected error\", t);",
-            " }",
-            " }"
+            "   logger.error(\"Unexpected error\", t);",
+            "   }",
+            "   }"
           ]
         }
       }
@@ -3155,7 +3148,7 @@
             " + } catch (KeeperException | InterruptedException e) {",
             " + throw new RuntimeException(",
             " + \"exchangeVertexPartitions: Got runtime exception\", e);",
-            " }"
+            "   }"
           ]
         }
       },
@@ -3265,10 +3258,10 @@
           "file": "DiskBackedPartitionStore.java",
           "lang": "java",
           "diff": [
-            " @@ -1284,14 +1615,11 @@ private void readOutEdges(DataInput in, Partition<I, V, E> partition)",
-            " partition.putVertex(vertex);",
-            " }",
-            " inputStream.close();",
+            "   private void readOutEdges(DataInput in, Partition<I, V, E> partition)",
+            "   partition.putVertex(vertex);",
+            "   }",
+            "   inputStream.close();",
             " - if (!file.delete()) {",
             " - String msg = \"loadPartition: failed to delete \" + file.getAbsolutePath();",
             " - LOG.error(msg);",
@@ -3340,16 +3333,16 @@
           "file": "SyntheticGraphInit.java",
           "lang": "java",
           "diff": [
-            " @@ -84,11 +83,5 @@ public void modifyGraph(NumericTestGraph<I, V, E> graph) {",
-            " i, j, edgeSupplier != null ? edgeSupplier.get() : null);",
-            " }",
-            " }",
+            "   public void modifyGraph(NumericTestGraph<I, V, E> graph) {",
+            "   i, j, edgeSupplier != null ? edgeSupplier.get() : null);",
+            "   }",
+            "   }",
             " - // if (vertexModifier != null) {",
             " - //     for (int i = 0; i < numVertices; i++) {",
             " - //        vertexModifier.modifyVertexValue(i, graph.getVertex(i).getValue());",
             " - //      }",
             " - //  }",
-            " }"
+            "   }"
           ]
         }
       }
@@ -3371,7 +3364,7 @@
           "file": "NettyWorkerServer.java",
           "lang": "java",
           "diff": [
-            " if (!useOutOfCoreMessaging) {",
+            "   if (!useOutOfCoreMessaging) {",
             " - if (conf.useCombiner()) {",
             " - if (LOG.isInfoEnabled()) {",
             " - LOG.info(\"createMessageStoreFactory: \" +",
@@ -3430,10 +3423,10 @@
           "file": "Varint.java",
           "lang": "java",
           "diff": [
-            " @@ -103,10 +101,10 @@ public static void writeUnsignedVarLong(",
-            " long value,",
-            " DataOutput out",
-            " ) throws IOException {",
+            "   public static void writeUnsignedVarLong(",
+            "   long value,",
+            "   DataOutput out",
+            "   ) throws IOException {",
             " - Preconditions.checkState(",
             " - value >= 0,",
             " - \"Negative value passed into writeUnsignedVarLong - \" + value",
@@ -3442,8 +3435,8 @@
             " + throw new IllegalStateException(",
             " + \"Negative value passed into writeUnsignedVarLong - \" + value);",
             " + }",
-            " writeVarLong(value, out);",
-            " }"
+            "   writeVarLong(value, out);",
+            "   }"
           ]
         }
       }
@@ -3465,7 +3458,7 @@
           "file": "KnoxLdapContextFactory.java",
           "lang": "java",
           "diff": [
-            " String clusterName = getClusterName();",
+            "   String clusterName = getClusterName();",
             " - String systemPassword = System.getProperty(clusterName + \".\" + aliasName);",
             " - if (systemPassword != null) {",
             " - super.setSystemPassword( systemPassword );",
@@ -3473,7 +3466,7 @@
             " + char[] password = aliasService.getPasswordFromAliasForCluster(clusterName, systemPass);",
             " + if ( password != null ) {",
             " + super.setSystemPassword( new String(password) );",
-            " } else {",
+            "   } else {",
             " - char[] password = aliasService.getPasswordFromAliasForCluster(clusterName, systemPass);",
             " - if ( password != null ) {",
             " - super.setSystemPassword( new String(password) );",
@@ -3481,7 +3474,7 @@
             " - super.setSystemPassword( new String(systemPass) );",
             " - }",
             " + LOG.aliasValueNotFound(clusterName, aliasName);",
-            " }"
+            "   }"
           ]
         }
       },
@@ -3515,7 +3508,7 @@
           "lang": "java",
           "diff": [
             " - // Attempt to create the correct size list.",
-            " Params matchParams = new Params();",
+            "   Params matchParams = new Params();",
             " - // ArrayList<MatchSegment> matchPath = new ArrayList<MatchSegment>(",
             " - // bestPath.depth + ( ( bestQuery != null ) ? bestQuery.template.getQuery().size() : 0 ) );",
             " - // Add the matching query segments to the end of the list."
@@ -3531,8 +3524,8 @@
           "file": "Expander.java",
           "lang": "java",
           "diff": [
-            " private static void expandExplicitQuery( Template template, Set<String> names, Params params, StringBuilder builder, AtomicInteger index ) {",
-            " Collection<Query> query = template.getQuery().values();",
+            "   private static void expandExplicitQuery( Template template, Set<String> names, Params params, StringBuilder builder, AtomicInteger index ) {",
+            "   Collection<Query> query = template.getQuery().values();",
             " - if( query.isEmpty() ) {",
             " - if( template.hasQuery() ) {",
             " - builder.append( \"?\" );",
@@ -3540,16 +3533,16 @@
             " - } else {",
             " -  boolean first = true;",
             " + if( !query.isEmpty() ) {",
-            " Iterator<Query> iterator = query.iterator();",
-            " while( iterator.hasNext() ) {",
+            "   Iterator<Query> iterator = query.iterator();",
+            "   while( iterator.hasNext() ) {",
             " - if( first ) {",
             " + int i = index.incrementAndGet();",
             " + if( i == 1 ) {",
-            " builder.append( \"?\" );",
+            "   builder.append( \"?\" );",
             " - first = false;",
-            " } else {",
-            " builder.append( \"&\" );",
-            " }"
+            "   } else {",
+            "   builder.append( \"&\" );",
+            "   }"
           ]
         }
       },
@@ -3562,9 +3555,9 @@
           "file": "UrlRewriteRulesDescriptorFactoryTest.java",
           "lang": "java",
           "diff": [
-            " public void testLoadSimpleFile() throws IOException {",
-            " UrlRewriteRulesDescriptor config =",
-            " UrlRewriteRulesDescriptorFactory.load( \"xml\", getTestResourceReader( \"simple.xml\", \"UTF-8\" ) );",
+            "   public void testLoadSimpleFile() throws IOException {",
+            "   UrlRewriteRulesDescriptor config =",
+            "   UrlRewriteRulesDescriptorFactory.load( \"xml\", getTestResourceReader( \"simple.xml\", \"UTF-8\" ) );",
             " + assertThat( \"Failed to load simple config file.\", config, notNullValue() );",
             " + }",
             " ",
@@ -3605,8 +3598,8 @@
             " + * @since 0.14.0",
             " + * @deprecated Use {@link org.apache.knox.gateway.dispatch.DefaultDispatch}",
             " + */",
-            " @Deprecated",
-            " public class DefaultDispatch extends org.apache.knox.gateway.dispatch.DefaultDispatch {"
+            "   @Deprecated",
+            "   public class DefaultDispatch extends org.apache.knox.gateway.dispatch.DefaultDispatch {"
           ]
         }
       },
@@ -3619,13 +3612,13 @@
           "file": "AbstractIdentityAssertionFilter.java",
           "lang": "java",
           "diff": [
-            " private static final GatewaySpiMessages LOG = MessagesFactory.get( GatewaySpiMessages.class );",
+            "   private static final GatewaySpiMessages LOG = MessagesFactory.get( GatewaySpiMessages.class );",
             " - private static final GatewaySpiResources RES = ResourcesFactory.get( GatewaySpiResources.class );",
             " - private static AuditService auditService = AuditServiceFactory.getAuditService();",
             " - private static Auditor auditor = auditService.getAuditor(",
             " - AuditConstants.DEFAULT_AUDITOR_NAME, AuditConstants.KNOX_SERVICE_NAME,",
             " - AuditConstants.KNOX_COMPONENT_NAME );",
-            " protected PrincipalMapper mapper = new SimplePrincipalMapper();"
+            "   protected PrincipalMapper mapper = new SimplePrincipalMapper();"
           ]
         }
       },
@@ -3638,12 +3631,12 @@
           "file": "SimpleDirectoryService.java",
           "lang": "java",
           "diff": [
-            " public class SimpleDirectoryService extends DefaultDirectoryService {",
+            "   public class SimpleDirectoryService extends DefaultDirectoryService {",
             " ",
             " -  public SimpleDirectoryService() throws Exception {",
             " + public SimpleDirectoryService() throws LdapException {",
-            " super();",
-            " }"
+            "   super();",
+            "   }"
           ]
         }
       }
@@ -3719,8 +3712,8 @@
           "file": "KnoxSh.java",
           "lang": "java",
           "diff": [
-            " @Override",
-            " public void execute() throws Exception {",
+            "   @Override",
+            "   public void execute() throws Exception {",
             " + String tokenfile = readFile(",
             " + System.getProperty(\"user.home\") +",
             " + File.separator + \".knoxtokencache\");",
@@ -3729,7 +3722,7 @@
             " + Map<String, String> json = JsonUtils.getMapFromJsonString(tokenfile);",
             " + displayTokenDetails(json);",
             " + }",
-            " }"
+            "   }"
           ]
         }
       }
@@ -3751,36 +3744,36 @@
           "file": "AliasBasedTokenStateService.java",
           "lang": "java",
           "diff": [
-            " private AliasService aliasService;",
+            "   private AliasService aliasService;",
             " + private static final String TOKEN_MAX_LIFETIME_POSTFIX = \"--max\";",
             " ",
-            " public void setAliasService(AliasService aliasService) {",
-            " this.aliasService = aliasService;",
-            " @@ -61,7 +65,7 @@ public void addToken(final String token,",
-            " protected void setMaxLifetime(final String token, long issueTime, long maxLifetimeDuration) {",
-            " try {",
-            " aliasService.addAliasForCluster(AliasService.NO_CLUSTER_NAME,",
+            "   public void setAliasService(AliasService aliasService) {",
+            "   this.aliasService = aliasService;",
+            "   public void addToken(final String token,",
+            "   protected void setMaxLifetime(final String token, long issueTime, long maxLifetimeDuration) {",
+            "   try {",
+            "   aliasService.addAliasForCluster(AliasService.NO_CLUSTER_NAME,",
             " - token + \"--max\",",
             " + token + TOKEN_MAX_LIFETIME_POSTFIX,",
-            " String.valueOf(issueTime + maxLifetimeDuration));",
-            " } catch (AliasServiceException e) {",
-            " log.failedToSaveTokenState(getTokenDisplayText(token), e);",
-            " @@ -73,7 +77,7 @@ protected long getMaxLifetime(final String token) {",
-            " long result = 0;",
-            " try {",
-            " char[] maxLifetimeStr =",
+            "   String.valueOf(issueTime + maxLifetimeDuration));",
+            "   } catch (AliasServiceException e) {",
+            "   log.failedToSaveTokenState(getTokenDisplayText(token), e);",
+            "   protected long getMaxLifetime(final String token) {",
+            "   long result = 0;",
+            "   try {",
+            "   char[] maxLifetimeStr =",
             " - aliasService.getPasswordFromAliasForCluster(AliasService.NO_CLUSTER_NAME, token + \"--max\");",
             " + aliasService.getPasswordFromAliasForCluster(AliasService.NO_CLUSTER_NAME, token + TOKEN_MAX_LIFETIME_POSTFIX);",
-            " if (maxLifetimeStr != null) {",
-            " result = Long.parseLong(new String(maxLifetimeStr));",
-            " }",
-            " @@ -125,7 +129,7 @@ protected void removeToken(final String token) {",
+            "   if (maxLifetimeStr != null) {",
+            "   result = Long.parseLong(new String(maxLifetimeStr));",
+            "   }",
+            "   protected void removeToken(final String token) {",
             " ",
-            " try {",
-            " aliasService.removeAliasForCluster(AliasService.NO_CLUSTER_NAME, token);",
+            "   try {",
+            "   aliasService.removeAliasForCluster(AliasService.NO_CLUSTER_NAME, token);",
             " - aliasService.removeAliasForCluster(AliasService.NO_CLUSTER_NAME,token + \"--max\");",
             " + aliasService.removeAliasForCluster(AliasService.NO_CLUSTER_NAME,token + TOKEN_MAX_LIFETIME_POSTFIX);",
-            " log.removedTokenState(getTokenDisplayText(token));"
+            "   log.removedTokenState(getTokenDisplayText(token));"
           ]
         }
       },
@@ -3885,30 +3878,30 @@
           "lang": "java",
           "diff": [
             " + private static final String CREDENTIALS_STORE_TYPE = \"JCEKS\";",
-            " @Override",
-            " public void createCredentialStoreForCluster(String clusterName) throws KeystoreServiceException {",
+            "   @Override",
+            "   public void createCredentialStoreForCluster(String clusterName) throws KeystoreServiceException {",
             " - String filename = Paths.get(keyStoreDir, clusterName + CREDENTIALS_SUFFIX).toString();",
             " + Path keystoreFilePath = keyStoreDirPath.resolve(clusterName + CREDENTIALS_SUFFIX);",
-            " writeLock.lock();",
-            " try {",
+            "   writeLock.lock();",
+            "   try {",
             " - createKeystore(filename, \"JCEKS\", masterService.getMasterSecret());",
             " + createKeyStore(keystoreFilePath, CREDENTIALS_STORE_TYPE, masterService.getMasterSecret());",
-            " }",
-            " finally {",
-            " writeLock.unlock();",
-            " @Override",
-            " public boolean isCredentialStoreForClusterAvailable(String clusterName) throws KeystoreServiceException {",
-            " boolean rc;",
+            "   }",
+            "   finally {",
+            "   writeLock.unlock();",
+            "   @Override",
+            "   public boolean isCredentialStoreForClusterAvailable(String clusterName) throws KeystoreServiceException {",
+            "   boolean rc;",
             " - final File  keyStoreFile = new File( keyStoreDir, clusterName + CREDENTIALS_SUFFIX  );",
             " + final Path keyStoreFilePath = keyStoreDirPath.resolve(clusterName + CREDENTIALS_SUFFIX);",
-            " readLock.lock();",
-            " try {",
-            " try {",
+            "   readLock.lock();",
+            "   try {",
+            "   try {",
             " - rc = isKeystoreAvailable(keyStoreFile, \"JCEKS\", masterService.getMasterSecret());",
             " + rc = isKeyStoreAvailable(keyStoreFilePath, CREDENTIALS_STORE_TYPE, masterService.getMasterSecret());",
-            " } catch (KeyStoreException | IOException e) {",
-            " throw new KeystoreServiceException(e);",
-            " }"
+            "   } catch (KeyStoreException | IOException e) {",
+            "   throw new KeystoreServiceException(e);",
+            "   }"
           ]
         }
       }
@@ -3952,9 +3945,8 @@
           "file": "HttpClientDispatch.java",
           "lang": "java",
           "diff": [
-            " @@ -17,302 +17,19 @@",
-            " @Override",
-            " -  public void destroy() {",
+            "   @Override",
+            " - public void destroy() {",
             " -",
             " - }"
           ]
@@ -4028,10 +4020,10 @@
           "file": "HadoopConfig.java",
           "lang": "java",
           "diff": [
-            " public class HadoopConfig {",
+            "   public class HadoopConfig {",
             " ",
             " - @Autowired",
-            " private Environment environment;",
+            "   private Environment environment;",
             " ",
             " + @Autowired",
             " + public HadoopConfig(Environment environment) {",
@@ -4049,10 +4041,10 @@
           "file": "ElasticsearchDao.java",
           "lang": "java",
           "diff": [
-            " @@ -146,23 +137,8 @@ public class ElasticsearchDao implements IndexDao {",
-            " }",
-            " SearchResponse searchResponse = new SearchResponse();",
-            " searchResponse.setTotal(elasticsearchResponse.getHits().getTotalHits());",
+            "   public class ElasticsearchDao implements IndexDao {",
+            "   }",
+            "   SearchResponse searchResponse = new SearchResponse();",
+            "   searchResponse.setTotal(elasticsearchResponse.getHits().getTotalHits());",
             " - searchResponse.setResults(Arrays.stream(elasticsearchResponse.getHits().getHits()).map(searchHit -> {",
             " - SearchResult searchResult = new SearchResult();",
             " - searchResult.setId(searchHit.getId());",
@@ -4313,7 +4305,7 @@
           "diff": [
             " - if(ClassUtil.isParametrizedType(injectionPoint.getType()))",
             " + if(!(rawType.equals(Instance.class)))",
-            " {",
+            "   {",
             " - ParameterizedType pt = (ParameterizedType)injectionPoint.getType();",
             " - rawType = (Class<?>) pt.getRawType();",
             " - Type[] typeArgs = pt.getActualTypeArguments();",
@@ -4323,7 +4315,7 @@
             " + else",
             " + {",
             " + if(typeArgs.length == 1)",
-            " {",
+            "   {",
             " - throw new WebBeansConfigurationException(\"@Obtains field injection \" + injectionPoint.toString() + \" must have type javax.inject.Instance\");",
             " - }",
             " - else",
@@ -4343,20 +4335,20 @@
             " + if(ClassUtil.isParametrizedType(actualArgument) || ClassUtil.isWildCardType(actualArgument) || ClassUtil.isTypeVariable(actualArgument))",
             " + {",
             " + throw new WebBeansConfigurationException(\"<Instance> field injection \" + injectionPoint.toString() + \" actual type argument can not be Parametrized, Wildcard type or Type variable\");",
-            " }",
+            "   }",
             " - else",
             " - }",
             " + Type actualArgument = typeArgs[0];",
             " + if(ClassUtil.isParametrizedType(actualArgument) || ClassUtil.isWildCardType(actualArgument) || ClassUtil.isTypeVariable(actualArgument))",
             " + {",
             " + throw new WebBeansConfigurationException(\"<Instance> field injection \" + injectionPoint.toString() + \" actual type argument can not be Parametrized, Wildcard type or Type variable\");",
-            " }",
+            "   }",
             " - else",
             " + if(ClassUtil.isDefinitionConstainsTypeVariables((Class<?>)actualArgument))",
-            " {",
+            "   {",
             " - throw new WebBeansConfigurationException(\"@Obtains field injection \" + injectionPoint.toString() + \" must not have more than one actual type argument\");",
             " + throw new WebBeansConfigurationException(\"<Instance> field injection \" + injectionPoint.toString() + \" must not have TypeVariable or WildCard generic type argument\");",
-            " }",
+            "   }",
             " - }",
             " - }"
           ]
@@ -4391,9 +4383,9 @@
           "file": "JavassistProxyFactory.java",
           "lang": "java",
           "diff": [
-            " if (!(bean instanceof WebBeansDecorator<?>) && !(bean instanceof WebBeansInterceptor<?>))",
-            " {",
-            " InterceptorHandler interceptorHandler = createInterceptorHandler(bean, creationalContext);",
+            "   if (!(bean instanceof WebBeansDecorator<?>) && !(bean instanceof WebBeansInterceptor<?>))",
+            "   {",
+            "   InterceptorHandler interceptorHandler = createInterceptorHandler(bean, creationalContext);",
             " - if (!true)",
             " - {",
             " - final Set<Type> types = bean.getTypes();",
@@ -4433,9 +4425,9 @@
             " - setHandler(result, interceptorHandler);",
             " - }",
             " + setHandler(result, interceptorHandler);",
-            " }",
-            " }",
-            " catch (Exception e)"
+            "   }",
+            "   }",
+            "   catch (Exception e)"
           ]
         }
       },
@@ -4459,12 +4451,12 @@
           "file": "AnnotatedTypeImplTest.java",
           "lang": "java",
           "diff": [
-            " @@ -110,7 +108,6 @@ public void doit()",
-            " }",
-            " @Test",
+            "   public void doit()",
+            "   }",
+            "   @Test",
             " - @Ignore",
-            " public void testGetConstructors()",
-            " throws Exception",
+            "   public void testGetConstructors()",
+            "   throws Exception",
             " - {"
           ]
         }
@@ -4487,9 +4479,9 @@
           "file": "AbstractLifeCycle.java",
           "lang": "java",
           "diff": [
-            " @@ -196,14 +201,6 @@ public abstract class AbstractLifeCycle implements ContainerLifecycle",
-            " return logger;",
-            " }",
+            "   public abstract class AbstractLifeCycle implements ContainerLifecycle",
+            "   return logger;",
+            "   }",
             " - /**",
             " - * @return the scannerService",
             " - */",
@@ -4533,12 +4525,12 @@
           "file": "PluginLoader.java",
           "lang": "java",
           "diff": [
-            " @@ -270,6 +270,6 @@ public OpenWebBeansWebPlugin getWebPlugin()",
-            " private boolean pluginsExist()",
-            " {",
+            "   public OpenWebBeansWebPlugin getWebPlugin()",
+            "   private boolean pluginsExist()",
+            "   {",
             " - return plugins == null && plugins.size() > 0;",
             " + return plugins != null && plugins.size() > 0;",
-            " }"
+            "   }"
           ]
         }
       }
@@ -4656,32 +4648,32 @@
           "file": "MultipleSpecializationTest.java",
           "lang": "java",
           "diff": [
-            " /**",
-            " * Tests that a specialization must not have a @Named annotation",
-            " */",
+            "   /**",
+            "   * Tests that a specialization must not have a @Named annotation",
+            "   */",
             " - //@Test",
             " + @Test",
-            " public void testFailMultipleSpecializationWithNamed()",
-            " {",
+            "   public void testFailMultipleSpecializationWithNamed()",
+            "   {",
             " + Exception occuredException = null;",
-            " try",
-            " {",
-            " Collection<Class<?>> beanClasses = new ArrayList<Class<?>>();",
-            " @@ -68,10 +71,13 @@ public class MultipleSpecializationTest extends AbstractUnitTest",
-            " }",
-            " catch (Exception e)",
-            " {",
+            "   try",
+            "   {",
+            "   Collection<Class<?>> beanClasses = new ArrayList<Class<?>>();",
+            "   public class MultipleSpecializationTest extends AbstractUnitTest",
+            "   }",
+            "   catch (Exception e)",
+            "   {",
             " - Assert.assertEquals(WebBeansConfigurationException.class.getName(), e.getClass().getName());",
             " - Assert.assertEquals(InconsistentSpecializationException.class.getName(), e.getCause().getClass().getName());",
             " + occuredException = e;",
-            " }",
+            "   }",
             " + Assert.assertNotNull(occuredException);",
             " + Assert.assertEquals(WebBeansConfigurationException.class.getName(), occuredException.getClass().getName());",
             " + Assert.assertEquals(DefinitionException.class.getName(), occuredException.getCause().getClass().getName());",
             " +",
-            " shutDownContainer();",
-            " }",
-            " }"
+            "   shutDownContainer();",
+            "   }",
+            "   }"
           ]
         }
       }
@@ -4703,10 +4695,10 @@
           "file": "VersionType.java",
           "lang": "java",
           "diff": [
-            " public ResourceEventType getEvent () {",
+            "   public ResourceEventType getEvent () {",
             " - // ResourceEventType event = (ResourceEventType)getPropertiesByLocalName(EVENT);",
-            " return (ResourceEventType)getFirstEquivalentProperty(EVENT,ResourceEventType.class);",
-            " }"
+            "   return (ResourceEventType)getFirstEquivalentProperty(EVENT,ResourceEventType.class);",
+            "   }"
           ]
         }
       }
@@ -4791,14 +4783,14 @@
             " - NodeList nodes = n.getChildNodes();",
             " - for (int i = 0; i < nodes.getLength(); i++)",
             " + try",
-            " {",
+            "   {",
             " - Node child = nodes.item(i);",
             " - if (name.equals(child.getNodeName()))",
             " - {",
             " - return (IIOMetadataNode)child;",
             " - }",
             " + metadata.mergeTree(\"javax_imageio_1.0\", root);",
-            " }",
+            "   }",
             " - return null;",
             " - }"
           ]
@@ -4870,15 +4862,15 @@
           "file": "OperatorProcessor.java",
           "lang": "java",
           "diff": [
-            " @@ -76,7 +76,7 @@ public void setContext(PDFStreamEngine context)",
-            " * @param clazz The expected class.",
-            " * @return the boolean",
-            " */",
+            "   public void setContext(PDFStreamEngine context)",
+            "   * @param clazz The expected class.",
+            "   * @return the boolean",
+            "   */",
             " - public boolean checkArrayTypesClass(List<COSBase> operands, Class clazz)",
             " + public boolean checkArrayTypesClass(List<COSBase> operands, Class<?> clazz)",
-            " {",
-            " for (COSBase base : operands)",
-            " {"
+            "   {",
+            "     for (COSBase base : operands)",
+            "   {"
           ]
         }
       },
@@ -4891,9 +4883,9 @@
           "file": "PDFont.java",
           "lang": "java",
           "diff": [
-            " @@ -583,61 +599,6 @@ public void setEncoding( Encoding enc )",
-            " public Encoding getEncoding() throws IOException",
-            " {",
+            "   public void setEncoding( Encoding enc )",
+            "   public Encoding getEncoding() throws IOException",
+            "   {",
             " - if( fontEncoding == null )",
             " - {",
             " - EncodingManager manager = getEncodingManager();",
@@ -4934,8 +4926,8 @@
             " - throw new IOException( \"Unexpected encoding type:\" + encoding.getClass().getName() );",
             " - }",
             " - }",
-            " return fontEncoding;",
-            " }"
+            "   return fontEncoding;",
+            "   }"
           ]
         }
       }
@@ -4992,7 +4984,7 @@
             " +",
             " + checkEncoding();",
             " + checkToUnicode();",
-            " }"
+            "   }"
           ]
         }
       }
@@ -5014,9 +5006,9 @@
           "file": "ControlCharacterTest.java",
           "lang": "java",
           "diff": [
-            " @Test",
-            " public void characterCR() throws IOException",
-            " {",
+            "   @Test",
+            "   public void characterCR() throws IOException",
+            "   {",
             " - acroForm.getField(\"pdfbox-cr\").setValue(\"CR\rCR\");",
             " + PDField field = acroForm.getField(\"pdfbox-cr\");",
             " + field.setValue(\"CR\rCR\");",
@@ -5025,7 +5017,7 @@
             " + List<String> acrobatValues = getStringsFromStream(acroForm.getField(\"acrobat-cr\"));",
             " +",
             " + assertEquals(pdfboxValues, acrobatValues);",
-            " }"
+            "   }"
           ]
         }
       },
@@ -5038,10 +5030,10 @@
           "file": "PDDocument.java",
           "lang": "java",
           "diff": [
-            " @@ -1399,49 +1399,22 @@ public void close() throws IOException",
-            " // close resources and COSWriter",
-            " if (signingSupport != null)",
-            " {",
+            "   public void close() throws IOException",
+            "   // close resources and COSWriter",
+            "   if (signingSupport != null)",
+            "   {",
             " - try",
             " - {",
             " - signingSupport.close();",
@@ -5055,7 +5047,7 @@
             " - }",
             " - }",
             " + firstException = IOUtils.closeAndLogException(signingSupport, LOG, \"SigningSupport\", firstException);",
-            " } "
+            "   } "
           ]
         }
       },
@@ -5068,10 +5060,10 @@
           "file": "COSUtils.java",
           "lang": "java",
           "diff": [
-            " @@ -70,17 +70,10 @@ public static boolean isString(COSBase elt, COSDocument doc)",
-            " {",
-            " if (elt instanceof COSObject)",
-            " {",
+            "   public static boolean isString(COSBase elt, COSDocument doc)",
+            "   {",
+            "   if (elt instanceof COSObject)",
+            "   {",
             " - try",
             " - {",
             " - COSObjectKey key = new COSObjectKey((COSObject) elt);",
@@ -5087,12 +5079,12 @@
             " + COSObjectKey key = new COSObjectKey((COSObject) elt);",
             " + COSObject obj = doc.getObjectFromPool(key);",
             " + return (obj != null && (obj.getObject() instanceof COSString || obj.getObject() instanceof COSName));",
-            " }",
-            " return (elt instanceof COSString || elt instanceof COSName);",
-            " @@ -122,17 +115,9 @@ private static boolean isClass(COSBase elt, COSDocument doc, Class claz)",
-            " {",
-            " if (elt instanceof COSObject)",
-            " {",
+            "   }",
+            "   return (elt instanceof COSString || elt instanceof COSName);",
+            "   private static boolean isClass(COSBase elt, COSDocument doc, Class claz)",
+            "   {",
+            "   if (elt instanceof COSObject)",
+            "   {",
             " - try",
             " - {",
             " - COSObjectKey key = new COSObjectKey((COSObject) elt);",
@@ -5107,8 +5099,8 @@
             " + COSObjectKey key = new COSObjectKey((COSObject) elt);",
             " + COSObject obj = doc.getObjectFromPool(key);",
             " + return (obj != null && claz.isInstance(obj.getObject()));",
-            " }",
-            " return claz.isInstance(elt);"
+            "   }",
+            "   return claz.isInstance(elt);"
           ]
         }
       }
@@ -5130,19 +5122,19 @@
           "file": "AddMessageToEachPage.java",
           "lang": "java",
           "diff": [
-            " @@ -55,12 +55,8 @@ public AddMessageToEachPage()",
-            " */",
-            " public void doIt( String file, String message, String  outfile ) throws IOException",
-            " {",
+            "   public AddMessageToEachPage()",
+            "   */",
+            "   public void doIt( String file, String message, String  outfile ) throws IOException",
+            "   {",
             " - // the document",
             " - PDDocument doc = null;",
             " - try",
             " + try (PDDocument doc = PDDocument.load(new File(file)))",
-            " {",
+            "   {",
             " - doc = PDDocument.load( new File(file) );",
             " -",
-            " PDFont font = PDType1Font.HELVETICA_BOLD;",
-            " float fontSize = 36.0f;"
+            "   PDFont font = PDType1Font.HELVETICA_BOLD;",
+            "   float fontSize = 36.0f;"
           ]
         }
       },
@@ -5155,10 +5147,10 @@
           "file": "PDFDebugger.java",
           "lang": "java",
           "diff": [
-            " @@ -1106,10 +1105,10 @@ else if( selectedNode instanceof COSStream )",
-            " try",
-            " {",
-            " COSStream stream = (COSStream) selectedNode;",
+            "   else if( selectedNode instanceof COSStream )",
+            "   try",
+            "   {",
+            "   COSStream stream = (COSStream) selectedNode;",
             " - InputStream in = stream.createInputStream();",
             " - ByteArrayOutputStream baos = new ByteArrayOutputStream();",
             " - IOUtils.copy(in, baos);",
@@ -5167,9 +5159,9 @@
             " + {",
             " + data = new String(IOUtils.toByteArray(in));",
             " + }",
-            " }",
-            " catch( IOException e )",
-            " {"
+            "   }",
+            "   catch( IOException e )",
+            "   {"
           ]
         }
       },
@@ -5182,10 +5174,10 @@
           "file": "PDFTreeCellRenderer.java",
           "lang": "java",
           "diff": [
-            " @@ -194,16 +194,6 @@ private String toTreePostfix(Object nodeValue)",
-            " dict.containsKey(COSName.T) && dict.containsKey(COSName.KIDS))",
-            " {",
-            " String name = dict.getString(COSName.T);",
+            "   private String toTreePostfix(Object nodeValue)",
+            "   dict.containsKey(COSName.T) && dict.containsKey(COSName.KIDS))",
+            "   {",
+            "   String name = dict.getString(COSName.T);",
             " - while (name == null)",
             " - {",
             " - COSBase base = dict.getDictionaryObject(COSName.PARENT);",
@@ -5196,9 +5188,9 @@
             " - dict = (COSDictionary) base;",
             " - name = dict.getString(COSName.T);",
             " - }",
-            " if (name != null)",
-            " {",
-            " sb.append(\"   Name: \");"
+            "   if (name != null)",
+            "   {",
+            "   sb.append(\"   Name: \");"
           ]
         }
       }
@@ -5220,8 +5212,8 @@
           "file": "ComponentImpl.java",
           "lang": "java",
           "diff": [
-            " if (!calculateSubjectType(functionMetaData).equals(componentType)) {",
-            " log.error(\"{}/{}/{} is not a {}\", tenant, namespace, componentName, componentType);",
+            "   if (!calculateSubjectType(functionMetaData).equals(componentType)) {",
+            "   log.error(\"{}/{}/{} is not a {}\", tenant, namespace, componentName, componentType);",
             " - return Response.status(Status.NOT_FOUND).type(MediaType.APPLICATION_JSON)",
             " - .entity(new ErrorData(String.format(componentType + \" %s doesn't exist\", componentName))).build();",
             " - }",
@@ -5237,7 +5229,7 @@
             " - SinkConfig config = SinkConfigUtils.convertFromDetails(functionMetaData.getFunctionDetails());",
             " - retVal = new Gson().toJson(config);",
             " + throw new RestException(Status.NOT_FOUND, String.format(componentType + \" %s doesn't exist\", componentName));",
-            " }",
+            "   }",
             " - return Response.status(Status.OK).entity(retVal).build();",
             " + FunctionConfig config = FunctionConfigUtils.convertFromDetails(functionMetaData.getFunctionDetails());",
             " + return config;"
@@ -5270,11 +5262,11 @@
             " ",
             " - protected BasePulsarOutputFormat(String serviceUrl, String topicName) {",
             " + protected BasePulsarOutputFormat(final String serviceUrl, final String topicName) {",
-            " Preconditions.checkArgument(StringUtils.isNotBlank(serviceUrl), \"serviceUrl cannot be blank.\");",
-            " Preconditions.checkArgument(StringUtils.isNotBlank(topicName),  \"topicName cannot be blank.\");",
+            "   Preconditions.checkArgument(StringUtils.isNotBlank(serviceUrl), \"serviceUrl cannot be blank.\");",
+            "   Preconditions.checkArgument(StringUtils.isNotBlank(topicName),  \"topicName cannot be blank.\");",
             " ",
-            " this.serviceUrl = serviceUrl;",
-            " this.topicName = topicName;"
+            "   this.serviceUrl = serviceUrl;",
+            "   this.topicName = topicName;"
           ]
         }
       },
@@ -5290,7 +5282,7 @@
             " - } catch (PulsarClientException e) {",
             " - LOG.error(\"Pulsar producer can not be created.\", e);",
             " - throw e;",
-            " }"
+            "   }"
           ]
         }
       }
@@ -5340,12 +5332,12 @@
           "lang": "java",
           "diff": [
             " - ObjectMetadata dataMetadata = s3client.getObjectMetadata(bucket, key); // FIXME: this should be part of index",
-            " S3BackedInputStream inputStream = new S3BackedInputStreamImpl(s3client, bucket, key,",
+            "   S3BackedInputStream inputStream = new S3BackedInputStreamImpl(s3client, bucket, key,",
             " - dataMetadata.getContentLength(),",
             " + index.getDataObjectLength(),",
-            " readBufferSize);",
-            " return new S3BackedReadHandleImpl(ledgerId, index, inputStream, executor);",
-            " }"
+            "   readBufferSize);",
+            "   return new S3BackedReadHandleImpl(ledgerId, index, inputStream, executor);",
+            "   }"
           ]
         }
       }

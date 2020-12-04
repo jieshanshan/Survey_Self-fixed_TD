@@ -6,7 +6,8 @@
     "project": "Apache/Altlas",
     "first_commit": "2016",
     "cqs": [
-        {
+        {   
+            "IF_Changed": true,
             "td_type": "Design Debt",
             "td_issue": "Cognitive Complexity of methods should not be too high",
             "commit": {
@@ -16,19 +17,13 @@
                 "lang": "java",
                 "diff": [
                     " - private static void setAssignedGuid(Object val, Map<String, String> guidAssignements) {",
-                    " - if (val != null && MapUtils.isNotEmpty(guidAssignements)) {",
-                    " - if (val instanceof AtlasObjectId) {",
-                    " - AtlasObjectId objId = (AtlasObjectId) val;",
-                    " - String guid  = objId.getGuid();",
+                    " -   if (val != null && MapUtils.isNotEmpty(guidAssignements)) {",
+                    " -     if (val instanceof AtlasObjectId) {",
+                    " -       AtlasObjectId objId = (AtlasObjectId) val;",
+                    " -         String        guid  = objId.getGuid();",
                     " + private static void setAssignedGuid(Object val, EntityMutationContext context) {",
-                    " + if (val != null) {",
-                    " + Map<String, String> guidAssignements = context.getGuidAssignments();",
-                    " - if (StringUtils.isNotEmpty(guid) && !AtlasTypeUtil.isAssignedGuid(guid)) {",
-                    " - String assignedGuid = guidAssignements.get(guid);",
-                    " + if (val instanceof AtlasObjectId) {",
-                    " + AtlasObjectId objId = (AtlasObjectId) val;",
-                    " + String guid = objId.getGuid();",
-                    " + String assignedGuid = null;"
+                    " +    if (val != null) {",
+                    " +       Map<String, String> guidAssignements = context.getGuidAssignments();"
                 ]
             }
         }
@@ -42,8 +37,9 @@
     "first_commit": "2015",
     "cqs": [
       {
+        "IF_Changed": true,
         "td_type": "Code Debt",
-        "td_issue": "Unused type parameters should be removed",
+        "td_issue": "Unused assignments should be removed",
         "commit": {
           "hash": "3b24183e90fe769911d04ca8508537411f7df896",
           "msg": "Makes ReaderIterator have the same interface as Source.Reader...",
@@ -52,7 +48,7 @@
           "diff": [
             " - List<T> currentItems = new ArrayList<>();",
             " - currentItems.addAll(readNItemsFromUnstartedReader(reader, numItemsToReadBeforeSplit));",
-            " + List<T> currentItems = readNItemsFromUnstartedReader(reader, numItemsToReadBeforeSplit);"
+            " + List<T> currentItems = readNItemsFromUnstartedReader(reader, numItemsToReadBeforeSplit)"
           ]
         }
       },
@@ -69,43 +65,6 @@
             " - /** Do not use. See https://issues.apache.org/jira/browse/BEAM-1904 */",
             " - @Deprecated",
             " - public class ProcessContinuation {}"
-          ]
-        }
-      },
-      {
-        "td_type": "Design Debt",
-        "td_issue": "String literals should not be duplicated",
-        "commit": {
-          "hash": "78772d58d838e7967f1c29c68940888a9af8ba1e",
-          "msg": "Introduces RangeTracker for thread-safe dynamic splitting",
-          "file": "ByteOffsetBasedSource.java",
-          "lang": "java",
-          "diff": [
-            " @Override",
-            " public void validate() {",
-            " - Preconditions.checkArgument(this.startOffset >= 0,",
-            " - \"Start offset has value \" + this.startOffset + \", must be non-negative\");",
-            " - Preconditions.checkArgument(this.endOffset >= 0,",
-            " - \"End offset has value \" + this.endOffset + \", must be non-negative\");",
-            " - Preconditions.checkArgument(this.startOffset < this.endOffset,",
-            " - \"Start offset \" + this.startOffset + \" must be before end offset \" + this.endOffset);",
-            " - Preconditions.checkArgument(this.minBundleSize >= 0,",
-            " - \"minBundleSize has value \" + this.minBundleSize + \", must be non-negative\");",
-            " + Preconditions.checkArgument(",
-            " + this.startOffset >= 0,",
-            " + \"Start offset has value %s, must be non-negative\", this.startOffset);",
-            " + Preconditions.checkArgument(",
-            " + this.endOffset >= 0,",
-            " + \"End offset has value %s, must be non-negative\", this.endOffset);",
-            " + Preconditions.checkArgument(",
-            " + this.startOffset < this.endOffset,",
-            " + \"Start offset %s must be before end offset %s\",",
-            " + this.startOffset, this.endOffset);",
-            " + Preconditions.checkArgument(",
-            " + this.minBundleSize >= 0,",
-            " + \"minBundleSize has value %s, must be non-negative\",",
-            " + this.minBundleSize);",
-            " }"
           ]
         }
       }
@@ -204,20 +163,6 @@
     "first_commit": "2012",
     "cqs": [
       {
-        "td_type": "Defect Debt",
-        "td_issue": "Printf-style format strings should be used correctly",
-        "commit": {
-          "hash": "215d75eb15362f34cd3246107cbea7ace247af10",
-          "msg": "FLUME-1940. Log a snapshot of Flume metrics on shutdown.",
-          "file": "MonitoredCounterGroup.java",
-          "lang": "java",
-          "diff": [
-            " - LOG.error(\"Failed to register monitored counter group for type: \"}",
-            " + logger.error(\"Failed to register monitored counter group for type: \"}"
-          ]
-        }
-      },
-      {
         "EXAMPLE_IS_GOOD": true,
         "td_type": "Code Debt",
         "td_issue": "Preconditions and logging arguments should not require evaluation",
@@ -286,6 +231,7 @@
         }
       },
       {
+        "IF_Changed": true,
         "td_type": "Defect Debt",
         "td_issue": "Boolean expressions should not be gratuitous",
         "commit": {
@@ -294,19 +240,13 @@
           "file": "JDBCKnoxShellTableBuilder.java",
           "lang": "java",
           "diff": [
-            " public KnoxShellTable sql(String sql) throws IOException, SQLException {",
             " - KnoxShellTable table = null;",
             " conn = conn == null ? DriverManager.getConnection(connectionUrl) : conn;",
             " if (conn != null) {",
             " try (Statement statement = conn.createStatement(); ResultSet resultSet = statement.executeQuery(sql);) {",
             " - table = new KnoxShellTable();",
             " - processResultSet(table, resultSet);",
-            " + processResultSet(resultSet);",
-            " } finally {",
-            " if (conn != null && tableManagedConnection) {",
-            " conn.close();",
-            " }",
-            " }"
+            " + processResultSet(resultSet);"
           ]
         }
       },
@@ -382,21 +322,6 @@
             " }"
           ]
         }
-      },
-      {
-        "td_type": "Code Debt",
-        "td_issue": "Methods should not have too many parameters",
-        "commit": {
-          "hash": "a514ec7525c1190adc2614fec012e3c3f4e03928",
-          "msg": "remove function details from v3 function endpoints (#3271)",
-          "file": "FunctionApiV3Resource.java",
-          "lang": "java",
-          "diff": [
-            " functions.updateFunction(tenant, namespace, functionName, uploadedInputStream, fileDetail,",
-            " - functionPkgUrl, functionDetailsJson, functionConfigJson, clientAppId());",
-            " + functionPkgUrl, null, functionConfigJson, clientAppId());"
-          ]
-        }
       }
     ]
   },
@@ -443,25 +368,6 @@
             " - Boolean installUserCodeDepdendencies) throws Exception {"
           ]
         }
-      },
-      {
-        "td_type": "Code Debt",
-        "td_issue": "Methods should not have too many parameters",
-        "commit": {
-          "hash": "1386e6dfdba16bb1ee0a3c7649cb7daed50a5d8c",
-          "msg": "Source/Sink Endpoint validations (#2807)",
-          "file": "FunctionsImpl.java",
-          "lang": "java",
-          "diff": [
-            " - public Response updateFunction(final String tenant, final String namespace, final String functionName,",
-            " + public Response updateFunction(final String tenant, final String namespace, final String componentName,",
-            " final InputStream uploadedInputStream, final FormDataContentDisposition fileDetail,",
-            " - final String functionPkgUrl, final String functionDetailsJson, final String functionConfigJson,",
-            " - final String sourceConfigJson, final String sinkConfigJson, final String clientRole) {",
-            " + final String functionPkgUrl, final String functionDetailsJson, final String componentConfigJson,",
-            " + final String componentType, final String clientRole) {"
-          ]
-        }
       }
     ]
   },
@@ -496,8 +402,9 @@
     "first_commit": "2015",
     "cqs": [
       {
+        "IF_Changed": true,
         "td_type": "Defect Debt",
-        "td_issue": "Replace print statement by built-in function.",
+        "td_issue": "invalid syntax",
         "commit": {
           "hash": "9811010434d93bcec25d5473b8a796a4d929613c",
           "msg": "Removing debug print.",
@@ -569,6 +476,7 @@
         }
       },
       {
+        "IF_Changed": true,
         "td_type": "Documentation Debt",
         "td_issue": "Docstrings should be defined",
         "commit": {
@@ -577,13 +485,12 @@
           "file": "hooks.py",
           "lang": "python",
           "diff": [
-        " -     def _get_hook_class(env_path, hook_path, class_type):",
-        " - module = _hook_load(env_path, hook_path)",
-        " - for (name, cls) in inspect.getmembers(module, inspect.isclass):",
-        " -     if issubclass(cls, class_type) and \\",
-        " -        not cls is class_type:",
-        " -         return cls",
-        " - return None"
+        " + #  Unless required by applicable law or agreed to in writing,",
+        " + #  software distributed under the License is distributed on an",
+        " + #  \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY",
+        " + #  KIND, either express or implied.  See the License for the",
+        " + #  specific language governing permissions and limitations",
+        " + #  under the License."
           ]
         }
       }
@@ -610,15 +517,17 @@
         }
       },
       {
+        "IF_Changed": true,
         "td_type": "Documentation Debt",
         "td_issue": "Source files should have a sufficient density of comment lines",
         "commit": {
-          "hash": "945b9cc43394a53c7de0a661062113af6be5784f",
-          "msg": "merging trac-1.0 into trunk/trac - towards #159",
-          "file": "ticket_search.py",
+          "hash": "b35d71312c89f6d9435a5c052e446b3b6d4fdebe",
+          "msg": "0.8dev: Revert incorrect commit [1570459].",
+          "file": "pygments.py",
           "lang": "python",
           "diff": [
-            " + #!/usr/bin/env python"
+            " + # -*- coding: utf-8 -*-",
+            " + # "
           ]
         }
       }
@@ -632,15 +541,17 @@
     "first_commit": "2013",
     "cqs": [
       {
+        "IF_Changed": true,
         "td_type": "Defect Debt",
         "td_issue": "The \"print\" statement should not be used",
         "commit": {
-          "hash": "9544fd4dba3aaa6b2ba8e7b8b91de96274cd7e86",
+          "hash": "56d2406b4d040de74ddc842c82c23917e978a0e8",
           "msg": "minor change",
           "file": "upgrade_through_versions_test.py",
           "lang": "python",
           "diff": [
-            " - print line"
+            " - print test_versions",
+            " + debug( str(test_versions) )"
           ]
         }
       }
@@ -664,10 +575,10 @@
           "lang": "python",
           "diff": [
             " + \"\"\"",
-    " + 所有注册过的服务端将在这里",
-    " + 格式为{providername:{ip+port:service}}",
-    " + providername = group_version_servicename",
-    " + \"\"\""
+            " + 所有注册过的服务端将在这里",
+            " + 格式为{providername:{ip+port:service}}",
+            " + providername = group_version_servicename",
+            " + \"\"\""
           ]
         }
       },
@@ -680,7 +591,7 @@
           "file": "test_rpclib.py",
           "lang": "python",
           "diff": [
-    " - print user_provider.getUser(123)"
+            " - print user_provider.getUser(123)"
           ]
         }
       }
@@ -704,10 +615,10 @@
           "lang": "python",
           "diff": [
             " + # Unless required by applicable law or agreed to in writing, software",
-    " + # distributed under the License is distributed on an \"AS IS\" BASIS,",
-    " + # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.",
-    " + # See the License for the specific language governing permissions and",
-    " + # limitations under the License."
+            " + # distributed under the License is distributed on an \"AS IS\" BASIS,",
+            " + # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.",
+            " + # See the License for the specific language governing permissions and",
+            " + # limitations under the License."
           ]
         }
       },

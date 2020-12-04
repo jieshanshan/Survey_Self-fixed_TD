@@ -8377,5 +8377,451 @@
             }
         }
     ]
+  },
+  {
+    "code": "7XF5F_feB5I",
+    "email": "madhan@apache.org",
+    "name": "Madhan Neethiraj",
+    "project": "Apache/Altlas",
+    "first_commit": "2016",
+    "cqs": [
+        {
+            "td_type": "Design Debt",
+            "td_issue": "Cognitive Complexity of methods should not be too high",
+            "commit": {
+                "hash": "f8cb6f76cc8851848225ea35417bebdbc85ad6f7",
+                "msg": "ATLAS-3492: updated object-id attributes in audit logs to replace unassigned-guids with assigned-guids",
+                "file": "EntityGraphMapper.java",
+                "lang": "java",
+                "diff": [
+                    " - private static void setAssignedGuid(Object val, Map<String, String> guidAssignements) {",
+                    " -   if (val != null && MapUtils.isNotEmpty(guidAssignements)) {",
+                    " -     if (val instanceof AtlasObjectId) {",
+                    " -       AtlasObjectId objId = (AtlasObjectId) val;",
+                    " -         String        guid  = objId.getGuid();",
+                    " + private static void setAssignedGuid(Object val, EntityMutationContext context) {",
+                    " +    if (val != null) {",
+                    " +       Map<String, String> guidAssignements = context.getGuidAssignments();"
+                ]
+            }
+        }
+    ]
+},
+{
+    "code": "FPyS2O6vlHk",
+    "email": "ekirpichov@gmail.com",
+    "name": "Eugene Kirpichov",
+    "project": "Apache/Beam",
+    "first_commit": "2015",
+    "cqs": [
+        {
+            "td_type": "Code Debt",
+            "td_issue": "Unused assignments should be removed",
+            "commit": {
+                "hash": "3b24183e90fe769911d04ca8508537411f7df896",
+                "msg": "Makes ReaderIterator have the same interface as Source.Reader...",
+                "file": "SourceTestUtils.java",
+                "lang": "java",
+                "diff": [
+                    " - List<T> currentItems = new ArrayList<>();",
+                    " - currentItems.addAll(readNItemsFromUnstartedReader(reader, numItemsToReadBeforeSplit));",
+                    " + List<T> currentItems = readNItemsFromUnstartedReader(reader, numItemsToReadBeforeSplit)"
+                ]
+            }
+        },
+        {
+            "td_type": "Documentation Debt",
+            "td_issue": "Deprecated elements should have both the annotation and the Javadoc tag",
+            "commit": {
+                "hash": "62e23b71e3b964033c15707629b560dfc8204654",
+                "msg": "Removes DoFn.ProcessContinuation completely",
+                "file": "DoFn.java",
+                "lang": "java",
+                "diff": [
+                    " - /** Do not use. See https://issues.apache.org/jira/browse/BEAM-1904 */",
+                    " - @Deprecated",
+                    " - public class ProcessContinuation {}"
+                ]
+            }
+        }
+    ]
+},
+{
+    "code": "u6p-3DP0V2M",
+    "email": "olamy@apache.org",
+    "name": "Olivier Lamy",
+    "project": "Apache/Commons IO",
+    "first_commit": "2013",
+    "cqs": [
+        {
+            "td_type": "Design Debt",
+            "td_issue": "Collapsible \"if\" statements should be merged",
+            "commit": {
+                "hash": "c6edda83ce73bd42f5dbdb92eba7f9e4a9264d58",
+                "msg": "use spaces not tabs",
+                "file": "WindowsLineEndingInputStream.java",
+                "lang": "java",
+                "diff": [
+                    " - /**",
+                    " - * @inheritDoc",
+                    " - */",
+                    " - @Override",
+                    " - public int read() throws IOException {",
+                    " -   if (eofSeen) {",
+                    " -     return eofGame();",
+                    " -   } else if (injectSlashN) {",
+                    " -     injectSlashN = false;",
+                    " -     return '\n';",
+                    " -   } else {",
+                    " -     boolean prevWasSlashR = slashRSeen;",
+                    " -     int target = readWithUpdate();",
+                    " -     if (eofSeen) {",
+                    " -       return eofGame();",
+                    " -     }",
+                    " -     if (target == '\n') {",
+                    " -       if (!prevWasSlashR) {",
+                    " -         injectSlashN = true;",
+                    " -         return '\r';",
+                    " -       }",
+                    " -     }",
+                    " -     return target;",
+                    " -   }",
+                    " - }"
+                ]
+            }
+        }
+    ]
+},
+{
+    "code": "hSBpQQLLoHE",
+    "email": "mpercy@cloudera.com",
+    "name": "Mike Percy",
+    "project": "Apache/Flume",
+    "first_commit": "2012",
+    "cqs": [
+        {
+            "td_type": "Code Debt",
+            "td_issue": "Preconditions and logging arguments should not require evaluation",
+            "commit": {
+                "hash": "0e0e6346d77d6d55b29c2a87c35aaa7f4779f73f",
+                "msg": "FLUME-1575. FileChannel Encryption should disallow a null key.",
+                "file": "FileChannel.java",
+                "lang": "java",
+                "diff": [
+                    "   public String toString() {",
+                    "     @Override",
+                    "     protected BasicTransactionSemantics createTransaction() {",
+                    " -     Preconditions.checkState(open, \"Channel closed \" + channelNameDescriptor);",
+                    " +     if(!open) {",
+                    " +       String msg = \"Channel closed \" + channelNameDescriptor;",
+                    " +       if(startupError != null) {",
+                    " +         msg += \". Due to \" + startupError.getClass().getName() + \": \" +",
+                    " +         startupError.getMessage();",
+                    " +         throw new IllegalStateException(msg, startupError);",
+                    " +       }",
+                    " +       throw new IllegalStateException(msg);",
+                    " +     }"
+                ]
+            }
+        },
+        {
+            "td_type": "Documentation Debt",
+            "td_issue": "Deprecated elements should have both the annotation and the Javadoc tag",
+            "commit": {
+                "hash": "c72a3b1a5a2548f9157fe7913611c4318ce5e64d",
+                "msg": "FLUME-1974. Thrift compatibility issue with hbase-0.92.",
+                "file": "ThriftFlumeEvent.java",
+                "lang": "java",
+                "diff": [
+                    " - @Deprecated"
+                ]
+            }
+        }
+    ]
+},
+{
+    "code": "JcyLqjg7p7Y",
+    "email": "smolnar@apache.org",
+    "name": "Sandor Molnar",
+    "project": "Apache/Knox",
+    "first_commit": "2019",
+    "cqs": [
+        {
+            "td_type": "Design Debt",
+            "td_issue": "String literals should not be duplicated",
+            "commit": {
+                "hash": "926adc68691d751ad89261313ea54a5007d95787",
+                "msg": "KNOX-2269 - The Knox Home page is available as a regular app via the homepage topology (#281)",
+                "file": "GatewayServer.java",
+                "lang": "java",
+                "diff": [
+                    " - private synchronized void activateHomeApp() {",
+                    " -   try {",
+                    " -     // UI",
+                    " -     activateHomepageContext(\"/\", \"homepage/%2Fhome\");",
+                    " -",
+                    " -     // API",
+                    " -     activateHomepageContext(\"/homepage\", \"homepage/%2F\");",
+                    " -   } catch (Throwable e) {",
+                    " -     auditor.audit(Action.DEPLOY, \"home\", ResourceType.URI, ActionOutcome.FAILURE);",
+                    " -     log.failedToDeployTopology(\"home\", e);",
+                    " -   }",
+                    " - }"
+                ]
+            }
+        }
+    ]
+},
+{
+    "code": "IjaQMbgL8n0",
+    "email": "jerry.boyang.peng@gmail.com",
+    "name": "Boyang Jerry Peng",
+    "project": "Apache/Pulsar",
+    "first_commit": "2017",
+    "cqs": [
+        {
+            "td_type": "Design Debt",
+            "td_issue": "String literals should not be duplicated",
+            "commit": {
+                "hash": "d4794bd5e100a946780ff562bf45ef44a7dc5281",
+                "msg": "fixing and refactoring function status (#3102), * fixing and refactoring function status, * further refactoring, * cleaning up",
+                "file": "FunctionsImplBase.java",
+                "lang": "java",
+                "diff": [
+                    " - FunctionMetaDataManager functionMetaDataManager = worker().getFunctionMetaDataManager();",
+                    " - if (!functionMetaDataManager.containsFunction(tenant, namespace, componentName)) {",
+                    " -   log.error(\"{} in get {} Status does not exist @ /{}/{}/{}\", componentType, componentType, tenant, namespace, componentName);",
+                    " -   throw new RestException(Status.NOT_FOUND, String.format(\"%s %s doesn't exist\", componentType, componentName));",
+                    " - }",
+                    " - FunctionMetaData functionMetaData = functionMetaDataManager.getFunctionMetaData(tenant, namespace, componentName);",
+                    " - if (!calculateSubjectType(functionMetaData).equals(componentType)) {",
+                    " -   log.error(\"{}/{}/{} is not a {}\", tenant, namespace, componentName, componentType);",
+                    " -   throw new RestException(Status.NOT_FOUND, String.format(\"%s %s doesn't exist\", componentType, componentName));",
+                    " - }"
+                ]
+            }
+        },
+        {
+            "td_type": "Defect Debt",
+            "td_issue": "Generic exceptions should never be thrown",
+            "commit": {
+                "hash": "6be584f6a35e727377f0bc0968de57c50478164d",
+                "msg": "improving source and sink validation (#1897)",
+                "file": "ValidatorImpls.java",
+                "lang": "java",
+                "diff": [
+                    "   } catch (ClassNotFoundException e) {",
+                    " -   throw new RuntimeException(e);",
+                    " +   throw new IllegalArgumentException(\"Cannot find/load class \" + className);",
+                    "   }"
+                ]
+            }
+        }
+    ]
+},
+{
+    "code": "5MNcN5LMZTI",
+    "email": "sanjeevrk@gmail.com",
+    "name": "Sanjeev Kulkarni",
+    "project": "Apache/Pulsar",
+    "first_commit": "2017",
+    "cqs": [
+        {
+            "td_type": "Design Debt",
+            "td_issue": "Cognitive Complexity of methods should not be too high",
+            "commit": {
+                "hash": "a7310ee7e62f9d70d41ebc21bd196cbba259eeb0",
+                "msg": "Function Serverside validation Part 2 (#2752)",
+                "file": "SourceConfigUtils.java",
+                "lang": "java",
+                "diff": [
+                    "   } else {",
+                    " -   sourceClassName = ConnectorUtils.getIOSourceClass(sourceConfig.getArchive());",
+                    " - ",
+                    " -   try (NarClassLoader ncl = NarClassLoader.getFromArchive(new File(sourceConfig.getArchive()),",
+                    " -          Collections.emptySet())) {",
+                    " -     typeArg = getSourceType(sourceClassName, ncl).getName();",
+                    " -   }",
+                    " +   sourceClassName = ConnectorUtils.getIOSourceClass(classLoader);",
+                    " +   typeArg = getSourceType(sourceClassName, classLoader).getName();",
+                    "   }"
+                ]
+            }
+        },
+        {
+            "td_type": "Defect Debt",
+            "td_issue": "Generic exceptions should never be thrown",
+            "commit": {
+                "hash": "3db8b7392b1be22544117ea336dd46cc85c61ba0",
+                "msg": "Allow the ability to specify which artifactory to download dep from (#2824)",
+                "file": "RuntimeUtils.java",
+                "lang": "java",
+                "diff": [
+                    " - Boolean installUserCodeDepdendencies) throws Exception {"
+                ]
+            }
+        }
+    ]
+},
+{
+    "code": "oAGbLLEnPOw",
+    "email": "dammina@apache.org",
+    "name": "Dammina",
+    "project": "Apache/Bloodhound",
+    "first_commit": "2014",
+    "cqs": [
+        {
+            "td_type": "Documentation Debt",
+            "td_issue": "Docstrings should be defined",
+            "commit": {
+                "hash": "700f1716740ff07082f98cc09b41b37f1f53f6ba",
+                "msg": "Sync the bep_0011_batch_create_tickets branch with ^/trunk.",
+                "file": "hooks.py",
+                "lang": "python",
+                "diff": [
+                    " + #  Unless required by applicable law or agreed to in writing,",
+                    " + #  software distributed under the License is distributed on an",
+                    " + #  \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY",
+                    " + #  KIND, either express or implied.  See the License for the",
+                    " + #  specific language governing permissions and limitations",
+                    " + #  under the License."
+                ]
+            }
+        }
+    ]
+},
+{
+    "code": "pXE2Ov_NWtc",
+    "email": "rjollos@apache.org",
+    "name": "Ryan Ollos",
+    "project": "Apache/Bloodhound",
+    "first_commit": "2012",
+    "cqs": [
+        {
+            "td_type": "Code Debt",
+            "td_issue": "debug should be done via logging",
+            "commit": {
+                "hash": "3e3355754111cb89f553ff0e8439641c6b8a60ae",
+                "msg": "0.8dev: Removed debug statements.",
+                "file": "hooks.py",
+                "lang": "python",
+                "diff": [
+                    " - print load_class(env.config.get('trac', 'environment_factory'))"
+                ]
+            }
+        }
+    ]
+},
+{
+    "code": "7A6qqAqs62k",
+    "email": "dmeyer@datastax.com",
+    "name": "Daniel Meyer",
+    "project": "Apache/Cassandra-dtest",
+    "first_commit": "2013",
+    "cqs": [
+        {
+            "td_type": "Defect Debt",
+            "td_issue": "The \"print\" statement should not be used",
+            "commit": {
+                "hash": "56d2406b4d040de74ddc842c82c23917e978a0e8",
+                "msg": "minor change",
+                "file": "upgrade_through_versions_test.py",
+                "lang": "python",
+                "diff": [
+                    " - print test_versions",
+                    " + debug( str(test_versions) )"
+                ]
+            }
+        }
+    ]
+},
+{
+    "code": "EP9T63hEe_o",
+    "email": "chinalibra@163.com",
+    "name": "\u66f9\u7956\u9e4f",
+    "project": "Apache/Dubbo-python",
+    "first_commit": "2015",
+    "cqs": [
+        {
+            "td_type": "Documentation Debt",
+            "td_issue": "Docstrings should be defined",
+            "commit": {
+                "hash": "e7a761a7d072b2d5742173f05b508f4b3d0e557b",
+                "msg": "\u62bd\u79bbproviders\u5230commons\u5bf9\u8c61\uff0c\u6ce8\u518c\u4e2d\u5fc3\u4f7f\u7528\u7ebf\u7a0b\u8fdb\u884cevent\u5904\u7406",
+                "file": "registry.py",
+                "lang": "python",
+                "diff": [
+                    " + \"\"\"",
+                    " + \u6240\u6709\u6ce8\u518c\u8fc7\u7684\u670d\u52a1\u7aef\u5c06\u5728\u8fd9\u91cc",
+                    " + \u683c\u5f0f\u4e3a{providername:{ip+port:service}}",
+                    " + providername = group_version_servicename",
+                    " + \"\"\""
+                ]
+            }
+        }
+    ]
+},
+{
+    "code": "-Z3zuLpW1hU",
+    "email": "rbogorodskiy@apache.org",
+    "name": "Roman Bogorodskiy",
+    "project": "Apache/Libcloud",
+    "first_commit": "2010",
+    "cqs": [
+        {
+            "td_type": "Documentation Debt",
+            "td_issue": "Source files should have a sufficient density of comment lines",
+            "commit": {
+                "hash": "336783b2e4df87e252108fb988465c6810c1bde6",
+                "msg": "Import Load Balancers support.",
+                "file": "gogrid.py",
+                "lang": "python",
+                "diff": [
+                    " + # Unless required by applicable law or agreed to in writing, software",
+                    " + # distributed under the License is distributed on an \"AS IS\" BASIS,",
+                    " + # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.",
+                    " + # See the License for the specific language governing permissions and",
+                    " + # limitations under the License."
+                ]
+            }
+        }
+    ]
+},
+{
+    "code": "1sAn_11iBnc",
+    "email": "bjustin@us.ibm.com",
+    "name": "Justin Berstler",
+    "project": "Apache/Openwhisk-package-kafka",
+    "first_commit": "2016",
+    "cqs": [
+        {
+            "td_type": "Code Debt",
+            "td_issue": "Lines should not be too long",
+            "commit": {
+                "hash": "c1f0fe363999a60a49acf253b4cee84926968f0c",
+                "msg": "Update error message to reflect that consumer is no longer killed on all polling exceptions",
+                "file": "consumer.py",
+                "lang": "python",
+                "diff": [
+                    " - logging.error('[{}] Error polling! Shutting down consumer: {}'.format(self.trigger, message.error()))",
+                    " + logging.error('[{}] Error polling: {}'.format(self.trigger, message.error()))"
+                ]
+            }
+        },
+        {
+            "td_type": "Defect Debt",
+            "td_issue": "The \"print\" statement should not be used",
+            "commit": {
+                "hash": "4d2606c343c37139690908858b6592444e830b2c",
+                "msg": "Add lots more logging messages (#10)",
+                "file": "app.py",
+                "lang": "python",
+                "diff": [
+                    " - print \"Just testing\"",
+                    " + logging.debug(\"Just testing\")"
+                ]
+            }
+        }
+    ]
   }
 ]

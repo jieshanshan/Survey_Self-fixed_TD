@@ -36,7 +36,6 @@
         "first_commit": "2015",
         "cqs": [
             {
-                "TO_CHANGE": true,
                 "td_type": "Code Debt",
                 "td_issue": "Unused assignments should be removed",
                 "commit": {
@@ -69,46 +68,6 @@
         ]
     },
     {
-        "code": "xlNiCVOtprM",
-        "email": "sitnikov.vladimir@gmail.com",
-        "name": "Vladimir Sitnikov",
-        "project": "Apache/Calcite",
-        "first_commit": "2014",
-        "cqs": [
-            {
-                "TO_CHANGE": true,
-                "td_type": "Design Debt",
-                "td_issue": "Cognitive Complexity of methods should not be too high",
-                "commit": {
-                    "hash": "194f6488859f7c3460fc201cab8b4a20d4cbe79a",
-                    "msg": "Fix julianhyde/linq4j#17, \"Assign constant expressions to 'static final' members\".",
-                    "file": "BlockBuilder.java",
-                    "lang": "java",
-                    "diff": [
-                        " +     private static final Visitor OPTIMIZE_VISITOR = new OptimizeVisitor();",
-                        "       for (int i = 0; i < 10; i++) {",
-                        " -       if (!optimize()) {",
-                        " +       if (!optimize(createOptimizeVisitor(), true)) {",
-                        "           break;",
-                        "         }",
-                        "       }",
-                        " +     optimize(createFinishingOptimizeVisitor(), false);",
-                        "     }",
-                        "     return Expressions.block(statements);",
-                        "   }",
-                        " - private boolean optimize() {",
-                        " + private boolean optimize(Visitor optimizer, boolean performInline) {",
-                        "     boolean optimized = false;",
-                        "     final UseCounter useCounter = new UseCounter();",
-                        "     for (Statement statement : statements) {",
-                        " -     if (statement instanceof DeclarationStatement) {",
-                        " +     if (statement instanceof DeclarationStatement && performInline) {"
-                    ]
-                }
-            }
-        ]
-    },
-    {
         "code": "u6p-3DP0V2M",
         "email": "olamy@apache.org",
         "name": "Olivier Lamy",
@@ -116,7 +75,6 @@
         "first_commit": "2013",
         "cqs": [
             {
-                "TO_CHANGE": true,
                 "td_type": "Design Debt",
                 "td_issue": "Collapsible \"if\" statements should be merged",
                 "commit": {
@@ -188,7 +146,6 @@
                 }
             },
             {
-                "TO_CHANGE": true,
                 "td_type": "Documentation Debt",
                 "td_issue": "Deprecated elements should have both the annotation and the Javadoc tag",
                 "commit": {
@@ -210,49 +167,6 @@
         "project": "Apache/Knox",
         "first_commit": "2019",
         "cqs": [
-            {
-                "TO_CHANGE": true,
-                "td_type": "Code Debt",
-                "td_issue": "Standard outputs should not be used directly to log anything",
-                "commit": {
-                    "hash": "5c2c7a727d8e88e47ce1d14cb803c9a9f4473c29",
-                    "msg": "KNOX-2022 - KnoxShellTable contains Comparables instead of Strings",
-                    "file": "JDBCKnoxShellTableBuilder.java",
-                    "lang": "java",
-                    "diff": [
-                        "   public class JDBCKnoxShellTableBuilder extends KnoxShellTableBuilder {",
-                        "     try {",
-                        "       Class.forName(driver).newInstance();",
-                        "     } catch (ClassNotFoundException e) {",
-                        " -     System.out.println(String.format(\"Unable to load the JDBC driver %s. Check your CLASSPATH.\", driver));",
-                        " +     System.out.println(String.format(Locale.US, \"Unable to load the JDBC driver %s. Check your CLASSPATH.\", driver));",
-                        "       throw e;",
-                        "     } catch (InstantiationException e) {",
-                        " -     System.out.println(String.format(\"Unable to instantiate the JDBC driver %s\", driver));",
-                        " +     System.out.println(String.format(Locale.US, \"Unable to instantiate the JDBC driver %s\", driver));"
-                    ]
-                }
-            },
-            {
-                "TO_CHANGE": true,
-                "td_type": "Defect Debt",
-                "td_issue": "Boolean expressions should not be gratuitous",
-                "commit": {
-                    "hash": "45043b488624c85cc16b518d674b7513323a29a1",
-                    "msg": "KNOX-2057 - Unique ID is set when creating a new instance of KnoxShellTable instead of setting it in the builder/filter (#165)",
-                    "file": "JDBCKnoxShellTableBuilder.java",
-                    "lang": "java",
-                    "diff": [
-                        " - KnoxShellTable table = null;",
-                        "   conn = conn == null ? DriverManager.getConnection(connectionUrl) : conn;",
-                        "   if (conn != null) {",
-                        "     try (Statement statement = conn.createStatement(); ResultSet resultSet = statement.executeQuery(sql);) {",
-                        " -   table = new KnoxShellTable();",
-                        " -   processResultSet(table, resultSet);",
-                        " +   processResultSet(resultSet);"
-                    ]
-                }
-            },
             {
                 "td_type": "Design Debt",
                 "td_issue": "String literals should not be duplicated",
@@ -371,111 +285,12 @@
         ]
     },
     {
-        "code": "XF5HIw6BH6Y",
-        "email": "gtoonstra@gmail.com",
-        "name": "gtoonstra",
-        "project": "Apache/Airflow",
-        "first_commit": "2015",
-        "cqs": [
-            {
-                "TO_CHANGE": true,
-                "td_type": "Defect Debt",
-                "td_issue": "Missing parentheses in call to 'print'. Did you mean print(print subdir)?",
-                "commit": {
-                    "hash": "025cafedcdf14ff09c99ae5466e38dd3ba429eed",
-                    "msg": "Merge branch 'master'",
-                    "file": "cli.py",
-                    "lang": "python",
-                    "diff": [
-                        " + print subdir",
-                        " + print dagbag.dags"
-                    ]
-                }
-            }
-        ]
-    },
-    {
-        "code": "XvaFZqRDMtM",
-        "email": "sray@handybook.com",
-        "name": "Silas Ray",
-        "project": "Apache/Airflow",
-        "first_commit": "2015",
-        "cqs": [
-            {
-                "TO_CHANGE": true,
-                "td_type": "Defect Debt",
-                "td_issue": "invalid syntax",
-                "commit": {
-                    "hash": "9811010434d93bcec25d5473b8a796a4d929613c",
-                    "msg": "Removing debug print.",
-                    "file": "views.py",
-                    "lang": "python",
-                    "diff": [
-                        " - print ex"
-                    ]
-                }
-            },
-            {
-                "TO_CHANGE": true,
-                "td_type": "Documentation Debt",
-                "td_issue": "Add a docstring to this function.",
-                "commit": {
-                    "hash": "76e99fd9b2b799e5fc4659b9880d620158ca9ab8",
-                    "msg": "Merge branch 'master' into change-ti-status",
-                    "file": "utils.py",
-                    "lang": "python",
-                    "diff": [
-                        "   def wrapper(*args, **kwargs):",
-                        " + \"\"\""
-                    ]
-                }
-            }
-        ]
-    },
-    {
         "code": "oAGbLLEnPOw",
         "email": "dammina@apache.org",
         "name": "Dammina",
         "project": "Apache/Bloodhound",
         "first_commit": "2014",
         "cqs": [
-            {
-                "TO_CHANGE": true,
-                "td_type": "Defect Debt",
-                "td_issue": "Replace print statement by built-in function.",
-                "commit": {
-                    "hash": "700f1716740ff07082f98cc09b41b37f1f53f6ba",
-                    "msg": "Sync the bep_0011_batch_create_tickets branch with ^/trunk.",
-                    "file": "bloodhound_setup.py",
-                    "lang": "python",
-                    "diff": [
-                        " - print \"Running wiki upgrades\""
-                    ]
-                }
-            },
-            {
-                "TO_CHANGE": true,
-                "td_type": "Code Debt",
-                "td_issue": "Lines should not be too long",
-                "commit": {
-                    "hash": "9d4230b3efdd9ab9afd6c6f5f0bcb5dd16604a75",
-                    "msg": "User interaction capability added to the component",
-                    "file": "theme.py",
-                    "lang": "python",
-                    "diff": [
-                        " - if header == \"summary\":",
-                        " -       td_row = tag.td()",
-                        " -       input_summary = tag.input(type=\"text\", id = \"field-summary\"+str(num), class_=\"input-block-level\", name=\"field_summary\"+str(num))",
-                        " -       td_row.append(input_summary)",
-                        " -       tr_rows.append(td_row)",
-                        " - elif header == \"description\":",
-                        " -       td_row = tag.td()",
-                        " -       input_description = tag.textarea(id = \"field-description\"+str(num), name=\"field_description\"+str(num), class_=\"input-block-level\", rows=\"1\", cols=\"28\")",
-                        " -       td_row.append(input_description)",
-                        " -       tr_rows.append(td_row)"
-                    ]
-                }
-            },
             {
                 "td_type": "Documentation Debt",
                 "td_issue": "Docstrings should be defined",
@@ -504,9 +319,8 @@
         "first_commit": "2012",
         "cqs": [
             {
-                "TO_CHANGE": true,
-                "td_type": "Defect Debt",
-                "td_issue": "invalid syntax",
+                "td_type": "Code Debt",
+                "td_issue": "debug should be done via logging",
                 "commit": {
                     "hash": "3e3355754111cb89f553ff0e8439641c6b8a60ae",
                     "msg": "0.8dev: Removed debug statements.",
@@ -514,21 +328,6 @@
                     "lang": "python",
                     "diff": [
                         " - print load_class(env.config.get('trac', 'environment_factory'))"
-                    ]
-                }
-            },
-            {
-                "TO_CHANGE": true,
-                "td_type": "Documentation Debt",
-                "td_issue": "Source files should have a sufficient density of comment lines",
-                "commit": {
-                    "hash": "b35d71312c89f6d9435a5c052e446b3b6d4fdebe",
-                    "msg": "0.8dev: Revert incorrect commit [1570459].",
-                    "file": "pygments.py",
-                    "lang": "python",
-                    "diff": [
-                        " + # -*- coding: utf-8 -*-",
-                        " + # "
                     ]
                 }
             }
@@ -580,20 +379,6 @@
                         " + \"\"\""
                     ]
                 }
-            },
-            {
-                "TO_CHANGE": true,
-                "td_type": "Defect Debt",
-                "td_issue": "The \"print\" statement should not be used",
-                "commit": {
-                    "hash": "f6eb732e73addbb7e42c999061b5af651d41c5dc",
-                    "msg": "\u589e\u52a0registry\u65e5\u5fd7\u5904\u7406",
-                    "file": "test_rpclib.py",
-                    "lang": "python",
-                    "diff": [
-                        " - print user_provider.getUser(123)"
-                    ]
-                }
             }
         ]
     },
@@ -618,20 +403,6 @@
                         " + # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.",
                         " + # See the License for the specific language governing permissions and",
                         " + # limitations under the License."
-                    ]
-                }
-            },
-            {
-                "TO_CHANGE": true,
-                "td_type": "Defect Debt",
-                "td_issue": "The \"print\" statement should not be used",
-                "commit": {
-                    "hash": "659e2ebff3307d16ed750250d5f67456be3e6491",
-                    "msg": "Minor style fixes for loadbalancer example.",
-                    "file": "example_loadbalancer.py",
-                    "lang": "python",
-                    "diff": [
-                        " - print nodes"
                     ]
                 }
             }

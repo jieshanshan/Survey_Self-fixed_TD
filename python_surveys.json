@@ -149,29 +149,6 @@
 },
 {
   "code": "",
-  "email": "gtoonstra@gmail.com",
-  "name": "gtoonstra",
-  "project": "Apache/Airflow",
-  "first_commit": "2015",
-  "cqs": [
-    {
-      "td_type": "Defect Debt",
-      "td_issue": "Missing parentheses in call to 'print'. Did you mean print(print subdir)?",
-      "commit": {
-        "hash": "025cafedcdf14ff09c99ae5466e38dd3ba429eed",
-        "msg": "Merge branch 'master'",
-        "file": "cli.py",
-        "lang": "python",
-        "diff": [
-        	" + print subdir",
-        	" + print dagbag.dags"
-        ]
-      }
-    }
-  ]
-},
-{
-  "code": "",
   "email": "jan.omar@wooga.net",
   "name": "Jan Omar",
   "project": "Apache/Airflow",
@@ -488,42 +465,6 @@
         	" - @password.setter",
     	" - def password(self, val):",
         	" - self._password = val"
-        ]
-      }
-    }
-  ]
-},
-{
-  "code": "",
-  "email": "sray@handybook.com",
-  "name": "Silas Ray",
-  "project": "Apache/Airflow",
-  "first_commit": "2015",
-  "cqs": [
-    {
-      "td_type": "Defect Debt",
-      "td_issue": "Replace print statement by built-in function.",
-      "commit": {
-        "hash": "9811010434d93bcec25d5473b8a796a4d929613c",
-        "msg": "Removing debug print.",
-        "file": "views.py",
-        "lang": "python",
-        "diff": [
-        	" - print ex"
-        ]
-      }
-    },
-    {
-      "td_type": "Documentation Debt",
-      "td_issue": "Add a docstring to this function.",
-      "commit": {
-        "hash": "76e99fd9b2b799e5fc4659b9880d620158ca9ab8",
-        "msg": "Merge branch 'master' into change-ti-status",
-        "file": "utils.py",
-        "lang": "python",
-        "diff": [
-        	" def wrapper(*args, **kwargs):",
-        	" + \"\"\""
         ]
       }
     }
@@ -997,69 +938,6 @@
 },
 {
   "code": "",
-  "email": "dammina@apache.org",
-  "name": "Dammina",
-  "project": "Apache/Bloodhound",
-  "first_commit": "2014",
-  "cqs": [
-    {
-      "td_type": "Defect Debt",
-      "td_issue": "Replace print statement by built-in function.",
-      "commit": {
-        "hash": "700f1716740ff07082f98cc09b41b37f1f53f6ba",
-        "msg": "Sync the bep_0011_batch_create_tickets branch with ^/trunk.",
-        "file": "bloodhound_setup.py",
-        "lang": "python",
-        "diff": [
-        	" - print \"Running wiki upgrades\""
-        ]
-      }
-    },
-    {
-      "td_type": "Code Debt",
-      "td_issue": "Lines should not be too long",
-      "commit": {
-        "hash": "9d4230b3efdd9ab9afd6c6f5f0bcb5dd16604a75",
-        "msg": "User interaction capability added to the component",
-        "file": "theme.py",
-        "lang": "python",
-        "diff": [
-        	" - if header == \"summary\":",
-                " - td_row = tag.td()",
-                " - input_summary = tag.input(type=\"text\", id = \"field-summary\"+str(num), class_=\"input-block-level\", name=\"field_summary\"+str(num))",
-                " - td_row.append(input_summary)",
-                " - tr_rows.append(td_row)",
-          " - elif header == \"description\":",
-                " - td_row = tag.td()",
-                " - input_description = tag.textarea(id = \"field-description\"+str(num), name=\"field_description\"+str(num), class_=\"input-block-level\", rows=\"1\", cols=\"28\")",
-                " - td_row.append(input_description)",
-                " - tr_rows.append(td_row)"
-        ]
-      }
-    },
-    {
-      "td_type": "Documentation Debt",
-      "td_issue": "Docstrings should be defined",
-      "commit": {
-        "hash": "700f1716740ff07082f98cc09b41b37f1f53f6ba",
-        "msg": "Sync the bep_0011_batch_create_tickets branch with ^/trunk.",
-        "file": "hooks.py",
-        "lang": "python",
-        "diff": [
-        	" - def _get_hook_class(env_path, hook_path, class_type):",
-    	" - module = _hook_load(env_path, hook_path)",
-    	" - for (name, cls) in inspect.getmembers(module, inspect.isclass):",
-        	" - if issubclass(cls, class_type) and \\",
-           	" - not cls is class_type:",
-            	" - return cls",
-    	" - return None"
-        ]
-      }
-    }
-  ]
-},
-{
-  "code": "",
   "email": "gjm@apache.org",
   "name": "Gary Martin",
   "project": "Apache/Bloodhound",
@@ -1121,41 +999,6 @@
                 " - if r and r != updater]",
             	" - elif updater:",
                 " - torecipients.append(updater)"
-        ]
-      }
-    }
-  ]
-},
-{
-  "code": "",
-  "email": "rjollos@apache.org",
-  "name": "Ryan Ollos",
-  "project": "Apache/Bloodhound",
-  "first_commit": "2012",
-  "cqs": [
-    {
-      "td_type": "Defect Debt",
-      "td_issue": "invalid syntax",
-      "commit": {
-        "hash": "3e3355754111cb89f553ff0e8439641c6b8a60ae",
-        "msg": "0.8dev: Removed debug statements.",
-        "file": "hooks.py",
-        "lang": "python",
-        "diff": [
-        	" - print load_class(env.config.get('trac', 'environment_factory'))"
-        ]
-      }
-    },
-    {
-      "td_type": "Documentation Debt",
-      "td_issue": "Source files should have a sufficient density of comment lines",
-      "commit": {
-        "hash": "945b9cc43394a53c7de0a661062113af6be5784f",
-        "msg": "merging trac-1.0 into trunk/trac - towards #159",
-        "file": "ticket_search.py",
-        "lang": "python",
-        "diff": [
-        	" + #!/usr/bin/env python"
         ]
       }
     }
@@ -1355,28 +1198,6 @@
         "lang": "python",
         "diff": [
         	" - cursor.execute(\"CREATE TABLE test (a int PRIMARY KEY, b int) WITH default_write_consistency = 'ALL' AND default_read_consistency = 'ALL'\")"
-        ]
-      }
-    }
-  ]
-},
-{
-  "code": "",
-  "email": "dmeyer@datastax.com",
-  "name": "Daniel Meyer",
-  "project": "Apache/Cassandra-dtest",
-  "first_commit": "2013",
-  "cqs": [
-    {
-      "td_type": "Defect Debt",
-      "td_issue": "The \"print\" statement should not be used",
-      "commit": {
-        "hash": "9544fd4dba3aaa6b2ba8e7b8b91de96274cd7e86",
-        "msg": "minor change",
-        "file": "upgrade_through_versions_test.py",
-        "lang": "python",
-        "diff": [
-        	" - print line"
         ]
       }
     }
@@ -2332,45 +2153,6 @@
 },
 {
   "code": "",
-  "email": "chinalibra@163.com",
-  "name": "曹祖鹏",
-  "project": "Apache/Dubbo-python",
-  "first_commit": "2015",
-  "cqs": [
-    {
-      "td_type": "Documentation Debt",
-      "td_issue": "Docstrings should be defined",
-      "commit": {
-        "hash": "e7a761a7d072b2d5742173f05b508f4b3d0e557b",
-        "msg": "抽离providers到commons对象，注册中心使用线程进行event处理",
-        "file": "registry.py",
-        "lang": "python",
-        "diff": [
-        	" + \"\"\"",
-	" + 所有注册过的服务端将在这里",
-	" + 格式为{providername:{ip+port:service}}",
-	" + providername = group_version_servicename",
-	" + \"\"\""
-        ]
-      }
-    },
-    {
-      "td_type": "Defect Debt",
-      "td_issue": "The \"print\" statement should not be used",
-      "commit": {
-        "hash": "f6eb732e73addbb7e42c999061b5af651d41c5dc",
-        "msg": "增加registry日志处理",
-        "file": "test_rpclib.py",
-        "lang": "python",
-        "diff": [
-	" - print user_provider.getUser(123)"
-        ]
-      }
-    }
-  ]
-},
-{
-  "code": "",
   "email": "mwalch@apache.org",
   "name": "Mike Walch",
   "project": "Apache/Fluo-muchos",
@@ -2576,45 +2358,6 @@
 },
 {
   "code": "",
-  "email": "rbogorodskiy@apache.org",
-  "name": "Roman Bogorodskiy",
-  "project": "Apache/Libcloud",
-  "first_commit": "2010",
-  "cqs": [
-    {
-      "td_type": "Documentation Debt",
-      "td_issue": "Source files should have a sufficient density of comment lines",
-      "commit": {
-        "hash": "336783b2e4df87e252108fb988465c6810c1bde6",
-        "msg": "Import Load Balancers support.",
-        "file": "gogrid.py",
-        "lang": "python",
-        "diff": [
-        	" + # Unless required by applicable law or agreed to in writing, software",
-	" + # distributed under the License is distributed on an \"AS IS\" BASIS,",
-	" + # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.",
-	" + # See the License for the specific language governing permissions and",
-	" + # limitations under the License."
-        ]
-      }
-    },
-    {
-      "td_type": "Defect Debt",
-      "td_issue": "The \"print\" statement should not be used",
-      "commit": {
-        "hash": "659e2ebff3307d16ed750250d5f67456be3e6491",
-        "msg": "Minor style fixes for loadbalancer example.",
-        "file": "example_loadbalancer.py",
-        "lang": "python",
-        "diff": [
-        	" - print nodes"
-        ]
-      }
-    }
-  ]
-},
-{
-  "code": "",
   "email": "tomaz@tomaz.me",
   "name": "Tomaz Muraus",
   "project": "Apache/Libcloud",
@@ -2729,43 +2472,6 @@
         	" - logging.info(\"[{}] Repsonse status code from trigger authorization {}\".format(triggerFQN, trigger_get_status_code))",
         	" + logging.info(\"[{}] Repsonse status code from trigger authorization {}\".format(triggerFQN,",
                 " +                                                                      trigger_get_status_code))"
-        ]
-      }
-    }
-  ]
-},
-{
-  "code": "",
-  "email": "bjustin@us.ibm.com",
-  "name": "Justin Berstler",
-  "project": "Apache/Openwhisk-package-kafka",
-  "first_commit": "2016",
-  "cqs": [
-    {
-      "td_type": "Code Debt",
-      "td_issue": "Lines should not be too long",
-      "commit": {
-        "hash": "c1f0fe363999a60a49acf253b4cee84926968f0c",
-        "msg": "Update error message to reflect that consumer is no longer killed on all polling exceptions",
-        "file": "consumer.py",
-        "lang": "python",
-        "diff": [
-        	" - logging.error('[{}] Error polling! Shutting down consumer: {}'.format(self.trigger, message.error()))",
-                " + logging.error('[{}] Error polling: {}'.format(self.trigger, message.error()))"
-        ]
-      }
-    },
-    {
-      "td_type": "Defect Debt",
-      "td_issue": "The \"print\" statement should not be used",
-      "commit": {
-        "hash": "4d2606c343c37139690908858b6592444e830b2c",
-        "msg": "Add lots more logging messages (#10)",
-        "file": "app.py",
-        "lang": "python",
-        "diff": [
-        	" - print \"Just testing\"",
-        	" + logging.debug(\"Just testing\")"
         ]
       }
     }

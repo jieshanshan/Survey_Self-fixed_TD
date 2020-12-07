@@ -1,4 +1,5 @@
 import csv
+import functools
 import json
 import os
 import ssl
@@ -47,6 +48,23 @@ def collect_answers(remote=True,token="the-very-secretive-phrase"):
   print(json.dumps(json.loads(res.read())["surveys"], indent=4, sort_keys=True))
 
 
+def count_answers(remote=True,token="the-very-secretive-phrase"):
+  if remote:
+    app_url = "https://sftd.danielfeitosa.cc"
+  else:
+    # localhost (disable certificate checking)
+    app_url = "https://localhost:5000"
+    ssl._create_default_https_context = ssl._create_unverified_context
+
+  url = f"{app_url}/backup"
+  headers={"Authorization": f"Bearer {token}", 'User-Agent': 'Mozilla/5.0'}
+
+  req = request.Request(url, headers=headers)
+  res = request.urlopen(req, parse.urlencode({}).encode('utf-8'))
+  surveys = json.loads(res.read())["surveys"]
+  print(functools.reduce(lambda t, s: t+(1 if s.get("gq1") else 0), surveys, 0))
+
+
 def generate_codes(jsonfile):
   with open(jsonfile) as f:
     surveys = json.load(f)
@@ -62,7 +80,7 @@ def generate_codes(jsonfile):
 
 
 def validate_codes(surveys):
-  if not isinstance(surveys, dict):
+  if not isinstance(surveys, list):
     with open(surveys) as f:
       surveys = json.load(f)
   
@@ -91,6 +109,7 @@ if __name__ == "__main__":
 
 # pipenv run python utils.py upload_surveys test-survey.json
 # pipenv run python utils.py collect_answers
+# pipenv run python utils.py count_answers
 # pipenv run python utils.py generate_codes surveys.json
 # pipenv run python utils.py validate_codes surveys.json
 # pipenv run python utils.py generate_contacts surveys.json

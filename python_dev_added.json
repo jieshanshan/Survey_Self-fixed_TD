@@ -14,8 +14,8 @@
         "file": "selector.py",
         "lang": "Python",
         "diff": [
-        	"  def stop(self, timeout=None):",
-	" + \"\"\"Stop the selector and wait for it's thread to exit. It cannot be re-started\"\"\""
+        	" def stop(self, timeout=None):",
+		" + \"\"\"Stop the selector and wait for it's thread to exit. It cannot be re-started\"\"\""
         ]
       }
     },
@@ -55,10 +55,10 @@
         "lang": "Python",
         "diff": [
         	" - class ExecutionCompletion:",
-	" +class OutgoingCompletion:",
-  	" + \"\"\"",
-  	" + Manages completion of outgoing commands i.e. command sent by this peer",
-  	" + \"\"\""
+		" +class OutgoingCompletion:",
+  		" + \"\"\"",
+  		" + Manages completion of outgoing commands i.e. command sent by this peer",
+  		" + \"\"\""
         ]
       }
     }
@@ -81,7 +81,7 @@
         "lang": "Python",
         "diff": [
         	" - def start(self, response, mechanism=\"AMQPLAIN\", locale=\"en_US\", tune_params=None, client_properties=None, connection_options=None):",
-  	" + def start(self, response=None, mechanism=None, locale=\"en_US\", tune_params=None,",
+  		" + def start(self, response=None, mechanism=None, locale=\"en_US\", tune_params=None,",
             	" + username=None, password=None,",
             	" + client_properties=None, connection_options=None, sasl_options = None):"
         ]
@@ -97,8 +97,8 @@
         "lang": "Python",
         "diff": [
         	" - class EXTERNAL(Sasl): pass",
-	" + class EXTERNAL(Sasl):",
-  	" + \"\"\"Sasl mechanism used when SSL with client-auth is in use\"\"\""
+		" + class EXTERNAL(Sasl):",
+  		" + \"\"\"Sasl mechanism used when SSL with client-auth is in use\"\"\""
         ]
       }
     },
@@ -112,16 +112,16 @@
         "lang": "Python",
         "diff": [
         	" - self.sock.shutdown(SHUT_RDWR)",
-    	" - self.sock.close()",
-    	" + try:",
-    	" + self.sock.shutdown(SHUT_RDWR)",
-    	" + except socket.error, e:",
-    	" + if (e.errno == errno.ENOTCONN):",
+    		" - self.sock.close()",
+    		" + try:",
+    		" + self.sock.shutdown(SHUT_RDWR)",
+    		" + except socket.error, e:",
+    		" + if (e.errno == errno.ENOTCONN):",
         	" + pass",
-      	" + else:",
-       	" + raise",
-    	" + finally:",
-     	" + self.sock.close()"
+      		" + else:",
+       		" + raise",
+    		" + finally:",
+     		" + self.sock.close()"
         ]
       }
     }
@@ -199,15 +199,15 @@
         "lang": "Python",
         "diff": [
         	" + # Licensed to the Apache Software Foundation (ASF) under one",
-	" + # or more contributor license agreements.  See the NOTICE file",
-	" + # distributed with this work for additional information",
-	" + # regarding copyright ownership.  The ASF licenses this file",
-	" + # to you under the Apache License, Version 2.0 (the",
-	" + # \"License\"); you may not use this file except in compliance",
-	" + # with the License.  You may obtain a copy of the License at"
+		" + # or more contributor license agreements.  See the NOTICE file",
+		" + # distributed with this work for additional information",
+		" + # regarding copyright ownership.  The ASF licenses this file",
+		" + # to you under the Apache License, Version 2.0 (the",
+		" + # \"License\"); you may not use this file except in compliance",
+		" + # with the License.  You may obtain a copy of the License at"
         ]
       }
-    }，
+    },
     {
       "td_type": "Defect Debt",
       "td_issue": "Undefined variable",
@@ -218,7 +218,8 @@
         "lang": "Python",
         "diff": [
         	" - def __init__ (self, ch, topicCb, replyCb, cbContext, _detlife=0):",
-  	" + def __init__ (self, ssn, topicCb, replyCb, cbContext, _detlife=0):"
+  		" + def __init__ (self, ssn, topicCb, replyCb, cbContext, _detlife=0):"
+	 ]
       }
     },
     {
@@ -230,8 +231,9 @@
         "file": "testlib.py",
         "lang": "Python",
         "diff": [
-        	" - # self.tests=findmodules("tests")",
-            	" + self.tests=findmodules("tests")"
+        	" - # self.tests=findmodules(\"tests\")",
+            	" + self.tests=findmodules(\"tests\")"
+	]
       }
     }
   ]
@@ -253,9 +255,10 @@
         "lang": "Python",
         "diff": [
         	" - if _have_sasl:",
-      	" - status, mech, initial = self.sasl.start(mech_list)",
- 	" + try:",
-     	" + mech, initial = self.sasl.start(mech_list)"
+      		" - status, mech, initial = self.sasl.start(mech_list)",
+ 		" + try:",
+     		" + mech, initial = self.sasl.start(mech_list)"
+	]
       }
     }
   ]
@@ -277,12 +280,13 @@
         "lang": "Python",
         "diff": [
         	" + # Licensed to the Apache Software Foundation (ASF) under one",
-	" + # or more contributor license agreements.  See the NOTICE file",
-	" + # distributed with this work for additional information",
-	" + # regarding copyright ownership.  The ASF licenses this file",
-	" + # to you under the Apache License, Version 2.0 (the",
-	" + # \"License\"); you may not use this file except in compliance",
-	" + # with the License.  You may obtain a copy of the License at"
+		" + # or more contributor license agreements.  See the NOTICE file",
+		" + # distributed with this work for additional information",
+		" + # regarding copyright ownership.  The ASF licenses this file",
+		" + # to you under the Apache License, Version 2.0 (the",
+		" + # \"License\"); you may not use this file except in compliance",
+		" + # with the License.  You may obtain a copy of the License at"
+	]
       }
     },
     {
@@ -295,9 +299,10 @@
         "lang": "Python",
         "diff": [
         	" - print 'send message status: ' + str(ret.status) + ' msgId: ' + ret.msg_id + ' offset: ' + str(ret.offset)",
-   	" - print 'send sync message done'",
+   		" - print 'send sync message done'",
         	" + print ('send message status: ' + str(ret.status) + ' msgId: ' + ret.msg_id + ' offset: ' + str(ret.offset))",
-    	" + print ('send sync message done')"
+    		" + print ('send sync message done')"
+	]
       }
     },
     {
@@ -315,6 +320,7 @@
         	" + msg = re.sub('<.*?(rocketmq-client-cpp/)(.*)>', '\\1\\2', msg)",
         	" + if msg.startswith('msg: '):",
             	" + msg = msg[5:]"
+	]
       }
     }
   ]
@@ -337,6 +343,7 @@
         "diff": [
         	" - erros.append(exc)",
             	" + errors.append(exc)"
+	]
       }
     }
   ]
@@ -359,6 +366,7 @@
         "diff": [
         	" - response.respond(200, {'base_data': basedata, 'issues': js, 'baseurl': \"https://%s/steve/election?%s\" % (os.environ['SERVER_NAME'], election)})",
                 " + response.respond(200, {'base_data': basedata, 'issues': js, 'baseurl': config.get(\"general\", \"rooturl\")})"
+	]
       }
     },
     {
@@ -372,6 +380,7 @@
         "diff": [
         	" - xhash = hashlib.sha224(election + \":\" + voterID).hexdigest()",
         	" + xhash = hashlib.sha224(electionID + \":\" + voterID).hexdigest()"
+	]
       }
     },
     {
@@ -391,7 +400,7 @@
             	" - for voter in voters:",
                 " - if voters[voter] == xhash:",
                 " - return voter",
-    	" - elif dbtype == \"elasticsearch\":",
+    		" - elif dbtype == \"elasticsearch\":",
         	" - try:",
             	" - res = es.search(index=\"steve\", doc_type=\"voters\", q = \"election:%s\" % election, size = 999999)",
             	" - results = len(res['hits']['hits'])",
@@ -400,6 +409,7 @@
                 " - voter = entry['_source']",
                 " - if voter['hash'] == xhash:",
                 " - return voter['uid']"
+	]
       }
     }
   ]
@@ -423,6 +433,7 @@
         	" - # TODO: remove, this is a hack for local dev",
         	" - #if key not in self.environment_stash:",
         	" - # key = self.environment_stash.iterkeys().next()"
+	]
       }
     }
   ]
@@ -445,6 +456,7 @@
         "diff": [
         	" -  raise unittest.SkipTest('Error starting DynamicHTTPEndpoint: {0}'.format(e))",
             	" + raise unittest.SkipTest('Error starting DynamicHTTPEndpoint: {0}'.format(cls.http_endpoint.error))"
+	]
       }
     },
     {
@@ -457,10 +469,11 @@
         "lang": "Python",
         "diff": [
         	" class Layout:",
-   	" + \"\"\"",
-    	" + The Layout class is responsible for the set of installation paths within a",
-    	" + prefixed Traffic Server instance.",
-   	"  \"\"\""
+   		" + \"\"\"",
+    		" + The Layout class is responsible for the set of installation paths within a",
+    		" + prefixed Traffic Server instance.",
+   		"  \"\"\""
+	]
       }
     },
     {
@@ -475,6 +488,7 @@
         	" - #self.layout = Layout(tempfile.mkdtemp())",
             	" - self.layout = Layout('/tmp/tmpVzYCTb')",
             	" + self.layout = Layout(tempfile.mkdtemp())"
+	]
       }
     }
   ]

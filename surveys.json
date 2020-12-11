@@ -8823,5 +8823,500 @@
             }
         }
     ]
-  }
+  },
+  {
+    "code": "q8CTSNBCNQM",
+    "email": "aconway@redhat.com",
+    "name": "Alan Conway",
+    "project": "Apache/Qpid-python",
+    "first_commit": "2006",
+    "cqs": [
+        {
+            "td_type": "Documentation Debt",
+            "td_issue": "Docstrings should be defined",
+            "commit": {
+                "hash": "fda9594010b13d99134c10cff54b0ba9d82c0c27",
+                "msg": "QPID-7317: More robust qpid.selector with better logging",
+                "file": "selector.py",
+                "lang": "Python",
+                "diff": [
+                    "   def stop(self, timeout=None):",
+                    " + \"\"\"Stop the selector and wait for it's thread to exit. It cannot be re-started\"\"\""
+                ]
+            }
+        },
+        {
+            "td_type": "Defect Debt",
+            "td_issue": "The \"print\" statement should not be used",
+            "commit": {
+                "hash": "ea7e0ba98e790914efc2f987c491fb090bf1ccb6",
+                "msg": " cpp-0-9: svn copy of 0-9 branch cpp, will rename to cpp on next update.",
+                "file": "testlib.py",
+                "lang": "Python",
+                "diff": [
+                    " - try:",
+                    " -    result = runner.run(self.testSuite())",
+                    " - except:",
+                    " -     print \"Unhandled error in test:\", sys.exc_info()",
+                    " + result = runner.run(self.testSuite())"
+                ]
+            }
+        }
+    ]
+},
+{
+    "code": "9WfmEx3Z7hc",
+    "email": "gsim@apache.org",
+    "name": "Gordon Sim",
+    "project": "Apache/Qpid-python",
+    "first_commit": "2006",
+    "cqs": [
+        {
+            "td_type": "Documentation Debt",
+            "td_issue": "Docstrings should be defined",
+            "commit": {
+                "hash": "32e4043513f21f439839bb18dd51d40756ab1b64",
+                "msg": "Use execution layer to acknowledge messages.",
+                "file": "peer.py",
+                "lang": "Python",
+                "diff": [
+                    " - class ExecutionCompletion:",
+                    " + class OutgoingCompletion:",
+                    " + \"\"\"",
+                    " + Manages completion of outgoing commands i.e. command sent by this peer",
+                    " + \"\"\""
+                ]
+            }
+        }
+    ]
+},
+{
+    "code": "HoKudmRzBYI",
+    "email": "keith.wall@gmail.com",
+    "name": "Keith Wall",
+    "project": "Apache/Qpid-python",
+    "first_commit": "2011",
+    "cqs": [
+        {
+            "td_type": "Code Debt",
+            "td_issue": "Lines should not be too long",
+            "commit": {
+                "hash": "66ecefd3c7b597a481ef0dd73128fae6f2ee0a16",
+                "msg": "QPID-6116: [Python Client 08..091] Add ability to negotiate SASL mechanism and add pure python implementations for SCRAM/CRAM/PLAIN mechanisms",
+                "file": "client.py",
+                "lang": "Python",
+                "diff": [
+                    " - def start(self, response, mechanism=\"AMQPLAIN\", locale=\"en_US\", tune_params=None, client_properties=None, connection_options=None):",
+                    " + def start(self, response=None, mechanism=None, locale=\"en_US\", tune_params=None,",
+                    " +     username=None, password=None,",
+                    " +     client_properties=None, connection_options=None, sasl_options = None):"
+                ]
+            }
+        },
+        {
+            "td_type": "Documentation Debt",
+            "td_issue": "Docstrings should be defined",
+            "commit": {
+                "hash": "50e89e68a84fc3b2735d994dce81fe2024ab07f6",
+                "msg": "QPID-6116: [Python Client 0-8..0-9] Allow fallback to anon/external sasl if no credentials are provided",
+                "file": "external.py",
+                "lang": "Python",
+                "diff": [
+                    " - class EXTERNAL(Sasl): pass",
+                    " + class EXTERNAL(Sasl):",
+                    " + \"\"\"Sasl mechanism used when SSL with client-auth is in use\"\"\""
+                ]
+            }
+        },
+        {
+            "td_type": "Defect Debt",
+            "td_issue": "Invalid Syntax",
+            "commit": {
+                "hash": "3247c8a9c953cdc564eec8cacbea4796db5e7c90",
+                "msg": "QPID-6117: [Python Client 0-8..0-9] Ignore socket.error ENOTCONN when trying to shutdown a socket to prevent spurious exception when socket closed by peer",
+                "file": "connection08.py",
+                "lang": "Python",
+                "diff": [
+                    " - self.sock.shutdown(SHUT_RDWR)",
+                    " - self.sock.close()",
+                    " + try:",
+                    " +   self.sock.shutdown(SHUT_RDWR)",
+                    " + except socket.error, e:",
+                    " +   if (e.errno == errno.ENOTCONN):",
+                    " +     pass",
+                    " +   else:",
+                    " +     raise",
+                    " + finally:",
+                    " +   self.sock.close()"
+                ]
+            }
+        }
+    ]
+},
+{
+    "code": "o66UTAlAvcA",
+    "email": "kpvdr@apache.org",
+    "name": "Kim van der Riet",
+    "project": "Apache/Qpid-python",
+    "first_commit": "2006",
+    "cqs": [
+        {
+            "td_type": "Code Debt",
+            "td_issue": "Sections of code should not be \"commented out\"",
+            "commit": {
+                "hash": "632de61f240884337296e3c038412f8afa6eddac",
+                "msg": "Added installable python cluster tests that can be run from an external store build/test environment and can test persistent clusters.",
+                "file": "testlib.py",
+                "lang": "Python",
+                "diff": [
+                    " -  #print \"stopped broker: port=%d\" % port"
+                ]
+            }
+        }
+    ]
+},
+{
+    "code": "3SRRsbXIUFg",
+    "name": "Pavel Moravec",
+    "email": "pmoravec@apache.org",
+    "project": "Apache/Qpid-python",
+    "first_commit": "2013",
+    "cqs": [
+        {
+            "td_type": "Design Debt",
+            "td_issue": "Cognitive Complexity of functions should not be too high",
+            "commit": {
+                "hash": "b300f3f90c54d025c8b88785e0bc539d6d152fb8",
+                "msg": "QPID-5823: (reverting commit r1602820) Python client should create a node with name starting '\\#'",
+                "file": "driver.py",
+                "lang": "Python",
+                "diff": [
+                    "   if lnk.options is None:",
+                    "     lnk.options = {}",
+                    " - # if address starts with '#', create auxiliary queue with name preceded by uuid",
+                    " - if addr.startswith(\"#\") and 'create' not in lnk.options:",
+                    " -   lnk.name = str(uuid4()) + lnk.name",
+                    " -   lnk.options['create'] = \"always\"",
+                    " - if 'node' not in lnk.options:",
+                    " -   lnk.options['node'] = {}",
+                    " - if 'x-declare' not in lnk.options['node']:",
+                    " -   lnk.options['node']['x-declare'] = {}",
+                    " -   lnk.options['node']['x-declare']['auto-delete'] = \"True\"",
+                    " -   lnk.options['node']['x-declare']['exclusive'] = \"True\""
+                ]
+            }
+        }
+    ]
+},
+{
+    "code": "Gj0P8mnjCT0",
+    "name": "Rafael H. Schloming",
+    "email": "rhs@apache.org",
+    "project": "Apache/Qpid-python",
+    "first_commit": "2006",
+    "cqs": [
+        {
+            "td_type": "Documentation Debt",
+            "td_issue": "Source files should have a sufficient density of comment lines",
+            "commit": {
+                "hash": "5ce2ff977485cb7a70c66bd60a25d99f99541a2d",
+                "msg": "cleand up and added license header",
+                "file": "debug.py",
+                "lang": "Python",
+                "diff": [
+                    " + # Licensed to the Apache Software Foundation (ASF) under one",
+                    " + # or more contributor license agreements.  See the NOTICE file",
+                    " + # distributed with this work for additional information",
+                    " + # regarding copyright ownership.  The ASF licenses this file",
+                    " + # to you under the Apache License, Version 2.0 (the",
+                    " + # \"License\"); you may not use this file except in compliance",
+                    " + # with the License.  You may obtain a copy of the License at"
+                ]
+            }
+        },
+        {
+            "td_type": "Defect Debt",
+            "td_issue": "Undefined variable",
+            "commit": {
+                "hash": "dc459de30f17d47f2bc719365ae7d6500262fcd3",
+                "msg": "QPID-947: update cpp and python management to 0-10 final",
+                "file": "management.py",
+                "lang": "Python",
+                "diff": [
+                    " - def __init__ (self, ch, topicCb, replyCb, cbContext, _detlife=0):",
+                    " + def __init__ (self, ssn, topicCb, replyCb, cbContext, _detlife=0):"
+                ]
+            }
+        },
+        {
+            "td_type": "Code Debt",
+            "td_issue": "Sections of code should not be \"commented out\"",
+            "commit": {
+                "hash": "89e0c48f4dae8d60a68625203a7bd07f41b9157f",
+                "msg": "Applied a modified version of the range checking patch from QPID-498.",
+                "file": "testlib.py",
+                "lang": "Python",
+                "diff": [
+                    " - # self.tests=findmodules(\"tests\")",
+                    " + self.tests=findmodules(\"tests\")"
+                ]
+            }
+        }
+    ]
+},
+{
+    "code": "q-ZDoZUNmbE",
+    "name": "Ted Ross",
+    "email": "tross@apache.org",
+    "project": "Apache/Qpid-python",
+    "first_commit": "2012",
+    "cqs": [
+        {
+            "td_type": "Defect Debt",
+            "td_issue": "Undefined variable",
+            "commit": {
+                "hash": "72c6f012578eee5de1213aef5e2c70843eced4ff",
+                "msg": "QPID-3175 - Added SSL/x.509-auth capability to Python clients and Python tools",
+                "file": "delegates.py",
+                "lang": "Python",
+                "diff": [
+                    " - if _have_sasl:",
+                    " -   status, mech, initial = self.sasl.start(mech_list)",
+                    " + try:",
+                    " +   mech, initial = self.sasl.start(mech_list)"
+                ]
+            }
+        }
+    ]
+},
+{
+    "code": "0Qmz-jyO548",
+    "name": "Heng Du",
+    "email": "duheng0522@gmail.com",
+    "project": "Apache/Rocketmq-client-python",
+    "first_commit": "2018",
+    "cqs": [
+        {
+            "td_type": "Documentation Debt",
+            "td_issue": "Source files should have a sufficient density of comment lines",
+            "commit": {
+                "hash": "1a5063fe43c3a5aeb0ffaee5797fcf247be5c698",
+                "msg": "Merge pull request #56 from duhenglucky/license",
+                "file": "consts.py",
+                "lang": "Python",
+                "diff": [
+                    " + # Licensed to the Apache Software Foundation (ASF) under one",
+                    " + # or more contributor license agreements.  See the NOTICE file",
+                    " + # distributed with this work for additional information",
+                    " + # regarding copyright ownership.  The ASF licenses this file",
+                    " + # to you under the Apache License, Version 2.0 (the",
+                    " + # \"License\"); you may not use this file except in compliance",
+                    " + # with the License.  You may obtain a copy of the License at"
+                ]
+            }
+        },
+        {
+            "td_type": "Defect Debt",
+            "td_issue": "The \"print\" statement should not be used",
+            "commit": {
+                "hash": "d8bc677b123009b748fea4af8f9fce29f6c7ac8a",
+                "msg": "fix(sample)fix python3 support",
+                "file": "producer.py",
+                "lang": "Python",
+                "diff": [
+                    " - print 'send message status: ' + str(ret.status) + ' msgId: ' + ret.msg_id + ' offset: ' + str(ret.offset)",
+                    " - print 'send sync message done'",
+                    " + print ('send message status: ' + str(ret.status) + ' msgId: ' + ret.msg_id + ' offset: ' + str(ret.offset))",
+                    " + print ('send sync message done')"
+                ]
+            }
+        },
+        {
+            "td_type": "Code Debt",
+            "td_issue": "Sections of code should not be \"commented out\"",
+            "commit": {
+                "hash": "299a518568206647ee589787c5e58f9cd0176ee4",
+                "msg": "style(client)polish the code style and fix the unit test",
+                "file": "exceptions.py",
+                "lang": "Python",
+                "diff": [
+                    " - # msg = re.sub('<.*?(rocketmq-client-cpp/)(.*)>', '\\1\\2', msg)",
+                    " - # if msg.startswith('msg: '):",
+                    " - #     msg = msg[5:]",
+                    " + msg = re.sub('<.*?(rocketmq-client-cpp/)(.*)>', '\\1\\2', msg)",
+                    " + if msg.startswith('msg: '):",
+                    " +     msg = msg[5:]"
+                ]
+            }
+        }
+    ]
+},
+{
+    "code": "cQOa-vyNQWE",
+    "name": "messense",
+    "email": "messense@icloud.com",
+    "project": "Apache/Rocketmq-client-python",
+    "first_commit": "2019",
+    "cqs": [
+        {
+            "td_type": "Defect Debt",
+            "td_issue": "Undefined variable",
+            "commit": {
+                "hash": "d66f1660484269a692af82947917cb2fcbdbf3e3",
+                "msg": "Fix typos in test cases",
+                "file": "test_consumer.py",
+                "lang": "Python",
+                "diff": [
+                    " - erros.append(exc)",
+                    " + errors.append(exc)"
+                ]
+            }
+        }
+    ]
+},
+{
+    "code": "oKTF3Ok5c8k",
+    "name": "Daniel Gruno",
+    "email": "humbedooh@apache.org",
+    "project": "Apache/Steve",
+    "first_commit": "2015",
+    "cqs": [
+        {
+            "td_type": "Code Debt",
+            "td_issue": "Lines should not be too long",
+            "commit": {
+                "hash": "34e94b3fee0c675e6734051ddc6470d06b6a3e3e",
+                "msg": "Fix baseurl. Add monitor emails to main election page",
+                "file": "rest_voter.py",
+                "lang": "Python",
+                "diff": [
+                    " - response.respond(200, {'base_data': basedata, 'issues': js, 'baseurl': \"https://%s/steve/election?%s\" % (os.environ['SERVER_NAME'], election)})",
+                    " + response.respond(200, {'base_data': basedata, 'issues': js, 'baseurl': config.get(\"general\", \"rooturl\")})"
+                ]
+            }
+        },
+        {
+            "td_type": "Defect Debt",
+            "td_issue": "Undefined variable",
+            "commit": {
+                "hash": "b1e42fd7c7355c7b7597c20edf037c11a673b8a9",
+                "msg": "copypasto",
+                "file": "election.py",
+                "lang": "Python",
+                "diff": [
+                    " - xhash = hashlib.sha224(election + \":\" + voterID).hexdigest()",
+                    " + xhash = hashlib.sha224(electionID + \":\" + voterID).hexdigest()"
+                ]
+            }
+        },
+        {
+            "td_type": "Design Debt",
+            "td_issue": "Control flow statements should not be nested too deeply",
+            "commit": {
+                "hash": "36ec98b270013c7b0262d5194a2699744b242ff8",
+                "msg": "have election and voter use the new db backend files",
+                "file": "voter.py",
+                "lang": "Python",
+                "diff": [
+                    " -  if dbtype == \"file\":",
+                    " -  elpath = os.path.join(homedir, \"issues\", election)",
+                    " -  with open(elpath + \"/voters.json\", \"r\") as f:",
+                    " -      voters = json.loads(f.read())",
+                    " -      f.close()",
+                    " -      for voter in voters:",
+                    " -         if voters[voter] == xhash:",
+                    " -         return voter",
+                    " - elif dbtype == \"elasticsearch\":",
+                    " -      try:",
+                    " -          res = es.search(index=\"steve\", doc_type=\"voters\", q = \"election:%s\" % election, size = 999999)",
+                    " -          results = len(res['hits']['hits'])",
+                    " -          if results > 0:",
+                    " -             for entry in res['hits']['hits']:",
+                    " -             voter = entry['_source']",
+                    " -             if voter['hash'] == xhash:",
+                    " -             return voter['uid']"
+                ]
+            }
+        }
+    ]
+},
+{
+    "code": "r0kfgwuEQv4",
+    "name": "Joshua Blatt",
+    "email": "blattj@yahoo-inc.com",
+    "project": "Apache/Trafficserver-qa",
+    "first_commit": "2014",
+    "cqs": [
+        {
+            "td_type": "Code Debt",
+            "td_issue": "Sections of code should not be \"commented out\"",
+            "commit": {
+                "hash": "d848f0252f96f5171b4a428fb16e5276e1eecff2",
+                "msg": "Merge branch 'master' of github.com:duderino/tsqa",
+                "file": "environment.py",
+                "lang": "Python",
+                "diff": [
+                    " - # TODO: remove, this is a hack for local dev",
+                    " - #if key not in self.environment_stash:",
+                    " - # key = self.environment_stash.iterkeys().next()"
+                ]
+            }
+        }
+    ]
+},
+{
+    "code": "TDSK0S3-UHQ",
+    "name": "Thomas Jackson",
+    "email": "jacksontj.89@gmail.com",
+    "project": "Apache/Trafficserver-qa",
+    "first_commit": "2014",
+    "cqs": [
+        {
+            "td_type": "Defect Debt",
+            "td_issue": "Undefined variable",
+            "commit": {
+                "hash": "24180eac5085ba7eda1bbe2fb1ed264cb6ed6df1",
+                "msg": "Fix typo! This typo would cause the error message to be lost, which is suboptimal",
+                "file": "test_cases.py",
+                "lang": "Python",
+                "diff": [
+                    " -  raise unittest.SkipTest('Error starting DynamicHTTPEndpoint: {0}'.format(e))",
+                    " + raise unittest.SkipTest('Error starting DynamicHTTPEndpoint: {0}'.format(cls.http_endpoint.error))"
+                ]
+            }
+        },
+        {
+            "td_type": "Documentation Debt",
+            "td_issue": "Docstrings should be defined",
+            "commit": {
+                "hash": "53973b3227d8b878a4dab6c1881d0284440ce151",
+                "msg": "Misc cleanup",
+                "file": "environment.py",
+                "lang": "Python",
+                "diff": [
+                    "   class Layout:",
+                    " + \"\"\"",
+                    " + The Layout class is responsible for the set of installation paths within a",
+                    " + prefixed Traffic Server instance.",
+                    "   \"\"\""
+                ]
+            }
+        },
+        {
+            "td_type": "Code Debt",
+            "td_issue": "Sections of code should not be \"commented out\"",
+            "commit": {
+                "hash": "25e5eee3765c7f036a5e4dd14741c11d2d016773",
+                "msg": "Add '-if' to autoreconf, according to ATS README, thats what we should do",
+                "file": "environment.py",
+                "lang": "Python",
+                "diff": [
+                    " - #self.layout = Layout(tempfile.mkdtemp())",
+                    " - self.layout = Layout('/tmp/tmpVzYCTb')",
+                    " + self.layout = Layout(tempfile.mkdtemp())"
+                ]
+            }
+        }
+    ]
+}
 ]

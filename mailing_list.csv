@@ -1,0 +1,8 @@
+projectname,GitHub,web,mailing-list,contributor
+IMPALA,https://github.com/apache/impala,https://impala.apache.org/community.html,dev@impala.apache.org,149
+THRIFT,https://github.com/apache/thrift,https://thrift.apache.org/mailing,dev@thrift.apache.org,349
+HBASE,https://github.com/apache/hbase,https://hbase.apache.org/mail-lists.html,dev@hbase.apache.org,2992
+CAMEL,https://github.com/apache/camel,https://camel.apache.org/community/mailing-list/,dev@camel.apache.org,722
+HADOOP,https://github.com/apache/hadoop,https://hadoop.apache.org/mailing_lists.html,common-dev@hadoop.apache.org,22954
+GERRIT,https://github.com/GerritCodeReview/gerrit,https://gerrit.googlesource.com/gerrit,repo-discuss@googlegroups.com,294
+CHROMIUM,https://github.com/chromium/chromium,https://chromium.googlesource.com/chromium/src/,chromium-discuss@chromium.org,2070

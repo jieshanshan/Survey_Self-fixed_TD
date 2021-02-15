@@ -1,0 +1,17 @@
+Language,projectname,GitHub,web,mailing-list,contributor,,,
+Java,Impala,https://github.com/apache/impala,https://impala.apache.org/community.html,dev@impala.apache.org,149,Yikun,,
+,Thrift,https://github.com/apache/thrift,https://thrift.apache.org/mailing,dev@thrift.apache.org,349,Yikun,,
+,Hbase,https://github.com/apache/hbase,https://hbase.apache.org/mail-lists.html,dev@hbase.apache.org,2992,Yikun,,
+,Camel,https://github.com/apache/camel,https://camel.apache.org/community/mailing-list/,dev@camel.apache.org,722,ICSME2017,MSR2018,
+,Hadoop,https://github.com/apache/hadoop,https://hadoop.apache.org/mailing_lists.html,common-dev@hadoop.apache.org,22954,ICSME2017,MSR2018,SANER2016
+,Gerrit,https://github.com/GerritCodeReview/gerrit,https://gerrit.googlesource.com/gerrit,repo-discuss@googlegroups.com,294,ICSME2017,MSR2018,
+,Chromium,https://github.com/chromium/chromium,https://chromium.googlesource.com/chromium/src/,chromium-discuss@chromium.org,2070,ICSME2014,SANER2016,
+,Log4j,https://github.com/apache/log4j,https://logging.apache.org/log4j/2.x/mail-lists.html,log4j-dev@logging.apache.org,4,ICSME2017,MSR2018,
+,Tomcat,https://github.com/apache/tomcat,http://tomcat.apache.org/lists.html#tomcat-dev,dev@tomcat.apache.org,61,ICSME2017,MSR2018,SANER2016
+,Cassandra,https://github.com/apache/cassandra,https://cassandra.apache.org/community/,dev@cassandra.apache.org,320,SANER2016,,
+Python,Tensorflow,https://github.com/tensorflow/tensorflow,https://www.tensorflow.org/community/mailing-lists,developers@tensorflow.org,2890,,,
+,Flask,https://github.com/pallets/flask,,,635,,,
+,Django,https://github.com/django/django,https://groups.google.com/g/django-developers,django-developers@googlegroups.com,2099,,,
+,Scikit-learn,https://github.com/scikit-learn/scikit-learn,https://mail.python.org/mailman/listinfo/scikit-learn,scikit-learn@python.org,1909,,,
+,Pytorch,https://github.com/pytorch/pytorch,,,1746,,,
+,Pandas,https://github.com/pandas-dev/pandas,https://mail.python.org/mailman/listinfo/pandas-dev,pandas-dev@python.org,2260,,,

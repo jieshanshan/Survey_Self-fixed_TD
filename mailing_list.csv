@@ -3,7 +3,7 @@ Java,,Impala,,149,https://github.com/apache/impala,https://impala.apache.org/com
 ,,Thrift,,349,https://github.com/apache/thrift,https://thrift.apache.org/mailing,dev@thrift.apache.org,Yikun,,
 ,,Apache Hbase,Hadoop database,2992,https://github.com/apache/hbase,https://hbase.apache.org/mail-lists.html,dev@hbase.apache.org,Yikun,,
 ,Y,Apache Camel,Open-source integration framework,722,https://github.com/apache/camel,https://camel.apache.org/community/mailing-list/,dev@camel.apache.org,ICSME2017,MSR2018,
-,Y,Apache Hadoop,A framework for running applications on large clusters built of commodity hardware. ,22954,https://github.com/apache/hadoop,https://hadoop.apache.org/mailing_lists.html,common-dev@hadoop.apache.org,ICSME2017,MSR2018,SANER2016
+,Y,Apache Hadoop,A framework for running applications on large clusters built of commodity hardware,22954,https://github.com/apache/hadoop,https://hadoop.apache.org/mailing_lists.html,common-dev@hadoop.apache.org,ICSME2017,MSR2018,SANER2016
 ,Y,Gerrit,"Free, web-based team code collaboration tool",294,https://github.com/GerritCodeReview/gerrit,https://gerrit.googlesource.com/gerrit,repo-discuss@googlegroups.com,ICSME2017,MSR2018,
 ,Y,Chromium,Open-source browser project,2070,https://github.com/chromium/chromium,https://chromium.googlesource.com/chromium/src/,chromium-discuss@chromium.org,ICSME2014,SANER2016,
 ,,Log4j,,4,https://github.com/apache/log4j,https://logging.apache.org/log4j/2.x/mail-lists.html,log4j-dev@logging.apache.org,ICSME2017,MSR2018,

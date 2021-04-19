@@ -1,0 +1,28 @@
+"from"	"To improve code maintenance"	"Practitioner's responsibility and habbit"	"To make code clean"	"To improve team collaboration"	"To avoid higher cost"	"Having enough time"	"To help implementing new features"	"To increase code readability"	"To avoid accumulating TD"	"To improve development process"	"TD becomes visible"	"To avoid wasting more time"	"Experience and knowledge increased"	"To improve code efficiency"	"To achieve the requirements"	"To keep best practices"	"To increase software quality"	"Having better architecture"	"To improve system scalability"	"To fix bug"	"To improve system stability"	"To improve system security"	"To make support easier"	"To increasing tests"	"To improve system usability"	"To make interfaces consistent"	"To improve system reliability"
+"To improve code maintenance"	NA	1	3	NA	NA	NA	NA	1	NA	1	NA	NA	NA	NA	NA	1	1	NA	NA	NA	NA	1	NA	NA	NA	NA	NA
+"Practitioner's responsibility and habbit"	1	NA	1	NA	1	NA	1	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA
+"To make code clean"	1	1	NA	1	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA
+"To improve team collaboration"	3	4	NA	NA	NA	NA	NA	1	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA
+"To avoid higher cost"	1	1	NA	NA	NA	1	1	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA
+"Having enough time"	NA	1	1	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA
+"To help implementing new features"	3	NA	NA	NA	NA	NA	NA	1	1	NA	NA	NA	NA	NA	NA	NA	1	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA
+"To increase code readability"	1	1	3	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	1	NA	NA	NA	NA	NA	NA	NA	NA	1	NA	NA
+"To avoid accumulating TD"	NA	1	NA	NA	NA	NA	NA	1	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA
+"To improve development process"	NA	1	NA	NA	1	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA
+"TD becomes visible"	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	1	NA	NA	NA	NA	NA	NA
+"To avoid wasting more time"	NA	NA	NA	NA	1	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA
+"Experience and knowledge increased"	NA	1	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA
+"To improve code efficiency"	NA	NA	NA	1	NA	NA	NA	NA	NA	NA	1	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA
+"To achieve the requirements"	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA
+"To keep best practices"	1	NA	1	NA	NA	NA	NA	1	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA
+"To increase software quality"	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA
+"Having better architecture"	NA	2	NA	NA	NA	2	NA	NA	NA	NA	NA	NA	1	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA
+"To improve system scalability"	1	NA	NA	NA	NA	NA	NA	NA	NA	NA	1	NA	NA	1	NA	NA	NA	NA	NA	NA	1	NA	NA	1	1	NA	1
+"To fix bug"	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	1	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA
+"To Improve system stability"	NA	1	NA	NA	1	NA	NA	NA	NA	NA	1	NA	NA	1	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	1
+"To improve system security"	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	1	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA
+"To make support easier"	NA	NA	NA	1	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA
+"To increasing tests"	2	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA
+"To improve system usability"	1	NA	1	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	1	NA	NA	NA
+"To make interfaces consistent"	NA	NA	1	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA
+"To improve system reliability"	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	1	NA	NA	1	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA

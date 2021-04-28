@@ -1,0 +1,51 @@
+Order,Language,Type,Standard,Options,Number,Negative,TotalNegative,Total,PercentOfTotal,LinkertPercent,StartPercent,EndPercent
+5,Java,Code,1,Definetely not,4,4,89,181,2%,-0.491712707,-0.49,-0.47
+5,Java,Code,2,Probably not,8,8,89,181,4%,-0.491712707,-0.47,-0.43
+5,Java,Code,3,I am not sure,9,9,89,181,5%,-0.491712707,-0.43,-0.38
+5,Java,Code,4,Probably yes,25,25,89,181,14%,-0.491712707,-0.38,-0.24
+5,Java,Code,5,Definetely yes,43,43,89,181,24%,-0.491712707,-0.24,0.00
+5,Python,Code,6,Definetely yes,37,0,89,181,20%,-0.491712707,0.00,0.20
+5,Python,Code,7,Probably yes,16,0,89,181,9%,-0.491712707,0.20,0.29
+5,Python,Code,8,I am not sure,9,0,89,181,5%,-0.491712707,0.29,0.34
+5,Python,Code,9,Probably not,12,0,89,181,7%,-0.491712707,0.34,0.41
+5,Python,Code,10,Definetely not,18,0,89,181,10%,-0.491712707,0.41,0.51
+4,Java,Defect,1,Definetely not,5,5,89,181,3%,-0.491712707,-0.49,-0.46
+4,Java,Defect,2,Probably not,9,9,89,181,5%,-0.491712707,-0.46,-0.41
+4,Java,Defect,3,I am not sure,16,16,89,181,9%,-0.491712707,-0.41,-0.33
+4,Java,Defect,4,Probably yes,22,22,89,181,12%,-0.491712707,-0.33,-0.20
+4,Java,Defect,5,Definetely yes,37,37,89,181,20%,-0.491712707,-0.20,0.00
+4,Python,Defect,6,Definetely yes,26,0,89,181,14%,-0.491712707,0.00,0.14
+4,Python,Defect,7,Probably yes,22,0,89,181,12%,-0.491712707,0.14,0.27
+4,Python,Defect,8,I am not sure,10,0,89,181,6%,-0.491712707,0.27,0.32
+4,Python,Defect,9,Probably not,13,0,89,181,7%,-0.491712707,0.32,0.39
+4,Python,Defect,10,Definetely not,21,0,89,181,12%,-0.491712707,0.39,0.51
+1,Java,Design,1,Definetely not,5,5,89,181,3%,-0.491712707,-0.49,-0.46
+1,Java,Design,2,Probably not,13,13,89,181,7%,-0.491712707,-0.46,-0.39
+1,Java,Design,3,I am not sure,18,18,89,181,10%,-0.491712707,-0.39,-0.29
+1,Java,Design,4,Probably yes,25,25,89,181,14%,-0.491712707,-0.29,-0.15
+1,Java,Design,5,Definetely yes,28,28,89,181,15%,-0.491712707,-0.15,0.00
+1,Python,Design,6,Definetely yes,27,0,89,181,15%,-0.491712707,0.00,0.15
+1,Python,Design,7,Probably yes,17,0,89,181,9%,-0.491712707,0.15,0.24
+1,Python,Design,8,I am not sure,18,0,89,181,10%,-0.491712707,0.24,0.34
+1,Python,Design,9,Probably not,10,0,89,181,6%,-0.491712707,0.34,0.40
+1,Python,Design,10,Definetely not,20,0,89,181,11%,-0.491712707,0.40,0.51
+2,Java,Documentation,1,Definetely not,10,10,89,181,6%,-0.491712707,-0.49,-0.44
+2,Java,Documentation,2,Probably not,8,8,89,181,4%,-0.491712707,-0.44,-0.39
+2,Java,Documentation,3,I am not sure,16,16,89,181,9%,-0.491712707,-0.39,-0.30
+2,Java,Documentation,4,Probably yes,20,20,89,181,11%,-0.491712707,-0.30,-0.19
+2,Java,Documentation,5,Definetely yes,35,35,89,181,19%,-0.491712707,-0.19,0.00
+2,Python,Documentation,6,Definetely yes,28,0,89,181,15%,-0.491712707,0.00,0.15
+2,Python,Documentation,7,Probably yes,19,0,89,181,10%,-0.491712707,0.15,0.26
+2,Python,Documentation,8,I am not sure,13,0,89,181,7%,-0.491712707,0.26,0.33
+2,Python,Documentation,9,Probably not,10,0,89,181,6%,-0.491712707,0.33,0.39
+2,Python,Documentation,10,Definetely not,22,0,89,181,12%,-0.491712707,0.39,0.51
+3,Java,Test,1,Definetely not,7,7,89,181,4%,-0.491712707,-0.49,-0.45
+3,Java,Test,2,Probably not,8,8,89,181,4%,-0.491712707,-0.45,-0.41
+3,Java,Test,3,I am not sure,14,14,89,181,8%,-0.491712707,-0.41,-0.33
+3,Java,Test,4,Probably yes,20,20,89,181,11%,-0.491712707,-0.33,-0.22
+3,Java,Test,5,Definetely yes,40,40,89,181,22%,-0.491712707,-0.22,0.00
+3,Python,Test,6,Definetely yes,29,0,89,181,16%,-0.491712707,0.00,0.16
+3,Python,Test,7,Probably yes,12,0,89,181,7%,-0.491712707,0.16,0.23
+3,Python,Test,8,I am not sure,13,26,89,181,7%,-0.491712707,0.23,0.30
+3,Python,Test,9,Probably not,12,19,89,181,7%,-0.491712707,0.30,0.36
+3,Python,Test,10,Definetely not,26,32,89,181,14%,-0.491712707,0.36,0.51

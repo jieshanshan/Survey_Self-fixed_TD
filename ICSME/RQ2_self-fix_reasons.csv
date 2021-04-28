@@ -1,0 +1,185 @@
+For what reasons do you repay your own technical debt?,Codes
+Because not doing so sucks,Sense of responsibility
+"once pressure is gone and there's a little time to ""make things right"" again",Having enough time
+Clean codeer,Clean code
+To improve the code and make it more maintainable.,Improve maintainability
+Fixing it again at higher cost,Avoid higher cost
+"I don't usually explicitly repay technical debt, since i am usually unaware when I introduce it. If I do repay it, it is to make the code scalable.",Improve scalability
+"I prefer cleaner and maintainable code, but am only allowed to make those changes sparingly because management insists that we cannot afford to break existing functionality.",Clean code;Improve maintainability
+"Maintenance in preparation of expansion to new functionality, to strengthen a collection of unit tests and boost confidence in output of computational results.",Improve maintainability;Improve testing
+Make the project better,Improve maintainability
+"Most importantly, to put less burden on the future readers and users of my code.",Improve readability;Improve collaboration
+"When the tech debt becomes visible. Development speed, system performance, system reliability, stability and scalability.",TD overload;Improve efficiency;Improve stability;Improve scalability
+I am not aware that I repay technical debt,
+"Easier code maintenance and testing, better usability and scalability",Improve maintainability;Improve testing;Improve usability;Improve scalability
+To avoid losing time later when there are time-critical developments to do,Avoid higher cost
+Clean code approach,Clean code
+To make code more efficient,Improve efficiency
+NA,
+my role is general fixing technical dept.,Sense of responsibility
+To maintain speed and agility,Avoid higher cost
+"trying to be a good citizen to my fellow coders, to make things run faster",Improve collaboration;Improve efficiency
+For the good of the codebase.,Sense of responsibility
+Deadline is the major factor which keeps the code bit duplicate. Whenever free times generally making it look beautiful.,Having enough time;Clean code
+"To make the code more readable, more maintainable, and to make the implementation of further new features less error-prone.",Improve readability;Improve maintainability;Prepare for new features
+#NAME?,Improve maintainability;Prepare for new features;Improve collaboration
+.,
+"Usually when it makes sense to do so, when the code needs to support more use cases and leaving the debt there doesn?€?t make sense anymore.",Prepare for new features
+We setup a stabilization sprint on every quarter where we focus on refactor code.,Sense of responsibility;Avoid higher cost
+Requirements change.,Achieve new requirements
+It slows me down over time otherwise!,Avoid higher cost
+.,
+Security and maintainability,Improve security;Improve maintainability
+to avoid accumulating too much,Avoid higher cost
+Ease the maintenance burden; make the code more robust.,Improve maintainability
+A sense I should do better.,Sense of responsibility
+to hand off to someone else or to reduce onus of support,Improve collaboration
+Improve code quality whenever possible.,Improve maintainability
+If I am working on the project long enough that I feel like I cannot accumulate anymore debt,Avoid higher cost
+If have time to go back to my notes and can afford to fix them.,Having enough time
+To improve the code base and make future changes easier,Improve maintainability;Avoid higher cost
+"I find the definition of ""introducing technical debt"" quite hard. scikit-learn has rigorous peer review. all technical debt that was introduced, was reviewed and requested to be removed before the PR was accepted. As such, I presume that very little technical debt was allowed in the main repository.",Request
+better understanding of the system and how technical debt can be eliminated,Experience and knowledge increased
+hard to modify the code,Improve maintainability
+"When it reaches a threshold where things seem ""messy"" enough to justify a cleanup",Clean code;Avoid higher cost
+Improved maintainability,Improve maintainability
+I am highly against technical debt. This is nonsense.,Sense of responsibility
+bugs,Fix bugs
+NA,
+Always based on momentary ROI. Do I have the time right now to fix it? Will it bite me/us in the near future? Will this project live long enough for the technical debt to make an impact for us?,Having enough time;Avoid higher cost
+To reduce the cost of maintaining the system.,Avoid higher cost
+Primarily to reduce maintenance.,Improve maintainability
+Habit. Making code better for others.,Sense of responsibility;Improve collaboration
+"As I only did a single contribution to flask, this is not possible to answer.
+For my own projects, I often introduce technical debt but also try to repay it. Mostly it's due to inapproriate planning, lack of well-defined process and non existent project management (I'm a researcher); for Open Source contributions, I try to avoid TD as much as possible and focus on repaying technical debt where possible.",Sense of responsibility
+ongoing major refactoring,Refactoring
+maintainability,Improve maintainability
+Committing to secure design and architecture while continuously learning.,Experience and knowledge increased;Improve security
+support becomes easier,Improve collaboration
+EOL of developing toolchains (that forces migration to new major versions).,Prepare for new features
+It should not affect others requirements,Achieve new requirements
+"I feel ownership over the code. Also, do unto others as you would have done to you. Better to get rid of it before it bites you.",Sense of responsibility;Improve collaboration;Avoid higher cost
+When a new feature comes along that makes the need for refactoring apparent,Prepare for new features
+Not applicable,
+when it hinders further development,TD overload
+Always make code better when you right in it.,Sense of responsibility
+To help others develop the project,Improve collaboration
+N/A (have not repaid technical debt created by me on this project),
+It'll bite me in the ass later. I love future me. Why would I want to bite future me's ass?,Avoid higher cost;Sense of responsibility
+"Well, it's essential to project stabilization, often debt shows itself after sometime and it's also moment to repay it.",Sense of responsibility;Avoid higher cost
+"(Project is open source, and I've no time constraints at all - hence the lack of tech debt utilisation)",Having enough time
+"I get annoyed with the dept.
+I have issues reading the code.
+The code broke and adding one condition is one condition too many.",Sense of responsibility;Improve readability;TD overload
+"Maintainability, code cleanliness, code comprehension, adhere to style guides and best practices",Improve maintainability;Clean code;Improve readability;Code of conduct;Sense of responsibility
+Posterity,Leaving project
+Wanting to be a good citizen,Sense of responsibility
+Reduce unhappiness of future self,Avoid higher cost
+Because I need to tweak the technical debt when I add features.,Prepare for new features
+Because I add a reminder to repay it once I introduce it,Sense of responsibility
+To make code more readable.,Improve readability
+"Refactoring is always fun. Architecture is an always changing concept. Building abstractions as you go on helps reduce technical debt over time. As a professional, I think it comes under our fundamental duty to make sure you deliver best possible code while being pragmatic.",Sense of responsibility;Achieve new requirements
+N/A,
+I didn't repay.,
+"After I?€?ve worked on certain parts of the code to a certain degree, I just became ?€?the person?€? for that portion of code. It kind of became my responsibility.",Sense of responsibility
+"Never create it, so no reason to repay it",
+software quality,Improve quality
+Compatibility guidelines permit deprecation/removal;,Clean code
+Being responsible,Sense of responsibility
+"It is part of my daily job. If we don't address technical debt, the project becomes unmaintainable.",Sense of responsibility;Improve maintainability;Avoid higher cost
+To make the code easier to work with for everyone.,Improve collaboration
+I am used to doing refactor for repaying debt when I come up with a better architecture and have enough time for implementing it.,Sense of responsibility;Having enough time;Experience and knowledge increased
+To keep my promise and also to keep the code in best shape.,Sense of responsibility;Clean code
+To ensure ongoing code health,Improve quality
+Because it is the right thing to do for many reasons and I want to get used to being a disciplined engineer.,Sense of responsibility
+It's starting to get annoying,TD overload
+Sanity,Avoid higher cost
+because it is the right thing to do,Sense of responsibility
+"pride, pleasure, and as an investment",Sense of responsibility;Avoid higher cost
+"The code cannot be maintained, hard to add new feature.",TD overload;Prepare for new features
+Better development process,Sense of responsibility
+"Tech debt has an interest rate, that you normally have to pay everytime you add something to the code.",Avoid higher cost;Prepare for new features
+as an exercise to understand,Experience and knowledge increased
+Professionality,Sense of responsibility
+"Moral obligation, future productivity and robustness",Sense of responsibility;Avoid higher cost;Improve stability
+Promises. Guilt. Anger.,Improve collaboration;Sense of responsibility;Avoid higher cost
+Eventually the overall cost to developers becomes high enough to warrant repayment.,TD overload
+It is good practice to have a healthy codebase.,Improve quality;Sense of responsibility
+Because I do not hate future me :) (i.e. it makes work easier for me and my colleagues).,Avoid higher cost;Improve collaboration
+We need to work the debt before it becomes a real monster.,Avoid higher cost
+when I have time to work on it and I have some clearer idea on what the code should be like.,Having enough time;Experience and knowledge increased
+To improve the project and lower the barrier for new contributors to jump in,Improve quality;Improve collaboration
+"There is often debt that depends on some internal or external condition. So if the condition becomes true, the debt can be repaid.",
+To keep the software maintainable. be a good citizen and not penalize others with my changes.,Improve maintainability;Sense of responsibility;Improve collaboration
+To make it easier to code a new feature/fix next time. For pride in my work. The mastery of doing it.,Prepare for new features;Avoid higher cost;Sense of responsibility;Experience and knowledge increased
+Future maintainability of the codebase,Improve maintainability;Avoid higher cost
+Cost of maintenance,Avoid higher cost;Improve maintainability
+"To integrate the project into other products, and start the development of new phases of the project.",Achieve new requirements;Prepare for new features
+In order to make the software efficient and bug free,Improve efficiency;Fix bugs
+because of the gain in maturity and to avoid other issue in the future,Avoid higher cost;Experience and knowledge increased
+increase maintainability,Improve maintainability
+To keep good level of codebase maintainability,Improve maintainability
+People tend to maintain tech debt knowing it's bad code/design. Only when it cause performance regression would we consider rearchitect it,TD overload
+Bugs ?€?filed to remember it,Fix bugs
+To better maintain and optimize the project.,Improve maintainability
+"Better readability, Ease of pickup for other developers",Improve readability;Improve collaboration
+"Personal desire, FixIt sessions, preparations for new projects",Sense of responsibility;Clean code;Leaving project
+I care about the health of the project moving forward. It makes it easier to move fast in the future,Avoid higher cost;Sense of responsibility
+To make other developers onboarding easier,Improve collaboration
+Add as a // TODO while introducing it and later come back to repay it.,Sense of responsibility
+"Because it is best practice and creates better more maintainable code. We continuously try to repay technical debt, and are mainly limited by time deadlines and team overload.",Sense of responsibility;Improve maintainability
+To accomplish the mission,Achieve new requirements
+Lack of time,
+"Avoiding future pain when working with the code, some of it is for pride / maintaining self esteem",Avoid higher cost;Sense of responsibility
+maintenance burden of problems arising from it becoming too demanding,TD overload
+Because technical debt is bad.,Sense of responsibility
+Because I know technical debt exists,Experience and knowledge increased
+NA,
+To lower the cost of maintenance and future developments,Avoid higher cost;Improve maintainability
+"When I have some ""free"" time, I try to fix/improve stuff which ticks me off",Having enough time
+It is required,Code of conduct
+To make code clearer and interfaces more consistent. To optimize,Clean code;Improve maintainability
+s,
+Requested by others,Request
+I don't know about any tech debt introduced by me,
+Help improve the product faster,Boost productivity
+I like to keep my code clean,Clean code;Sense of responsibility
+I don't think I introduced any.,
+When it is no longer adequate and I have the time to repay it.,Having enough time
+Bad design decisions,Experience and knowledge increased
+Fix and add features,Prepare for new features;Fix bugs
+To help other developers use the system and easier project maintenance.,Improve collaboration;Improve maintainability
+To build good software,Improve quality
+"To assure the project works correctly, and prepare it for future development.",Prepare for new features;Fix bugs
+To save time in the future,Avoid higher cost
+keep project healthy,Improve quality
+To improve our productivity.,Boost productivity
+long term is less work.,Avoid higher cost
+"Reduce maintenance costs, reduce the need of explain quirky design decisions and workarounds.",Avoid higher cost;Improve collaboration
+to deliver a good quality solution,Improve quality
+"Cleaner, easier to maintain code",Clean code;Improve maintainability
+to increase quality of the product,Improve quality
+Why you spamming,
+Repaying debt makes things easier for myself as well as others.,Improve collaboration
+a special tools such as react-table ag-grid,
+Makes life less miserable. Good code is fun to work with. Bad code is a pain.,Sense of responsibility
+"Continuous improvement, or to fix over-simplified modelling",Avoid higher cost
+I have given the time so I think I should repay,Having enough time
+.,
+only if the shortcut proves to be insufficient for the problem,TD overload
+"Improving code quality, maintainability, making new features easier to implement.",Improve quality;Improve maintainability;Prepare for new features
+There is always a chance to come out with a better solution and can find something new . Always a possibility to learn something new.,Experience and knowledge increased
+to make app more maintanable,Improve maintainability
+Simply because it has a cost in terms of time and efforts for development,Avoid higher cost
+To keep it clean,Clean code
+Other can use it,Improve collaboration
+More maintainable code,Improve maintainability
+Knowedge,Experience and knowledge increased
+To establish good practice and make code shareable for when I publish papers.,Sense of responsibility;Improve readability
+"So the codebase is clean, reusable, and easily readable.",Clean code;Improve reusability;Improve readability
+Clean code is easier to understand for everyone.,Clean code;Improve readability
+Unblock or increase effectiveness of team,Improve collaboration;TD overload
+To (as much as possible) not leave parts of a project in a bad state for future developers (including future me).,Improve quality;Improve collaboration;Avoid higher cost
+Make the code more manageable,Improve maintainability
+"When I can refactor or otherwise address technical debt without either delaying the project, during 'free' or 'loose' time, such as during on-call time without other pressing tasks, or when I can work remediation of tech debt into the sprint.",Having enough time
+Future Proofing. Team support,Improve collaboration;Avoid higher cost

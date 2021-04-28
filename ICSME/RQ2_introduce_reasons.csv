@@ -1,0 +1,49 @@
+Original Reason,Coded Reason
+Deadline,Deadline
+Inappropriate planning,Inappropriate planning
+Lack of well-defined process,Lack of well-defined process
+Non-adoption of good practice,Non-adoption of good practice
+Not effective project management,Not effective project management
+Lack of qualified professionals that can manage techinical debt,Lack of qualified professionals that can manage techinical debt
+Lack of experience,Lack of experience
+Outdated or incomplete documentation,Outdated or incomplete documentation
+Lack of commitment to the project,Lack of commitment to the project
+Team overload,Team overload
+I am not aware that I introduce technical debt,I am not aware that I introduce technical debt
+Adding new lines of code is adding technical debt,TD introduction is inevitable
+All code is technical debt once written,TD introduction is inevitable
+All code is technical debt. You do everything you can to get features out in a timely manner while balancing code quality but patterns and standards change as the industry moves. I might disagree that technical debt is introduced on purpose. It's always introduced.,TD introduction is inevitable
+architectural defects,Debt inheritance
+"At the scale of Chrome, developing a feature often requires experimentation and analysis of those experimentation results to influence the design of a particular capability. That means, that, by design, specifications are not always known upfront, and change during development. Always avoiding technical debt tends to lead to overgeneralizations or abstractions that are deterimental to project health in the long term.",Experimentation with new technology
+"Backportability, Desire to separate changes for readability or for speed of merging",Backward compatibility
+Backward compact and minor version release rules,Backward compatibility
+Backward compatibility,Backward compatibility
+"Backwards compatibility, mostly",Backward compatibility
+Design tradeoff - it is evaluated and decided to be worth incurring this technical debt to finish the task earlier,Deadline
+Doing some prototyping which somehow becomes live,Debt inheritance
+Experiments to introduce new technologies.,Experimentation with new technology
+Good enough - Expectation that the debt will never have to be paid,I am not aware that I introduce technical debt
+I am not really sure --- You code as well as you can then redo when you learn more or want to add things,Lack of experience
+"In large, open-source projects I try to avoid introducing technical debt as much as possible. Well documented and built projects facilitated avoiding it.",Outdated or incomplete documentation
+Insufficient Communication with Business people,Not effective project management
+it is a part of software developement,TD introduction is inevitable
+It's usually that I don't have the bandwidth/time to fix already existing technical debt and instead pile on to it.,Deadline
+"Most often, it's just a matter of cost-benefit analysis. Even if there is not a hard deadline or other external factors, the sheer time and energy cost of doing the ideal thing can be significantly higher than many good-enough alternatives. These kinds of decisions then accumulate over time.",Workload balance
+"Mostly just to get it working right away - and then refactor later if it will be necessary. Usually technical debt is OK if its just a simple feature, but if you know down the road to fix it, then you can do that then.",Workload balance
+N/A. Technical debt is not acceptable.,Technical debt is not acceptable
+Not fully understanding how the project will evolve over time,Lack of experience
+ongoing major refactoring,Experimentation with new technology
+Outdation of older technologies to be adjusted in new era,Experimentation with new technology
+Some times I introduce Tech Debt on purpose. Because a feature might not be well understood and it is more cost effective to do it in a suboptimal way. Other times I create technical debt because the fix has its own set of problems so its better to have one well understood problem that another category,"Experimentation with new technology,Lack of qualified professionals that can manage techinical debt"
+Sometimes debty code is is a way to workaround bugs and shortcomings in project dependencies,Lack of qualified professionals that can manage techinical debt
+"Sometimes increasing tech debt is desirable (cost of ""doing it right"" is higher than the cost of the debt)",Workload balance
+Stopgap fix for a production issue,Deadline
+The cost of avoiding TD is a major refactor which would take independent planning,Lack of well-defined process
+To maintain speed and agility,Workload balance
+To prioritize mainline tasks and de-prioritize secondary tasks,Workload balance
+tradeoff,Workload balance
+unproven feature (may pay back debt by rolling back the change),Experimentation with new technology
+Urgent issue that needs to be fixed quickly,Deadline
+Use of unfinished components for which general fixes are too expensive,Debt inheritance
+We're still learning about the use case + domain etc.,Lack of experience
+Working in an area that is already burdened with technical debt,Debt inheritance

@@ -1,0 +1,7 @@
+Language,Type,Options,Standard,Number,Negative,TotalNegative,Total,PercentOfTotal,LinkertPercent,StartPercent,EndPercent
+Java,Familiar,No,1,3,3,89,181,2%,0.491712707,-0.491712707,-0.475138122
+Java,Familiar,Somewhat,2,11,11,89,181,6%,0.491712707,-0.475138122,-0.414364641
+Java,Familiar,Yes,3,75,75,89,181,41%,0.491712707,-0.414364641,0
+Python,Familiar,Yes,4,65,0,89,181,36%,0.491712707,0,0.359116022
+Python,Familiar,Somewhat,5,15,0,89,181,8%,0.491712707,0.359116022,0.44198895
+Python,Familiar,No,6,12,0,89,181,7%,0.491712707,0.44198895,0.508287293

@@ -9,8 +9,8 @@ It contains the replication package of the study reported in the aforementioned 
 
 # Questionnaire
 
-The Qustionnaire.pdf file shows an example of our survey for the project TensonFlow.
-The Invitation_Text.pdf file describes the target open-source project (e.g., TensonFlow) and programming language (e.g., Python), together with the motivation and goal of this study.
+1. The Qustionnaire.pdf file shows an example of our survey for the project TensonFlow.
+2. The Invitation_Text.pdf file describes the target open-source project (e.g., TensonFlow) and programming language (e.g., Python), together with the motivation and goal of this study.
 
 
 

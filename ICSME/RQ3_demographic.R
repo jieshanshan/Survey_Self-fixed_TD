@@ -1,5 +1,5 @@
 ggplot() +
-  geom_linerange(data = RQ3_frequent, 
+  geom_linerange(data = RQ3_demographic_frequency, 
                  aes(x = reorder(Type, Order),
                      ymin = StartPercent, 
                      ymax = EndPercent,
@@ -27,7 +27,7 @@ ggplot() +
 
 
 ggplot() +
-  geom_linerange(data = RQ3_type, 
+  geom_linerange(data = RQ3_demographic_certainty, 
                  aes(x = reorder(Type, Order), 
                      ymin = StartPercent, 
                      ymax = EndPercent,

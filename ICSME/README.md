@@ -16,7 +16,7 @@ The following table describes the content of each file in this package.
   The text of the email invitation sent to practitioners. It mentions the motivation and goal of this study, the targeted open-source project, and its main programming language. This particular form was sent out to the members of the project TensonFlow.
 
 - `Questionnaire.pdf`\
-  The questionnaire (Google Form) used in the survey. This particular form was sent out to the members of the project TensonFlow. Due to the page limit, we did not use the responses for questions 1, 10, 16, 17.
+  The questionnaire (Google Form) used in the survey. This particular form was sent out to the members of the project TensonFlow. Due to the page limit, we did not use the responses for questions 1, 10, 16 and 17.
 
 - `RQ1_familiar.csv`\
   The dataset used to generate Fig.2: Respondents' knowledge level of technical debt.

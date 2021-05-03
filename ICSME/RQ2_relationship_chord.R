@@ -1,6 +1,6 @@
 library("circlize")
 circos.clear()
-mat <- read.csv("RQ2_relationship.csv",
+mat <- read.csv("RQ2_relationship_chord.csv",
                 header = T,
                 row.names = 1,
                 stringsAsFactors = F)
